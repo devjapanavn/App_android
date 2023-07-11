@@ -1,0 +1,208 @@
+<style>
+    .news {
+        margin-top: 30px;
+    }
+    .news .title-news {
+        color: #000;
+        font-size: 18px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        text-transform: uppercase;
+        width: 100%;
+        border-bottom: 3px solid #bb0029;
+        margin-bottom: 13px;
+        padding-bottom: 3px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .news .title-news a {
+        font-size: 16px;
+        text-transform: none;
+    }
+    .news .title-news a:hover {
+        color: #bb0029;
+    }
+    .list-news {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+    .list-news .item {
+        display: inline-block;
+        margin: 5px 10px;
+        border: 1px solid #e3e3e3;
+    }
+    .list-news .item .box-img {
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+    .list-news .item .detail {
+        padding: 0 20px;
+    }
+    .list-news .item .detail .title {
+        margin-bottom: 18px;
+    }
+    .list-news .item .detail .title a {
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 1.5;
+        color: #333;
+        border: 0;
+        display: inline-block;
+    }
+    .list-news .item .detail .title a:hover {
+        color: #bb0029;
+    }
+    .time-tag {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .time-tag span {
+        color: #999;
+        font-size: 12px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        margin-right: 10px;
+    }
+    .count-news span {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #666;
+    }
+    .count-news {
+        padding: 12px 0 21px;
+    }
+    .count-news span i {
+        margin-right: 2px;
+    }
+
+    /*.list-news .slick-arrow {*/
+    /*    position: absolute;*/
+    /*    top: 30%;*/
+    /*    font-size: 40px;*/
+    /*}*/
+    /*.list-news .slick-prev,*/
+    /*.list-news .slick-next {*/
+    /*    color: #000;*/
+    /*    cursor: pointer;*/
+    /*}*/
+    /*.list-news .slick-prev,*/
+    /*.list-news .slick-next {*/
+    /*    border-radius: 100%;*/
+    /*    border: 1px solid #e3e3e3;*/
+    /*    background: #fff;*/
+    /*    top: 40%;*/
+    /*    width: 40px;*/
+    /*    height: 40px;*/
+    /*    display: -webkit-box !important;*/
+    /*    display: -ms-flexbox !important;*/
+    /*    display: flex !important;*/
+    /*    -webkit-box-align: center;*/
+    /*    -ms-flex-align: center;*/
+    /*    align-items: center;*/
+    /*    -webkit-box-pack: center;*/
+    /*    -ms-flex-pack: center;*/
+    /*    justify-content: center;*/
+    /*    z-index: 20;*/
+    /*    transform: translate(0, 40%);*/
+    /*}*/
+    /*.list-news .slick-prev {*/
+    /*    left: -18px!important;*/
+    /*}*/
+    /*.list-news .slick-prev i,*/
+    /*.list-news .slick-next i {*/
+    /*    font-size: 15px;*/
+    /*}*/
+    /*.list-news .slick-next {*/
+    /*    right: -20px!important;*/
+    /*}*/
+    /*.list-news .slick-prev:hover,*/
+    /*.list-news .slick-next:hover {*/
+    /*    -webkit-box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);*/
+    /*    box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);*/
+    /*    -webkit-transition: all 0.4s ease-in-out;*/
+    /*    -o-transition: all 0.4s ease-in-out;*/
+    /*    transition: all 0.4s ease-in-out;*/
+    /*}*/
+
+</style>
+<div class="news container ">
+
+    <div class="card slide-custom">
+        <div class="card-header">
+            <h2 class="title-news">Thông tin tiêu dùng <a href="<?php echo URL;?>news.jp" title="title">Xem tất cả <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></h2>
+        </div>
+        <div class="card-body">
+            <div class="list-news">
+            <?php
+                if(!empty($hot)) {
+                    foreach ($hot as $item) {
+                        $link = URL.$item['slug']."-news-" . $item['id'] . ".jp";
+                        $image = PATH_IMAGE_NEWS. "670x445-" . $item['images'];
+                ?>
+                <div class="item">
+                    <div class="box-img">
+                        <a href="<?php echo $link;?>" title="<?php echo $item["name"];?>" class="anima-hvr">
+                            <img src="<?php echo $image;?>" alt="<?php echo $item['name'];?>">
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <div class="time-tag">
+                            <span><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo date("d-m-Y | H:i", strtotime($item['datecreate'])); ?></span>
+                        </div>
+                        <h3 class="title">
+                            <a href="<?php echo $link;?>" title="<?php echo $item["name"];?>"><?php echo $this->cutString($item["name"],60);?></a>
+                        </h3>
+                        <div class="count-news">
+                            <span><i class="fa fa-eye" aria-hidden="true"></i> <?php if($item['visit']!=0) { echo $item['visit']; }else{ echo "1"; } ?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php }
+        }?>
+        </div>
+         </div>
+    </div>
+
+
+</div>
+<script>
+    jQuery(document).ready(function () {
+        initItemSliderNews();
+    });
+    var initItemSliderNews = function () {
+        jQuery(".list-news")
+            .not(".slick-initialized")
+            .slick({
+                autoplay: !1,
+                dots: !1,
+                infinite: !0,
+                centerMode: !1,
+                speed: 300,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                variableWidth: !1,
+                autoplaySpeed: 2e3,
+                nextArrow: '<span class="slick-next"><i class="ti ti-angle-right"></i></span>',
+                prevArrow: '<span class="slick-prev"><i class="ti ti-angle-left"></i></span>',
+                responsive: [
+                    { breakpoint: 1024, settings: { slidesToShow: 6, slidesToScroll: 1, infinite: !0, dots: !1 } },
+                    { breakpoint: 600, settings: { slidesToShow: 4, slidesToScroll: 1 } },
+                    { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+                ],
+            });
+    };
+
+
+</script>

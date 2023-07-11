@@ -1,0 +1,77 @@
+<style>
+.scroll-news{width:470px;height:351.75px;position:relative;overflow-y:scroll;overflow-x:hidden;display:inline-block;margin-left:15px;margin-top:10px;}.scroll-news .item{display:-webkit-box;display:-ms-flexbox;display:flex;height:100px;overflow:hidden;margin-bottom:15px}.scroll-news .item:first-child{margin-top:0}.scroll-news .item .box-img{height:100px;width:215px}.scroll-news .item .box-img,.scroll-news .item .detail{float:left}.scroll-news .item .box-img a{display:inline-block;width:100%;height:100%}.scroll-news .item .box-img a img{width:100%!important;height:auto!important}.scroll-news .item .detail{width:320px;padding-left:16px;line-height:2}.scroll-news .item .detail .time,.scroll-news .item .detail .title a,.scroll-news .item .detail .count,.banner-news .item .detail-banner .time,.banner-news .item .detail-banner .title a,.banner-news .item .detail-banner .count span{font-family:'Roboto',sans-serif;font-weight:400}.scroll-news .item .detail .time{font-size:13px;color:#999}.scroll-news .item .detail .title{margin-bottom:0;line-height:1.5}.scroll-news .item .detail .title a{font-weight:500;font-size:16px;color:#333}.scroll-news .item .detail .title a:hover{color:#bb0029}.scroll-news .item .detail .count{font-size:13px;color:#666}.scroll-news .item .detail .count span{margin-right:19px}.banner-news{width:670px;display:none;float:left;margin-bottom:35px;margin-top:10px;}.banner-news .item{position:relative;display:none;height:351px;width:100%}.banner-news .item a{width:100%;height:100%}.banner-news .item a img{width:auto;height:351px}.banner-news .item .detail-banner{display:none;width:100%;background:rgba(0,0,0,.5);position:absolute;bottom:0;padding:28px 40px;left:0;right:0}.banner-news .item:hover .detail-banner{display:inline-block}.banner-news .item .detail-banner .time{color:#fff;font-size:15px;margin-bottom:15px}.banner-news .item .detail-banner .time span{margin-left:5px}.banner-news .item .detail-banner .title{margin-bottom:0}.banner-news .item .detail-banner .title a{color:#fff;font-weight:500;font-size:24px;margin-bottom:17px;line-height:1.5}.banner-news .item .detail-banner .count{margin-top: 15px;}.banner-news .item .detail-banner .count span{color:#fff;font-size:15px;margin-right:22px}.banner-news .item .detail-banner .count i{margin-right:8px}.banner-news .slick-arrow{position:absolute;top:50%}.news-prev,.news-next{top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.news-prev:hover,.news-next:hover{opacity:.5;cursor:pointer}.news-prev{left:5%;z-index:10}.news-next{right:-1%;z-index:10}.ps__rail-x,.ps__rail-y{opacity:.6}
+</style>
+<div class="banner-news">
+    <?php
+    if(!empty($hot)) {
+        foreach ($hot as $item) {
+            $link = URL.$item['slug']."-news-" . $item['id'] . ".jp";
+            $image = PATH_IMAGE_NEWS. "670x445-" . $item['images'];
+            ?>
+            <div class="item">
+                <a href="<?php echo $link;?>" title="<?php echo $item["name"];?>">
+                    <img src="<?php echo $image;?>" alt="<?php echo $item["name"];?>">
+                </a>
+                <div class="detail-banner">
+                    <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i> 
+                        <span><?php echo date("d-m-Y | H:i", strtotime($item['datecreate'])); ?></span>
+                    </p>
+                    <h3 class="title">
+                        <a href="<?php echo $link;?>" title="<?php echo $item["name"];?>">
+                            <?php echo $this->cutString(strip_tags($item['name']),100); ?>
+                        </a>
+                    </h3>
+                    <p class="count"><span><i class="fa fa-eye" aria-hidden="true"></i> <?php if($item['visit']!=0) { echo $item['visit']; }else{ echo "0"; } ?></span></p>
+                </div>
+            </div>
+        <?php }
+    }?>
+</div>
+<!--banner-news-->
+<div class="scroll-news">
+    <?php
+    if(!empty($hot)) {
+        foreach ($hot as $item) {
+            $link = URL.$item['slug']."-news-" . $item['id'] . ".jp";
+            ?>
+            <div class="item">
+                <div class="box-img">
+                    <?php
+                    if(!empty($item['images'])){
+                        ?>
+                        <a href="<?php echo $link; ?>" title="<?php echo $item['name']; ?>" class="anima-hvr">
+                            <img src="<?php echo PATH_IMAGE_NEWS . "270x160-" . $item['images']; ?>" alt="<?php echo $item['name']; ?>">
+                        </a>
+                        <?php
+
+                    }else{
+                        ?>
+                        <a href="<?php echo $link; ?>" title="Không có hình ảnh" class="anima-hvr">
+                            <img src="<?php echo URL; ?>uploads/system/252x168-no-image-available.jpg" alt="<?php echo $item['name']; ?>">
+                        </a>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <div class="detail">
+                    <p class="time">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i> 
+                        <span><?php echo date("d-m-Y | H:i", strtotime($item['datecreate'])); ?></span>
+                    </p>
+                    <h3 class="title">
+                        <a href="<?php echo $link; ?>" title="<?php echo $item['name']; ?>">
+                            <?php echo $this->cutString(strip_tags($item['name']),70); ?>
+                        </a>
+                    </h3>
+                    <p class="count"><span><i class="fa fa-eye" aria-hidden="true"></i> <?php if($item['visit']!=0) { echo $item['visit']; }else{ echo "0"; } ?></span></p>
+                </div>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>
+<!--scroll-news-->
+<script>
+    new PerfectScrollbar('.scroll-news');jQuery('.banner-news').not('.slick-initialized').slick({autoplay:!0,fade:!0,cssEase:'linear',speed:1000,dots:!1,autoplaySpeed:3000,nextArrow:'<span class="news-next"><img src="https://japana.vn/assets/frontend/news/images/right.png" alt="right"/></span>',prevArrow:'<span class="news-prev"><img src="https://japana.vn/assets/frontend/news/images/left.png" alt="left"/></span>',})
+</script>

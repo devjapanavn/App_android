@@ -1,0 +1,165 @@
+<style>
+  .list-brand-img{margin-top:10px;}.list-brand-img .title-brand{font-family:'Roboto',sans-serif;font-size:16px;font-weight:500;color:#333;border-bottom:1px solid #333;padding-bottom:5px}.list-brand .item{float:left;width:170px;height:104px;padding:0;border:1px solid #cbcbcb;display:inline-block;margin:15px}.list-brand .item a{display:inline-block;width:100%;height:100%}.list-brand .item a img{width:100%;height:100px}.list-brand .item:hover{border:1px solid #333}.list-brand-text .title-brand{font-family:'Roboto',sans-serif;font-size:16px;font-weight:500;color:#333;border-bottom:1px solid #333;padding-bottom:5px;margin-bottom:0;margin-top:25px}.search-brand{padding-top:23px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.box-search-brand{position:relative;width:400px;float:left;margin-bottom:0}.box-search-brand .ipt-search-brand{height:38px;font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;font-style:italic;border-radius:0;padding-right:50px}.box-search-brand .btn-brand{position:absolute;top:3%;padding:5px 15px;right:0;-webkit-transform:scaleX(-1);-ms-transform:scaleX(-1);transform:scaleX(-1);background:transparent;border:0;font-size:25px}.all-char-brand{display:inline-block;float:left;width:770px}.all-char-brand .list-char .item{float:left;margin-left:16px}.all-char-brand .list-char .item a{display:inline-block;font-family:'Roboto',sans-serif;font-weight:500;font-size:18px;color:#666}.all-char-brand .list-char .item a:hover{color:#bb0029;border-bottom:1px solid #bb0029}.brand-find{font-family:'Roboto',sans-serif;font-weight:400;font-size:36px;color:#666;width:102px;float:left;margin-bottom:0}.list-brand-item{-moz-column-count:4;-moz-column-gap:20px;-webkit-column-count:4;-webkit-column-gap:20px;column-count:4;column-gap:20px;width:1068px;float:left;line-height:2.5}.list-brand-char{display:inline-block;width:100%;margin-top:30px}.list-brand-item li{display:inline-block;width:100%}.list-brand-item li a{font-family:'Roboto',sans-serif;font-weight:400;font-size:14px;color:#666}.list-brand-item li a:hover{color:#bb0029}.box-list-brand{display:inline-block;width:100%;border-bottom:1px solid #cbcbcb;padding:17px 0}.box-list-brand:last-child{border-bottom:0}
+</style>
+<?php
+$folder_date = "";
+if(!empty($config["og_image"])){
+    $array = explode("-", $config["og_image"]);
+    $time = $array[0];
+    $folder_date = date('Y',$time)."/".date('m',$time)."/".date('d',$time)."/";
+}
+    $this->headTitle ($config["meta_web_keyword"]);
+    $this->headMeta ()
+    ->appendName ( 'keywords',      $config["meta_web_keyword"])
+    ->appendName ( 'description',   $config["og_title"]." là thương hiệu luôn được đánh giá cao và chiếm nhiều niềm tin của người tiêu dùng vì những giá trị mang lại tốt nhất. ".$config["og_title"]." tại Siêu Thị Japana luôn đảm bảo 100% chính hãng, giá thành tốt nhất, đảm bảo người tiêu dùng có sự lựa chọn đúng đắn khi đến với Japana.")
+     ->setProperty('og:image',      PATH_IMAGE_BLOCK.$folder_date.$config['og_image'])
+     ->setProperty('og:description', $config["og_title"]." là thương hiệu luôn được đánh giá cao và chiếm nhiều niềm tin của người tiêu dùng vì những giá trị mang lại tốt nhất. ".$config["og_title"]." tại Siêu Thị Japana luôn đảm bảo 100% chính hãng, giá thành tốt nhất, đảm bảo người tiêu dùng có sự lựa chọn đúng đắn khi đến với Japana.")
+     ->setProperty('og:title',       $config["og_title"])
+     ->setProperty('og:url',         $config["url"])
+        ->setProperty("og:type", "website")
+        ->setProperty("og:site_name", "japana.vn");
+    $this->header(array(
+    "adapter" => $adapter,
+    "active" => $active));
+?>
+<div class="site-inner">
+  <div class="content-sidebar-wrap">
+    <main class="brand-list content">
+      <div class="navigation">
+        <div class="container">
+          <ul>
+            <li><a href="<?php echo URL;?>" title="Trang chủ">Trang chủ</a></li>
+            <li> / Thương hiệu</li>
+          </ul>
+        </div>
+    </div>
+    <div class="list-brand-img">
+      <div class="container">
+        <h3 class="title-brand">Thương hiệu nổi bật</h3>
+      </div>
+      <div class="container" style="padding: 0;">
+        <div class="list-brand">
+          <?php foreach ($list_brand as $key => $value){?>
+            <?php
+                $images = PATH_IMAGE_BRAND.$value["images"];
+                $name = $value["name_vi"];
+                $url = URL.$value["slug_vi"]."-brand.jp";
+            ?>
+              <div class="item">
+                <a href="<?php echo $url;?>" title="<?php echo $name;?>">
+                  <img src="<?php echo $images;?>" alt="<?php echo $name;?>">
+                </a>
+              </div>
+          <?php }?>
+        </div>
+      </div>
+    </div>
+    <div class="list-brand-text">
+      <div class="container">
+        <h3 class="title-brand">Danh sách thương hiệu</h3>
+      </div>
+      <div class="container">
+        <div class="search-brand">
+
+          <div class="box-search-brand form-group">
+            <form method="POST" name="frm" id="frm" action="thuong-hieu.jp" enctype="multipart/form-data">
+              <input name="keysearch" id="keysearch" value="<?php echo !empty($_POST['keysearch'])?$_POST['keysearch']:""; ?>" type="text" class="form-control ipt-search-brand" placeholder="Tìm kiếm thương hiệu....">
+              <button name="btn_brand" id="btn_brand" type="submit" class="btn-brand"><span class="ti ti-search"></span></button>
+            </form>
+          </div>
+
+          
+          <div class="all-char-brand">
+            <ul class="list-char">
+              <li class="item"><a href="#" title="0-9">0 - 9</a></li>
+              <?php
+                 $alphas = range('A','Z');
+                 foreach($alphas as $key => $value){
+              ?>
+              <li class="item"><a href="#<?php echo $value;?>" title="<?php echo $value;?>"><?php echo $value;?></a></li>
+              <?php
+                 }
+              ?>
+            </ul>
+          </div>
+          
+        </div>
+
+
+
+
+        <div class="list-brand-char">
+                <?php
+                if(isset($obj_search)) {
+                    ?>
+                    <div class="box-list-brand">
+                        <h3 class="brand-find clear">Kết quả</h3>
+                        <ul class="list-brand-item">
+                            <?php
+                            foreach ($obj_search as $item) {
+                                $url = URL . $item["slug_vi"] . "-brand.jp";
+                                ?>
+                                <li><a href="<?php echo $url; ?>" title="<?php echo $item['name_vi']; ?>"><?php echo $item['name_vi']; ?></a></li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                    <?php
+                } // end if
+                ?>
+
+          <div class="box-list-brand">
+            <h3 class="brand-find clear">0-9</h3>
+            <ul class="list-brand-item">
+              <?php
+                      $alnumber = range(1,9);
+                      foreach($alnumber as $key => $value) {
+                          $list_stt = $obj_brand->searchItemNumber(array("name_vi" => $value));
+                          foreach ($list_stt as $key => $value) {
+                              ?>
+                              <?php
+                              $name = $value["name_vi"];
+                              $url = URL . $value["slug_vi"] . "-brand.jp";
+                              ?>
+                              <li><a href="<?php echo $url; ?>" title="<?php echo $name ?>"><?php echo $name ?></a></li>
+                          <?php }
+                      } //end for
+              ?>
+            </ul>
+          </div>
+          <?php
+          foreach($alphas as $key => $value){
+          ?>
+          <div class="box-list-brand">
+            <h3 id="<?php echo $value;?>" class="brand-find clear"><?php echo $value;?></h3>
+            <ul class="list-brand-item">
+              <?php  $brand = $obj_brand->searchItemAZ(array("name_vi" => $value));
+              foreach ($brand as $key => $value){
+                ?>
+              <?php
+                    $name = $value["name_vi"];
+                    $url = URL.$value["slug_vi"]."-brand.jp";
+                ?>
+                  <li><a href="<?php echo $url;?>" title="<?php echo $name?>"><?php echo $name?></a></li>
+              <?php }?>
+            </ul>
+          </div>
+          <?php
+          } //end for
+          ?>
+          
+        </div>
+      </div>
+    </div>
+    </main>
+  </div>
+</div>
+
+<?php 
+$this->footer(array(
+    "adapter" => $adapter));
+?>
+<script>
+  var heightHeaderTop=jQuery('.site-header').outerHeight()+jQuery('.nav-primary').outerHeight();$(document).on('click','a[href^="#"]',function(event){event.preventDefault();$('html, body').animate({scrollTop:$($.attr(this,'href')).offset().top-heightHeaderTop-17},2000)})
+</script>

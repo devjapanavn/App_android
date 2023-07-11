@@ -1,0 +1,782 @@
+<style>
+    .site-inner{
+        background: #ffffff;
+    }
+    .box-news-detail {
+        width: 770px;
+        float: left
+    }
+
+    .box-news-detail .title,
+    .box-news-detail .time {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500
+    }
+
+    .box-news-detail .title {
+        font-size: 18px;
+        color: #000;
+        margin-bottom: 13px;
+        line-height: 1.5;
+    }
+
+    .box-news-detail .time {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px
+    }
+
+    .share {
+        margin: 15px 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .share span {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+        float: left;
+        margin-right: 17px;
+        text-decoration: underline
+    }
+
+    .detail-news2 ul,
+    .detail-news ul {
+        list-style-type: disc;
+        -webkit-padding-start: 40px
+    }
+
+    .detail-news2 {
+        line-height: 2;
+        text-align: justify;
+        font-weight: 400;
+        font-size: 14px;
+        color: #000
+    }
+
+    .detail-news2 p {
+        font-weight: 400;
+        font-size: 14px;
+        color: #000;
+        line-height: 1.8
+    }
+
+    .detail-news2 a {
+        color: #000!important;
+        text-decoration: underline
+    }
+
+    .detail-news2 a:hover {
+        color: #365899!important
+    }
+
+    .detail-news2 h2 {
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+        line-height: 1.8;
+        color: #000
+    }
+
+    .detail-news2 h3 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #000;
+        line-height: 1.8;
+        margin: 3px 0
+    }
+
+    .detail-news2 img {
+        max-width: 100%
+    }
+
+    .detail-news2 strong {
+        font-weight: 500
+    }
+
+    .detail-news2 h4 {
+        text-align: center!important;
+        margin: 15px 0
+    }
+
+    .detail-news2 ul li {
+        font-weight: 400;
+        font-size: 14px;
+        color: #000;
+        line-height: 1.8
+    }
+
+    .ytLoader {
+        position: relative;
+        cursor: pointer;
+        width: 800px;
+        height: 450px;
+        display: flex;
+        margin: 0 auto
+    }
+
+    .ytLoader>img.cover {
+        width: 100%;
+        height: auto;
+        object-fit: cover
+    }
+
+    .ytLoader .bg-yt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .5);
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+    }
+
+    .icon-play {
+        background-position: 0 -259px!important;
+        width: 80px;
+        height: 79px;
+        display: inline-block;
+        opacity: .7
+    }
+
+    .sidebar-news {
+        width: 340px;
+        float: right;
+        margin-top: 10px;
+    }
+
+    .sidebar-news .title-top,
+    .sidebar-news .side-item1>li>a,
+    .box-search-news .ipt-search-news,
+    .title-slide-brand,
+    .box-support p,
+    .box-support .box-phone-news .btn-phone-news {
+        font-family: 'Roboto', sans-serif
+    }
+
+    .sidebar-news .title-top {
+        font-weight: 500;
+        font-size: 18px;
+        color: #2a2a2a;
+        border-bottom: 2px solid #bb0029;
+        padding-bottom: 3px;
+        margin-bottom: 0;
+        text-align: left
+    }
+
+    .sidebar-news ul>li {
+        margin-top: 20px
+    }
+
+    .sidebar-news .side-item1 {
+        margin-bottom: 15px
+    }
+
+    .sidebar-news .side-item1>li>a,
+    .list-brand-news .item .box a,
+    .phone-sp,
+    .custom-side-news .item,
+    .custom-side-news .item .detail .other {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .sidebar-news .side-item1>li>a {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+    }
+
+    .sidebar-news .side-item1>li>a {
+        font-weight: 400;
+        font-size: 16px;
+        color: #666
+    }
+
+    .sidebar-news .side-item1>li>a span:last-child {
+        font-size: 14px
+    }
+
+    .sidebar-news .side-item1>li>a:hover {
+        color: #bb0029;
+        font-weight: 600
+    }
+
+    .sidebar-news .side-item1>li>a.active {
+        color: #bb0029
+    }
+
+    .box-search-news {
+        position: relative;
+        margin-bottom: 15px
+    }
+
+    .box-search-news .ipt-search-news {
+        border-radius: 4px;
+        height: 43px;
+        font-size: 14px;
+        font-style: italic;
+        padding-right: 55px
+    }
+
+    .box-search-news .btn-search-news {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: transparent;
+        border: 0;
+        border-right: 1px solid #cbcbcb;
+        color: #333;
+        height: 43px;
+        width: 43px;
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+        font-size: 16px
+    }
+
+    .list-brand-news {
+        display: none
+    }
+
+    .list-brand-news .item .box {
+        margin-bottom: 10px
+    }
+
+    .list-brand-news .item .box a {
+        height: 99px
+    }
+
+    .list-brand-news .item:nth-child(odd) .box {
+        margin-right: 5px
+    }
+
+    .list-brand-news .item:nth-child(even) .box {
+        margin-left: 5px
+    }
+
+    .list-brand-news .item .box:last-child {
+        margin-bottom: 0
+    }
+
+    .list-brand-news .item .box a img {
+        border: 1px solid #cbcbcb;
+        width: 100%;
+        height: auto
+    }
+
+    .list-brand-news .item .box a:hover img {
+        border-color: #a3a3a3
+    }
+
+    .list-brand-news .slick-dots {
+        margin-top: 10px;
+        display: block;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        width: 100%
+    }
+
+    .list-brand-news .slick-dots button {
+        line-height: 0;
+        display: block;
+        width: 9px;
+        height: 9px;
+        padding: 5px;
+        cursor: pointer;
+        color: transparent;
+        outline: none;
+        background: #e3e3e3;
+        border-radius: 100%;
+        border: 0
+    }
+
+    .list-brand-news .slick-dots li {
+        position: relative;
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer
+    }
+
+    .list-brand-news .slick-dots .slick-active button {
+        background: #999
+    }
+
+    .title-slide-brand {
+        font-weight: 500;
+        font-size: 18px;
+        color: #2a2a2a;
+        border-bottom: 2px solid #bb0029;
+        padding-bottom: 5px;
+        margin-bottom: 10px
+    }
+
+    .box-support {
+        padding: 22px 12px;
+        background: #f7f7f7;
+        margin: 10px 0
+    }
+
+    .box-support p {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+        margin-bottom: 14px
+    }
+
+    .box-support .box-phone-news {
+        position: relative
+    }
+
+    .box-support .box-phone-news i {
+        position: absolute;
+        top: 50%;
+        left: 6%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        color: #999
+    }
+
+    .box-support .box-phone-news .ipt-phone-news {
+        border-radius: 20px;
+        height: 38px;
+        font-style: italic;
+        border: 1px solid #cbcbcb;
+        width: 235px;
+        padding-left: 30px
+    }
+
+    .box-support .box-phone-news .btn-phone-news {
+        background: #bb0029;
+        color: #fff;
+        font-size: 14px;
+        height: 38px;
+        border-radius: 20px;
+        border: 1px solid #bb0029;
+        width: 73px;
+        float: right
+    }
+
+    .box-support .box-phone-news .btn-phone-news:hover {
+        color: #bb0029;
+        background: #fff
+    }
+
+    .box-support hr {
+        margin: 18px auto;
+        width: 80%
+    }
+
+    .phone-sp,
+    .custom-side-news .item {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .phone-sp {
+        color: #bb0029;
+        -ms-flex-pack: distribute;
+        justify-content: space-around
+    }
+
+    .phone-sp span {
+        color: #bb0029;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 16px
+    }
+
+    .phone-sp span sub {
+        font-size: 10px;
+        margin-top: 5px
+    }
+
+    .side-products-news {
+        border: 0!important;
+        padding: 0!important;
+        margin: 10px 0
+    }
+
+    .side-products-news .title-side {
+        margin-bottom: 0;
+        background: #e3e3e3;
+        padding: 10px 15px!important
+    }
+
+    .side-products-news .title-side span {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        color: #333;
+        border-left: 2px solid #bb0029;
+        padding-left: 5px
+    }
+
+    .custom-side-news {
+        display: inline-block;
+        position: relative
+    }
+
+    .custom-side-news .item {
+        border: 1px solid #e3e3e3;
+        float: left;
+        height: 110px;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 10px
+    }
+
+    .custom-side-news .item .box-img {
+        width: 40%;
+        overflow: hidden;
+        float: left;
+        position: relative;
+        text-align: center
+    }
+
+    .custom-side-news .item .box-img a {
+        display: inline-block
+    }
+
+    .custom-side-news .item .box-img img {
+        width: 98px;
+        height: 98px
+    }
+
+    .custom-side-news .item .detail {
+        float: left;
+        padding-right: 11px;
+        width: 60%
+    }
+
+    .custom-side-news .item .detail .title {
+        margin-bottom: 0
+    }
+
+    .custom-side-news .item .detail .title a {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: #666;
+        display: inline-block;
+        line-height: 1.5
+    }
+
+    .custom-side-news .item .detail .title a:hover {
+        color: #bb0029
+    }
+
+    .custom-side-news .item .detail .other {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+    }
+
+    .custom-side-news .item .detail .other .price {
+        padding-top: 10px;
+        line-height: 1.5
+    }
+
+    .custom-side-news .item .detail .other .price .new-price {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: #bb0029;
+        display: inline-block;
+        width: 100%
+    }
+
+    .custom-side-news .item .detail .other .price .old-price {
+        font-size: 14px;
+        font-weight: 400;
+        color: #999;
+        text-decoration: line-through
+    }
+
+    .custom-side-news .item .detail .other .btn-buy {
+        background: #fff;
+        padding: 0;
+        border: 0;
+        width: 50px;
+        height: 50px;
+        margin-top: 10px
+    }
+
+    .btn-buy .icon-buy {
+        background-position: -360px -27px;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        background-size: 900px
+    }
+
+    .custom-side-news .item .box-img .block-sale,
+    .custom-side-news .item .box-img .block-sale2 {
+        position: absolute;
+        top: 0;
+        right: 0
+    }
+
+    .custom-side-news .item .box-img .block-sale {
+        width: 100%;
+        padding: 5px;
+        padding-bottom: 0;
+        text-align: right;
+        padding-left: 0
+    }
+
+    .custom-side-news .item .box-img .block-sale2 {
+        bottom: 0;
+        left: 0;
+        top: auto;
+        right: auto;
+        padding: 5px;
+        padding-right: 0;
+        padding-top: 0;
+        width: 100%;
+        text-align: left
+    }
+
+    .custom-side-news .item .box-img .block-sale3 {
+        top: 0;
+        left: 0;
+        right: auto;
+        text-align: left;
+        position: absolute;
+        padding-left: 5px;
+        padding-top: 5px
+    }
+
+    .custom-side-news .item .box-img .block-sale span {
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        color: #fff;
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        width: 29px;
+        height: 35px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+    }
+
+    .custom-side-news .item .box-img .block-sale {
+        width: 45px;
+        height: 45px
+    }
+
+    .custom-side-news .item .box-img .block-sale3 {
+        width: auto;
+        max-height: 55px
+    }
+
+    .custom-side-news .item .box-img .block-sale2 {
+        width: 40px;
+        height: 40px
+    }
+
+    .custom-side-news .item .box-img .block-sale img,
+    .custom-side-news .item .box-img .block-sale2 img {
+        height: auto;
+        width: 100%
+    }
+
+    .custom-side-news .item .box-img .block-sale3 img {
+        max-height: 35px;
+        width: auto
+    }
+
+    .icon-m {
+        background: url(/assets/mobile/assets/images/icon-m3.png) no-repeat
+    }
+</style>
+<?php
+if(!empty($info)) {
+    $this->headTitle($info["meta_web_title"]);
+    $this->headMeta()
+        ->appendName('keywords', $info["meta_web_keyword"])
+        ->appendName('description', $info["meta_web_desc"])
+        ->setProperty('fb:app_id',       "626517987552557")
+        ->setProperty('og:url', $config["url"])
+        ->setProperty("og:type", "article")
+        ->setProperty('og:title', $info["og_title"])
+        ->setProperty('og:locale',       "vi_VN")
+        ->setProperty('og:site_name',       "japana.vn")
+        ->setProperty('og:image', PATH_IMAGE_NEWS . $info["og_image"])
+        ->setProperty('og:image:secure_url',PATH_IMAGE_NEWS . $info["og_image"])
+        ->setProperty('og:image:width',       "600")
+        ->setProperty('og:image:height',       "315")
+        ->setProperty('ROBOTS',       "NOINDEX")
+        ->setProperty('og:description', $info["og_desc"]);
+    $this->headLink(array('rel' => 'canonical', 'href' => $config["url"]));
+}
+?>
+<?php
+
+$this->header(array(
+    "adapter" => $adapter,
+    "active" => $active));
+?>
+	<div class="site-inner">
+        <div class="content-sidebar-wrap">
+            <main class="news-detail content">
+            	<div class="navigation">
+			        <div class="container">
+			            <ul>
+			                <li><a href="." title="Trang chủ">Trang chủ</a></li>
+			                <li> / Tin tức</li>
+			            </ul>
+			        </div>
+                    <div class="container">
+                        <div itemscope itemtype="http://schema.org/NewsArticle" class="box-news-detail">
+                            <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
+                            <header>
+                                <h1 itemprop="headline" class="title"><?php echo $info['name']; ?></h1>
+                            </header>
+                            <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo date("d-m-Y | H:i", strtotime($info['datecreate'])); ?></p>
+                            <meta itemprop="datePublished" content="<?php echo $info['datecreate']; ?>"/>
+                            <div itemprop="description" class="detail-news2">
+                                <?php
+                                $pattern = '/!@(.*)@!/';
+                                if(preg_match($pattern, $info['desc'],$match)) {
+                                    $sku = str_replace(array("!@","@!"),"",$match[0]);
+                                    $produc = $obj_pro->getItem(array('sku' => $sku));
+                                    $url = URL.$produc["slug_vi"]."-sp-".$produc["id"];
+                                    if(!empty($produc["images"])){
+                                        $array = explode("-", $produc["images"]);
+                                        $time = date("Y/m/d",$array[0])."/";
+                                        $images = PATH_IMAGE_PRO.$time."268x268-".$produc["images"];
+                                    }else{
+                                        $images = "";
+                                    }
+                                    $images_promo = "";
+                                    if(!empty($list_images[$produc["id"]])){
+                                        $images_promo = PATH_IMAGE_SYSTEM.$list_images[$produc["id"]];
+                                    }
+                                    if(!empty($images_promo)){
+                                        $str_img_event = "<img src=\"".$images_promo."\" alt=\"sản phẩm\" class=\"sale-banner\">";
+                                    }else{
+                                        $str_img_event = "";
+                                    }
+                                    $str_replace = "
+			                        <div class=\"pro-item\">
+			                            <div class=\"box-img\">
+			                                <a href=\"?action=product-detail.php\" title=\"title\">
+			                                    <img src=\"".$images."\" alt=\"title\">
+			                                    ".$str_img_event."
+			                                </a>
+			                            </div>
+			                            <div class=\"detail\">
+			                                <div class=\"box-top\">
+			                                    <h3 class=\"brand\"><a href=\"".$url."\" title=\"".$produc['name_vi']."\">".$produc['name_vi']."</a></h3>
+			                                    <p class=\"title-pro\"><a href=\"".$url."\" title=\"".$produc['name_vi']."\">".$produc['notes_vi']."</a></p>
+			                                    <p class=\"code-pro\">Mã sản phẩm: ".$produc['sku']."</p>
+			                                </div>
+			                                <div class=\"box-bottom\">
+			                                    <div class=\"box-price\">
+			                                        <p class=\"price\">".number_format($produc['price'],0,"",".")." đ</p>
+			                                    </div>
+			                
+			                                    <a title=\"".$produc['name_vi']."\" href=\"".$url."\" class=\"buy\">Xem ngay</a>
+			                                </div>
+			                                
+			                            </div>
+			                        </div>
+			                        ";
+                                    echo stripslashes(preg_replace($pattern, $str_replace,$info['desc']));
+                                }else{
+                                    echo stripslashes($info['desc']);
+                                }
+
+                                ?>
+                            </div>
+                            <div class="share">
+                                <span>Share:</span>
+                                <div class="fb-like" data-href="<?php echo $config["url"] ?>" data-layout="button_count" data-action="like"
+                                     data-size="small" data-show-faces="true" data-share="true"></div>
+                            </div>
+                            <div class="comment detail-pro">
+                                <div class="fb-comments" data-href="<?php echo $config["url"] ?>" data-width="100%" data-numposts="5"></div>
+                            </div>
+                        </div>
+                        <?php
+                        $this->side_news(array(
+                            "adapter" => $adapter));
+                        ?>
+                    </div>
+                </div>
+        	</main>
+        </div>
+    </div>
+<?php
+$this->footer(array(
+    "adapter" => $adapter));
+?>
+<script>
+    jQuery(document).ready(function(){
+        loadProduct();
+    });
+
+    function loadProduct(){
+        var item = new Object();
+        item.name_code = 'product_item';
+        item.id = $(".id_sp").html();
+        $.ajax({
+            url: "<?php echo URL;?>frontend/ajaxs/index",
+            type: "POST",
+            data: item,
+            dataType: "html",
+            cache: false,
+            success: function(result)
+            {
+                $(".title_id_sp"+item.id).html(result);
+            }
+        });
+        timeout = setTimeout(function(){
+            if(item.id > 0){
+            	loadProduct();
+        	}else{
+        		clearTimeout(timeout);
+        		return false;
+        	}
+        }, 300);
+    }
+	jQuery(document).ready(function(){initListBrandNews()});var initListBrandNews=function(){jQuery('.list-brand-news').not('.slick-initialized').slick({autoplay:!0,dots:!0,infinite:!0,centerMode:!1,speed:300,slidesToShow:2,slidesToScroll:2,variableWidth:!1,autoplaySpeed:2000,nextArrow:'',prevArrow:'',responsive:[{breakpoint:1024,settings:{slidesToShow:2,slidesToScroll:2,infinite:!0,dots:!1}},{breakpoint:600,settings:{slidesToShow:2,slidesToScroll:2}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]});jQuery('.list-img-news').not('.slick-initialized').slick({autoplay:!0,dots:!1,infinite:!0,centerMode:!1,speed:300,slidesToShow:1,slidesToScroll:1,variableWidth:!1,autoplaySpeed:2000,nextArrow:'<span class="click-next-news"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>',prevArrow:'<span class="click-prev-news"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></span>',});}
+</script>
+<script defer="defer">
+    jQuery(function(){youTubes_makeDynamic();function youTubes_makeDynamic(){var $ytIframes=$('iframe[src*="youtube.com"]');$ytIframes.each(function(i,e){var $ytFrame=$(e);var ytKey;var tmp=$ytFrame.attr('src').split(/\//);tmp=tmp[tmp.length-1];tmp=tmp.split('?');ytKey=tmp[0];var $ytLoader=jQuery('<div class="ytLoader">');$ytLoader.append(jQuery('<img class="cover" src="https://i.ytimg.com/vi/'+ytKey+'/hqdefault.jpg">'));$ytLoader.append(jQuery('<div class="bg-yt"><i class="box-icon-all2 icon-play"></i>'));$ytLoader.data('$ytFrame',$ytFrame);$ytFrame.replaceWith($ytLoader);$ytLoader.click(function(){var $ytFrame=$ytLoader.data('$ytFrame');$ytFrame.attr('src',$ytFrame.attr('src')+'?autoplay=1');$ytLoader.replaceWith($ytFrame);$ytIframes.css('height',450);$ytIframes.css('width',800)})})}})
+</script>

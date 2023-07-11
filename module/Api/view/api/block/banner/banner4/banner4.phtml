@@ -1,0 +1,59 @@
+<style>
+.block-2 {
+	margin-bottom: 20px
+}
+
+.block-2 .item a:hover {
+	-webkit-box-shadow: 0 0 17px 2px rgba(0, 0, 0, .3);
+	box-shadow: 0 0 17px 2px rgba(0, 0, 0, .3);
+	-webkit-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out
+}
+
+.block-2 .item {
+	width: 580px;
+	height: auto;
+	float: left;
+	margin-top: 10px
+}
+
+.block-2 .item a {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex
+}
+
+.block-2 .item a img {
+	width: 100%;
+	height: 100%
+}
+
+.block-2 .item:nth-child(odd) {
+	margin-right: 10px
+}
+</style>
+<div class="block-2">
+	<div class="container">
+        <?php
+        if ($images["desktop"]) {
+            foreach ($images["desktop"] as $key => $value) {
+                if (! empty($value["upload"][0])) {
+                    ?>
+        <?php
+                    $url = $images["desktop"][$key]["link_images"][0];
+                    $name = $images["desktop"][$key]["name_images"][0];
+                    $array = explode("-", $value["upload"][0]);
+                    $time = $array[0];
+                    $folder_date = PATH_IMAGE_BLOCK . date('Y', $time) . "/" . date('m', $time) . "/" . date('d', $time) . "/" . $value["upload"][0];
+                    ?>
+        <div class="item">
+			<a href="<?php echo $url;?>" title="<?php echo $name;?>"> <img
+				src="<?php echo $folder_date;?>"
+				alt="<?php echo $images["desktop"][$key]["name_images"][0];?>">
+			</a>
+		</div>
+        <?php }}}?>
+    </div>
+</div>
+<div class="clear"></div>

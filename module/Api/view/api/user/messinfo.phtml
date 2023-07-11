@@ -1,0 +1,60 @@
+<?php
+$this->headTitle ( "Japana Việt Nam" );
+$this->headMeta ()
+    ->appendName ( 'keywords', "Japana Việt Nam" )
+    ->appendName ( 'description', "Japana Việt Nam" )
+    ->setProperty('og:title', 'Japana Việt Nam')
+    ->setProperty("og:type", "website")
+    ->setProperty("og:site_name", "https://japana.vn");
+?>
+<?php $this->header(array(
+    "adapter" => $adapter,
+    "active" => $active
+));?>
+<style type="text/css">
+	.thanks{
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding: 60px 0;
+}
+
+.thanks p{
+  padding: 30px 0;
+}
+
+.thanks p, .btn-thanks a{
+  font-size: 18px;
+  font-family: 'Roboto',sans-serif;
+  color: #333333;
+}
+
+.btn-thanks a{
+  display: inline-block;
+  padding: 15px 25px;
+  background: #e3e3e3;
+}
+
+.btn-thanks a:last-child{
+  margin-left: 30px;
+}
+
+.btn-thanks a:hover{
+  background: #15b02a;
+  color: #fff;
+}
+</style>
+<div class="site-inner">
+  <div class="content-sidebar-wrap">
+    <main class="content">
+    	<div class="container">
+    		<div class="thanks">
+    			<p>Bạn đã thay đổi mật khẩu thành công</p>
+    		</div>
+    	</div>
+    </main>
+  </div>
+</div>
+<?php
+    $this->footer(array("adapter" => $adapter));
+?>

@@ -1,0 +1,2300 @@
+<link href="<?php echo URL_ASSET?>frontend/assets/css/detailCustom.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo URL_ASSET?>frontend/assets/css/checkboxCustom.css" rel="stylesheet" type="text/css" />
+
+
+<link rel="preload" href="<?php echo URL; ?>assets/opensans/opensans-regular-6.woff2" as="font" crossorigin>
+<link rel="preload" href="<?php echo URL; ?>assets/opensans/opensans-regular-5.woff2" as="font" crossorigin>
+<link rel="preload" href="<?php echo URL; ?>assets/opensans/opensans-regular-7.woff2" as="font" crossorigin>
+<style>
+    .list-seller-banner{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 10px;
+        margin: 10px 0;
+    }
+    .list-seller-banner .item{
+        margin: 0;
+        padding: 0;
+    }
+    .list-seller-banner .item img{
+        display: block;
+        width: 100%;
+    }
+    .slick-track{
+	   margin-top: 25px !important;
+    }
+    .group-product-card {
+        margin-top: 10px;
+    }
+</style>
+<?php
+
+if (!empty($detail["images"])) {
+    $array = explode("-", $detail["images"]);
+    $time = date("Y/m/d", $array[0]) . "/";
+    $url_image = PATH_IMAGE_RESIZE_PRO . '420x420-'. $detail["images"];
+    $url_image_168 = PATH_IMAGE_PRO . $time . "168x168-" . $detail["images"];
+    $img_product["images"] = $detail["images"];
+} else {
+    $url_image = "";
+}
+$price_promotion = "";
+$hienthi = 0;
+$text_qt = "";
+$images_qt = "";
+if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) {
+    if (!empty($detail["text_pt"])) {
+        $price_promotion = $detail["price"] - ($detail["text_pt"] * $detail["price"] / 100);
+        $hienthi = 1;
+    }
+    if (!empty($detail["text_vnd"])) {
+        $price_promotion = $detail["price"] - $detail["text_vnd"];
+        $hienthi = 1;
+    }
+}
+?>
+<div class="container">
+    <div class="box-product-detail-wrap ">
+        <div class="box-product detail-pro">
+            <div itemscope itemtype="http://schema.org/Product" class="card" style="margin-bottom: 0">
+                <div class="card-body p-0">
+                    <div class="info-detail-product">
+                        <div class="slider-nav custom-bg-detail">
+                            <?php
+                            foreach ($detail["multi_images"] as $value) {
+                                ?>
+                                <?php
+                                $array = explode("-", $value["images"]);
+                                $time = date("Y/m/d", $array[0]) . "/";
+                                $images = PATH_IMAGE_RESIZE_PRO . "90x90-" . $value["images"];
+                                ?>
+                                <div class="item custom-thumb-img">
+                                    <img data-lazy="<?php echo $images; ?>"/>
+                                    <link itemprop="image" href="<?php echo $images; ?>"/>
+                                </div>
+                            <?php }
+                            ?>
+                        </div>
+                        <div class="slider-for custom-bg-detail">
+                            <?php
+                            foreach ($detail["multi_images"] as $value) {
+                                $array = explode("-", $value["images"]);
+                                $time = date("Y/m/d", $array[0]) . "/";
+                                $images = PATH_IMAGE_RESIZE_PRO . '420x420-' . $value["images"];
+                                ?>
+                                <div class="thumb">
+                                    <img data-lazy="<?php echo $images; ?>" alt="<?php echo $detail["name_vi"]; ?>"/>
+                                    <link itemprop="image" href="<?php echo $images; ?>"/>
+                                    <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                                        <?php if (!empty($detail["text_pt"])) { ?>
+                                            <div class="block-sale custom-block-sale">
+                                                <img src="<?php echo $km_images; ?>" alt="hình">
+                                                <span class="sale">-<?php echo $detail["text_pt"] ?>%</span>
+                                            </div>
+                                        <?php } ?>
+
+                                        <?php if (!empty($detail["text_qt"])) { ?>
+                                            <div class="block-sale2 custom-block-sale">
+                                                <img src="<?php echo $km_images_qt; ?>" alt="hình">
+                                            </div>
+                                            <?php
+                                            $text_qt = $detail["text_qt"];
+                                            $images_qt = $km_images_qt;
+                                            ?>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                                        <?php if (!empty($list_product[$detail["id"]])) { ?>
+                                            <div class="block-sale3 custom-block-sale">
+                                                <img src="<?php echo $list_product[$detail["id"]]; ?>" alt="hình">
+                                            </div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </div>
+                            <?php }
+                            ?>
+                        </div>
+                        <div class="detail-product">
+                            <h2 itemprop="name" class="title"><?php echo $detail["name_vi"]; ?></h2>
+                            <p style="display:none;"><?php echo $detail["sku"]; ?></p>
+
+                            <div style="display: flex;align-items: center" class="row-item-custom">
+                                <div itemprop="mpn" class="item item-sku">
+                                    <p class="info-pro"><span>SKU: </span><span
+                                                style="font-family: 'Open Sans',sans-serif;font-weight: 600;font-size: 14px;color: #333;text-transform:uppercase;"><?php echo $detail["sku"]; ?></span>
+                                    </p>
+                                </div>
+
+                                <?php if (!empty($detail["style"])) { ?>
+                                    <div class="item item-quycach">
+                                        <p class="info-pro"><span>Quy cách: </span><?php echo $detail["style"]; ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+
+
+                            <?php if (!empty($detail["brand"])) { ?>
+                                <div itemprop="brand" class="item row-item-custom">
+                                    <p class="info-pro width-full brand-title"><span>Thương hiệu: </span>
+                                        <a href="<?php echo URL . $detail["slug"] . "-brand.jp"; ?>"
+                                        title="<?php echo $detail["brand"]; ?>">
+                                            <?php echo $detail["brand"]; ?>
+                                        </a>
+                                    </p>
+                                </div>
+                            <?php } else { ?>
+                                <div itemprop="brand" class="item row-item-custom">
+                                    <p style="display: none;" class="info-pro width-full brand-title"><span>Thương hiệu: </span>
+                                        <a href="#" title="Japana">
+                                            Japana
+                                        </a>
+                                    </p>
+                                </div>
+                            <?php } ?>
+                            <?php if (!empty($detail["country"])) { ?>
+                                <div class="item row-item-custom">
+                                    <p class="info-pro"><span>Xuất xứ: </span><?php echo $detail["country"]; ?></p>
+
+                                </div>
+                                <?php
+                                $id_madein = $obj_country->getCountry($detail["id_madein"])['name'];
+                                if (!empty($id_madein)) {
+                                    ?>
+                                    <div class="item row-item-custom">
+                                        <p class="info-pro">
+                                            <span>Sản xuất tại: </span><?php echo $obj_country->getCountry($detail["id_madein"])['name']; ?>
+                                        </p>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+
+                            <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
+                                <link itemprop="url" href="https://japana.vn<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
+                                <meta itemprop="availability" content="https://schema.org/InStock"/>
+                                <meta itemprop="priceCurrency" content="VND"/>
+                                <meta itemprop="priceValidUntil" content="2020-11-05"/>
+                                <div class="all-price">
+                                    <?php if (intval($hienthi) > 0) { ?>
+                                        <p itemprop="price" style="display:none;"><?php echo intval($price_promotion); ?></p>
+                                        <p class="new-price"> <?php echo number_format(intval($price_promotion), "0", ",", "."); ?>đ</p>
+                                        <p class="old-price"><?php echo $price = number_format($detail["price"], "0", ",", "."); ?>đ</p>
+                                    <?php } else { ?>
+                                        <p itemprop="price" style="display:none;"><?php echo $detail["price"]; ?></p>
+                                        <p class="new-price"><?php echo $price = number_format($detail["price"], "0", ",", "."); ?>đ</p>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                       
+                            <meta itemprop="description" content="<?php echo $detail["notes_vi"]; ?>"/>
+                            <div itemprop="review" itemtype="http://schema.org/Review" itemscope>
+                                <div itemprop="author" itemtype="http://schema.org/Person" itemscope>
+                                    <meta itemprop="name" content="Japana"/>
+                                </div>
+                                <div itemprop="reviewRating" itemtype="http://schema.org/Rating" itemscope>
+                                    <meta itemprop="ratingValue" content="4"/>
+                                    <meta itemprop="bestRating" content="5"/>
+                                </div>
+                            </div>
+                            <meta itemprop="sku" content="<?php echo $detail["sku"]; ?>"/>
+                            <?php if (!empty($list_pro)) { ?>
+                                <?php foreach ($list_pro as $key => $value) { ?>
+                                    <?php if (!empty($value["description"])) { ?>
+                                        <div class="promo-intro">
+                                            <p class="title-promo">
+                                                <?php echo $value["description"]; ?>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                                <?php if (!empty($detail["mota"])) { ?>
+                                    <div class="promo-intro">
+                                        <p class="title-promo">
+                                            <?php echo $detail["mota"]; ?>
+                                        </p>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                                <?php if (!empty($detail["mota_k"])) { ?>
+                                    <div class="promo-intro">
+                                        <p class="title-promo">
+                                            <?php echo $detail["mota_k"]; ?>
+                                        </p>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php
+                            if ($detail["status_product"] == 1
+                                && $detail["show_timeline"] == 1
+                                && strtotime($detail["date_start"]) <= strtotime(date("Y-m-d"))
+                                && strtotime($detail["date_end"]) > strtotime(date("Y-m-d"))) {
+                                $time_start = strtotime($detail["date_start"]);
+                                $time_current = strtotime(date("Y-m-d H:i:s"));
+                                $time_end = strtotime($detail["date_end"]);
+                                $time_total = $time_end - $time_start;
+                                $time_lost = $time_current - $time_start;
+
+                                ?>
+                                <div class="time-icon countdown2 countdown1"
+                                    data-promodate="<?php echo date("Y-m-d H:i:s", $time_end); ?>">
+                                    <div class="group-inline">
+                                        Khuyến mãi còn:
+                                        <div class="group-times">
+                                            <div class="item-time"><p class="time-new">00</p></div>
+                                            <span>(ngày)</span>
+                                            <div class="item-time"><p class="time-new">00</p></div>
+                                            <b>:</b>
+                                            <div class="item-time"><p class="time-new">00</p></div>
+                                            <b>:</b>
+                                            <div class="item-time"><p class="time-new">00</p></div>
+                                            <span>(s)</span>
+                                        </div>
+                                    </div>
+                                    <div id="progressBar">
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            
+                            
+                            <?php
+                            if(!empty($product_gift['name_vi'])){
+                                    $url_image_gift = PATH_IMAGE_RESIZE_PRO . '253x253-' . $product_gift["images"];
+                                    ?>
+<style>
+    /*tang kem*/
+    .box_sale_tk {
+        display: table;
+        width: 110%;
+        border-top: 1px solid #e3e3e3;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 10px 15px;
+    }
+    
+    .buy-included {
+        display: table;
+        width: 100%;
+    }
+    
+    .buy-included .img-buy {
+        display: inline-block;
+        width: 60px;
+    }
+    
+    .buy-included .img-buy img {
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        overflow: visible;
+        border-radius: 4px;
+        border: 1px solid #e3e3e3;
+    }
+    
+    .buy-included .img-buy span {
+        display: table;
+        width: 100%;
+        padding-right: 8px;
+        padding-left: 0;
+    }
+    
+    .buy-included .infobuy {
+        display: inline-block;
+        width: 86%;
+        padding-right: 10px;
+    }
+    
+    .buy-included .infobuy p:first-child{
+        height: auto;
+        overflow: hidden;
+        word-wrap: break-word;
+        word-break: break-word;
+        letter-spacing: 0px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        color: #2a2a2a;
+    }
+    .buy-included .infobuy span {
+        line-height: 1.5;
+        font-size: 16px;
+    }
+    
+    .buy-included .infobuy .bold_tk {
+        color: #2196f3;
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+    
+    .buy-included .infobuy .price-bought-together {
+        width: auto;
+        height: auto;
+        overflow: visible;
+        font-size: 12px;
+        letter-spacing: 0px;
+        line-height: 19px;
+        color: #000000;
+        font-weight: 500;
+    }
+    
+    .buy-included .infobuy .old-price-bought-together {
+        font-size: 3.6vw;
+    }
+</style>
+                                    
+                                    <!-- thay sp tang kèm -->
+                                    <div class="cart box_sale_tk">
+                                        <div class="buy-included">
+                                            <div class="img-buy">
+                                                <span>
+                                                <img src="<?php echo $url_image_gift; ?>" alt="">
+                                                </span>
+                                            </div>
+                                            <div class="infobuy">
+                                                <p>
+                                                    <span class="bold_tk">Tặng kèm:</span>
+                                                    <span>
+                                                       <?php echo $product_gift['name_vi']; ?>
+                                                    </span>
+                                                </p>
+                                                <div class="price_include">
+                    
+                                                    <?php if (!empty($product_gift['price_promotion'])) { ?>
+                                                        <span class="price-bought-together">
+                                                                <?php echo number_format($product_gift['price_promotion']); ?> đ</span>
+                                                        <span class="old-price-bought-together">
+                                                            <?php echo number_format($product_gift['price']); ?> đ</span>
+                                                    <?php } else if ($product_gift['price'] > 0) { ?>
+                                                        <span class="price-bought-together">
+                                                                <?php echo number_format($product_gift['price']); ?> đ
+                                                            </span>
+                                                    <?php } ?>
+                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php }?>
+                                    
+                            <?php
+                            if (!empty($variations) && !empty($tier_1)) {
+                                ?>
+                                <div class="box_variation_detail">
+                                    <input type="hidden" id="tier_variation" value="<?php echo $tier_variation; ?>">
+                                    <input type="hidden" id="tier_1_value" value="<?php echo $tier_1_active; ?>">
+                                    <input type="hidden" id="tier_2_value" value="<?php echo $tier_2_active; ?>">
+                                    <?php
+                                    foreach ($variations as $variant) {
+                                        ?>
+                                        <input type="hidden" id="tier_id_product_<?php echo $variant['tier_index']; ?>"
+                                               value='<?php echo json_encode($variant); ?>'>
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <div class="value_box_tier1">
+                                        <p class="value_box"><?php echo $tier_1[0]; ?>:
+                                            <?php if (!empty($tier_1["items"])) {
+                                                foreach ($tier_1["items"] as $key => $value_tier_1) {
+                                                    $class_active = "";
+                                                    if ($key == $tier_1_active) {
+                                                        $class_active = "active";
+                                                        ?>
+                                                        <span id="value_active_tier_1"
+                                                              class="<?php echo $class_active; ?>"><?php echo $value_tier_1; ?></span>
+                                                        <?php
+                                                        break;
+                                                    }
+                                                }
+                                            } ?>
+                                        </p>
+                                        <div class="list_img_variation">
+                                            <?php if (!empty($tier_1["items"])) {
+                                                foreach ($tier_1["items"] as $key => $value_tier_1) {
+                                                    $image = "";
+                                                    $image_value = "";
+                                                    $class_not_image = "";
+                                                    if (!empty($tier_1['images'][$key])) {
+                                                        $image_value = $tier_1['images'][$key];
+                                                        $array = explode("-", $image_value);
+                                                        $time = date("Y/m/d", $array[0]) . "/";
+                                                        $image = PATH_IMAGE_PRO . $time . $image_value;
+                                                    } else {
+                                                        $class_not_image = "not_image";
+                                                    }
+                                                    $class_active = "";
+                                                    if ($key == $tier_1_active) {
+                                                        $class_active = "active";
+                                                    }
+                                                    ?>
+                                                    <div
+                                                            data-tier1="<?php echo $key; ?>"
+                                                            data-tier-value="<?php echo $value_tier_1; ?>"
+                                                            data-img="<?php echo $image; ?>"
+                                                            class="tier_1_value tier_img <?php echo $class_active; ?> <?php echo $class_not_image; ?>">
+
+                                                        <?php if (!empty($image)) {
+                                                            ?>
+                                                            <span class="img_value"
+                                                                  style="background-image: url('<?php echo $image; ?>');"></span>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <span class="tier_value"><?php echo $value_tier_1; ?></span>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <?php if (!empty($tier_2)) { ?>
+                                        <div class="value_box_tier2">
+                                            <p class="value_box"><?php echo $tier_2[0]; ?>:
+                                                <?php if (!empty($tier_2['items'])) {
+                                                    foreach ($tier_2['items'] as $key2 => $value_tier_2) {
+                                                        if ($key2 == $tier_2_active) {
+                                                            ?>
+                                                            <span id="value_active_tier_2"
+                                                                  class="value_tier_2_checked"><?php echo $value_tier_2; ?></span>
+                                                            <?php
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                            </p>
+                                            <div class="list_value_variation">
+                                                <?php if (!empty($tier_2['items'])) {
+                                                    foreach ($tier_2['items'] as $key2 => $value_tier_2) {
+                                                        $class_active = "";
+                                                        if ($key2 == $tier_2_active) {
+                                                            $class_active = "active";
+                                                        }
+                                                        ?>
+                                                        <div
+                                                                data-tier2="<?php echo $key2; ?>"
+                                                                data-tier-value="<?php echo $value_tier_2; ?>"
+                                                                class="tier_2_value tier_value <?php echo $class_active; ?>">
+                                                            <span><?php echo $value_tier_2; ?></span>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
+                            <div class="other-buy custom-buy">
+                                <?php
+                                if ($detail['status_num'] == 1) {
+                                    ?>
+                                    <div class="quantity">
+                                        <button title="bớt" class="sub-qty btn"><i class="ti-minus" aria-hidden="true"></i></button>
+                                        <input id="sl" type="text" name="qty" value="1" class="txtNumPro">
+                                        <button title="thêm" class="add-qty btn"><i class="ti-plus" aria-hidden="true"></i></button>
+                                    </div>
+
+                                    <button id="push-to-cart"
+                                            data-id="<?= $detail["id"] ?>"
+                                            data-image="<?= $url_image_168 ?>"
+                                            data-name="<?= addslashes($detail["name_vi"]) ?>"
+                                            data-price_market="<?= intval($price_promotion) > 0 ? $price_promotion : $detail["price"] ;?>"
+                                            data-url="<?php echo $url; ?>"
+                                            data-sku="<?php echo $detail["sku"]; ?>"
+                                            data-kg="<?php echo $detail["kg"]; ?>"
+                                            data-text_qt="<?= $text_qt ? $text_qt : '';?>"
+                                            data-images_qt="<?= $images_qt ? $images_qt : '';?>"
+                                    >
+                                        Thêm vào giỏ
+                                    </button>
+
+
+                                <?php } else { ?>
+                                    <p style="color:red; line-height: 1.5;">* Tạm hết hàng, vui lòng để lại số điện thoại, nhận thông
+                                        tin ngay khi có hàng.</p>
+                                <?php } ?>
+                            </div>
+                            <?php if($detail['status_num'] == 1): ?>
+                            <div id="load-product-together" class="box-info-bought-together">
+                                <div id="loading" style="text-align: center; justify-content: center"><img src="<?php echo URL?>/uploads/system/loading.gif" width="30%" height="auto"></div>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+			<!--
+            <ul class="list-seller-banner">
+                <li class="item">
+                    <img src="<?php echo URL_FRONTEND;?>images/PC1.jpeg" alt='Tưng bừng khai trương' />
+                </li>
+                <li class="item">
+                    <img src="<?php echo URL_FRONTEND;?>images/PC2.jpeg" alt="Nhận mèo thần tài" />
+                </li>
+                <li class="item">
+                    <img src="<?php echo URL_FRONTEND;?>images/PC3.jpeg" alt='Quà tặng ngẫu nhiên' />
+                </li>
+            </ul>
+            -->
+            <!-- <div class="card">
+                <div class="card-body">
+                    <ul class="list-seller">
+                        <li class="item">
+                            <img src="<?php echo URL_FRONTEND;?>images/premoney.png" alt='Hoàn tiền <span style="color:#CF0656">200%</span> nếu sản phẩm kém chất lượng' />
+                            <p class="title">Hoàn tiền <span style="color: #cf0656;">200%</span> nếu sản phẩm kém chất lượng</p>
+                        </li>
+                        <li class="item">
+                            <img src="<?php echo URL_FRONTEND;?>images/code.png" alt="Giao hàng COD toàn quốc" />
+                            <p class="title">Giao hàng COD toàn quốc</p>
+                        </li>
+                        <li class="item">
+                            <img src="<?php echo URL_FRONTEND;?>images/protect.png" alt='<span style="color:#CF0656">100%</span> sản phẩm được kiểm soát chất lượng' />
+                            <p class="title"><span style="color: #cf0656;">100%</span> sản phẩm được kiểm soát chất lượng</p>
+                        </li>
+                        <li class="item">
+                            <img src="<?php echo URL_FRONTEND;?>images/support.png" alt="Nhân viên tư vấn chuyên nghiệp" />
+                            <p class="title">Nhân viên tư vấn chuyên nghiệp</p>
+                        </li>
+                        <li class="item">
+                            <img src="<?php echo URL_FRONTEND;?>images/deliver.png" alt="Giao hàng nhanh chóng, chuyên nghiệp" />
+                            <p class="title">Giao hàng nhanh chóng, chuyên nghiệp</p>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+            <div class="group-product-card">
+                <div class="box-info-product card">
+                    <div class="card-header">
+                        <h3 class="title-item">Chi tiết sản phẩm</h3>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div id="thongtin" class="tab-pane fade in active">
+                            <div id="load-data-content" class="info-detail-2 info-detail-2">
+                                <div id="loading-content" style="text-align: center; justify-content: center"><img src="<?php echo URL?>/uploads/system/loading.gif" width="30%" height="auto"></div>
+                            </div>
+                            <div class="box-info">
+                                <div class="item">
+                                    <div class="box-3-icon">
+                                        <div class="item2">
+                                            <i class="box-icon-all icon-detail-1"></i>
+                                            <p class="info-phone"><span>Chính hãng</span>100%</p>
+                                        </div>
+                                        <div class="item2">
+                                            <i class="box-icon-all icon-detail-2"></i>
+                                            <p class="info-phone"><span>Miễn phí đổi trả</span>LÊN ĐẾN 90 NGÀY</p>
+                                        </div>
+                                        <div class="item2">
+                                            <i class="box-icon-all icon-detail-3"></i>
+                                            <p class="info-phone"><span>Giao hàng</span>NHANH CHÓNG</p>
+                                        </div>
+                                    </div>
+                                    <div class="normal-text">
+                                        <p>* Bạn có thể mua hàng ngay tại website bằng cách nhấn vào nút Mua Ngay, hoặc liên hệ với
+                                            chúng tôi qua các thông tin bên dưới.</p>
+                                        <p>* JAPANA.VN cam kết bán hàng chính hãng từ Nhật Bản. Những thông tin bên trên được nhà sản
+                                            xuất đưa ra, các sản phẩm làm đẹp và sức khỏe tùy vào cơ địa của mỗi khách hàng sẽ có hiệu
+                                            quả tương thích.</p>
+                                        <p>* Mẫu mã của sản phẩm có thể được thay đổi khi bạn mua hàng.</p>
+                                    </div>
+                                    <div class="box-info-bottom">
+                                        <div class="item2">
+                                            <i class="box-icon-all icon-facebook"></i>
+                                            <a rel="nofollow" href="https://www.facebook.com/japana.sieuthinhat/">
+                                                https://www.facebook.com/japana.sieuthinhat/
+                                            </a>
+                                        </div>
+                                        <div class="item2">
+                                            <i class="box-icon-all icon-phone"></i>
+                                            (028) 7108 8889 - 0935 600 800
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="item item-product-custom">
+                                    <div class="box-img">
+                                        <a href="<?php echo $url;?>" title="<?php echo $detail["name_vi"]; ?>">
+                                            <img src="<?php echo $url_image_168; ?>" alt="<?php echo $detail["name_vi"]; ?>">
+                                        </a>
+                                        <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                                            <?php if (!empty($detail["text_pt"])) { ?>
+                                                <div class="block-sale">
+                                                    <img src="<?php echo $km_images; ?>" alt="hình">
+                                                    <span class="sale">-<?php echo $detail["text_pt"] ?>%</span>
+                                                </div>
+                                            <?php } ?>
+
+                                            <?php if (!empty($detail["text_qt"])) { ?>
+                                                <div class="block-sale2">
+                                                    <img src="<?php echo $km_images_qt; ?>" alt="hình">
+                                                </div>
+                                                <?php
+                                                $text_qt = $detail["text_qt"];
+                                                $images_qt = $km_images_qt;
+                                                ?>
+                                            <?php } ?>
+                                        <?php } ?>
+                                        <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                                            <?php if (!empty($list_product[$detail["id"]])) { ?>
+                                                <div class="block-sale3">
+                                                    <img src="<?php echo $list_product[$detail["id"]]; ?>" alt="hình">
+                                                </div>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </div>
+                                    <p class="title-pro">
+                                        <a href="<?= $url ?>" title="<?php echo $detail["name_vi"]; ?>"><?php echo $this->CutString($detail["name_vi"], 40); ?></a>
+                                    </p>
+
+                                    <div class="detail">
+                                        <meta itemprop="mpn" content="<?php echo $value["sku"];?>" />
+                                        <meta itemprop="sku" content="<?php echo $value["sku"];?>" />
+                                        <div itemprop="description" style="display:none;"><?php echo $value["notes_vi"];?></div>
+                                        <p itemprop="name" class="title">
+                                            <a href="<?php echo $url;?>" title="<?php echo $value["name_vi"];?>"><?php echo $name;?></a>
+                                        </p>
+										
+                                        <div itemprop="review " itemtype="http://schema.org/Review" itemscope>
+											<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Product" style="display:none">
+												<h2 itemprop="name"><?php echo $detail["name_vi"]; ?></h2>
+												<div itemprop="aggregateRating"
+													itemscope itemtype="http://schema.org/AggregateRating">
+												   Rated <span itemprop="ratingValue">3.5</span>/5
+												   based on <span itemprop="reviewCount">11</span> customer reviews
+											  </div>
+											</div>
+                                            <div itemprop="author" itemtype="http://schema.org/Person" itemscope>
+                                                <meta itemprop="name" content="Japana" />
+                                            </div>
+                                            <div itemprop="reviewRating" itemtype="http://schema.org/Rating" itemscope>
+                                                <meta itemprop="ratingValue" content="4" />
+                                                <meta itemprop="bestRating" content="5" />
+                                            </div>
+											
+                                        </div>
+                                        <div itemprop="brand" itemtype="http://schema.org/Thing" itemscope>
+                                            <meta itemprop="name" content="<?php echo $value["brand"];?>" />
+                                        </div>
+                                        <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
+                                            <meta itemprop="priceCurrency" content="VND" />
+                                            <link itemprop="url" href="https://japana.vn<?php echo $_SERVER["REQUEST_URI"];?>" />
+                                            <meta itemprop="availability" content="https://schema.org/InStock" />
+                                            <meta itemprop="priceValidUntil" content="2020-11-05" />
+                                            <ul class="box-price">
+                                                <?php if (intval($hienthi) > 0) { ?>
+                                                    <li itemprop="price" class="price">
+                                                        <span><?php echo number_format(intval($price_promotion), "0", ",", "."); ?> đ</span>
+                                                    </li>
+
+                                                    <li itemprop="price" class="old-price">
+                                                        <span><?php echo $price = number_format($detail["price"], "0", ",", "."); ?> đ</span></li>
+                                                <?php } else { ?>
+                                                    <li class="price"><span><?php echo $price = number_format($detail["price"], "0", ",", "."); ?> đ</span></li>
+                                                    
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="share">
+                                <span>Share:</span>
+                                <div class="fb-like" data-href="<?php echo $url; ?>" data-layout="button_count" data-action="like"
+                                    data-size="small" data-show-faces="true" data-share="true"></div>
+                                <div id="fb-root"></div>
+                            </div>
+
+
+                            <script src="<?php echo URL_ASSET ?>js/pagination.min.js"></script>
+                            <link rel="stylesheet"
+                                  href="<?php echo URL_ASSET ?>frontend/assets/css/desktop_product_detail.css?v=1.3.14">
+
+                            <link rel="stylesheet"
+                                  href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
+                            <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+                            <div class="box_comment_desktop">
+
+                                <div id="mobile-comment-id" class="box-comment">
+
+                                    <div class="card-header">
+                                        <h3 class="title_box_all">Hỏi đáp & đánh giá sản phẩm</h3>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <?php
+                                        (!empty($data_rating['medium_rate'])) ? $medium_rate = $data_rating['medium_rate'] : $medium_rate = 5;
+                                        if (!empty($data_rating)) {
+                                            ?>
+                                            <div class="list_top">
+                                                <div class="avg_left_rate">
+                                                    <span class="text_rate_streght"><?php echo $medium_rate; ?></span>
+                                                    <span class="rating_list rating-stars star_medium"
+                                                          data-stars="<?php echo $medium_rate; ?>">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </span>
+                                                    <span class="text_total_rate"><?php echo $data_rating['total_comment']; ?>
+                                                        đánh giá</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="group_rate_sort">
+                                                <div class="list_group_rate">
+
+                                                    <div class="item_group_rate">
+                                                        <span>5</span>
+                                                        <span class="rating-stars star_small" data-stars="1">
+                                                                <i class="fa fa-star"></i>
+                                                             </span>
+                                                        <span>
+                                                            <span class="proccessing proccess_active"
+                                                                  style="width: <?php echo $data_rating['percent_rate_5']; ?>%;">
+                                                            </span>
+                                                        </span>
+                                                        <span><?php echo $data_rating['total_rate_5']; ?></span>
+                                                    </div>
+
+                                                    <div class="item_group_rate">
+                                                        <span>4</span>
+                                                        <span class="rating-stars star_small" data-stars="1">
+                                                                <i class="fa fa-star"></i>
+                                                             </span>
+                                                        <span>
+                                                            <span class="proccessing proccess_active"
+                                                                  style="width: <?php echo $data_rating['percent_rate_4']; ?>%;">
+                                                            </span>
+                                                        </span>
+                                                        <span><?php echo $data_rating['total_rate_4']; ?></span>
+                                                    </div>
+
+                                                    <div class="item_group_rate">
+                                                        <span>3</span>
+                                                        <span class="rating-stars star_small" data-stars="1">
+                                                                <i class="fa fa-star"></i>
+                                                             </span>
+                                                        <span>
+                                                            <span class="proccessing proccess_active"
+                                                                  style="width: <?php echo $data_rating['percent_rate_3']; ?>%;">
+                                                            </span>
+                                                        </span>
+                                                        <span><?php echo $data_rating['total_rate_3']; ?></span>
+                                                    </div>
+
+                                                    <div class="item_group_rate">
+                                                        <span>2</span>
+                                                        <span class="rating-stars star_small" data-stars="1">
+                                                                <i class="fa fa-star"></i>
+                                                             </span>
+                                                        <span>
+                                                            <span class="proccessing proccess_active"
+                                                                  style="width: <?php echo $data_rating['percent_rate_2']; ?>%;">
+                                                            </span>
+                                                        </span>
+                                                        <span><?php echo $data_rating['total_rate_2']; ?></span>
+                                                    </div>
+
+                                                    <div class="item_group_rate">
+                                                        <span>1</span>
+                                                        <span class="rating-stars star_small" data-stars="1">
+                                                                <i class="fa fa-star"></i>
+                                                             </span>
+                                                        <span>
+                                                            <span class="proccessing proccess_active"
+                                                                  style="width: <?php echo $data_rating['percent_rate_1']; ?>%;">
+                                                            </span>
+                                                        </span>
+                                                        <span><?php echo $data_rating['total_rate_1']; ?></span>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="parent_sort">
+                                                    <div id="box_list_bl_box_image"></div>
+                                                    <div class="list_sort">
+                                                        <div class="list_sort_rate">
+                                                            <span>Lọc xem theo:</span>
+                                                            <a class="item_sort item_sort__5"
+                                                               href="javascript:loadContentCommentModal(1,5);">
+                                                                <span>  5 <span class="rating-stars star_small"
+                                                                                data-stars="1">
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                                </span>
+                                                            </a>
+                                                            <a class="item_sort item_sort__4"
+                                                               href="javascript:loadContentCommentModal(1,4);">
+                                                                <span> 4 <span class="rating-stars star_small"
+                                                                          data-stars="1">
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                                </span>
+                                                            </a>
+                                                            <a class="item_sort item_sort__3"
+                                                               href="javascript:loadContentCommentModal(1,3);">
+                                                                <span> 3 <span class="rating-stars star_small" data-stars="1">
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                                </span>
+                                                            </a>
+                                                            <a class="item_sort item_sort__2"
+                                                               href="javascript:loadContentCommentModal(1,2);">
+                                                                <span>  2 <span class="rating-stars star_small" data-stars="1">
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                                </span>
+                                                            </a>
+                                                            <a class="item_sort item_sort__1"
+                                                               href="javascript:loadContentCommentModal(1,1);">
+                                                                <span> 1<span class="rating-stars star_small" data-stars="1">
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                                </span>
+                                                            </a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="list_bl_box" id="box_list_bl_box">
+
+                                            </div>
+
+                                            <?php
+                                            if (isset($data_rating['total_comment']) && $data_rating['total_comment'] > 10) {
+                                                $total_comment = $data_rating['total_comment'];
+                                                $totalPage = ceil($total_comment / 10);
+                                                if ($totalPage > 0) {
+                                                    for ($i = 2; $i < $totalPage + 2; $i++) {
+                                                        $stringPageNumber .= "," . $i;
+                                                    }
+                                                    $stringPageNumber = ltrim($stringPageNumber, ",");
+                                                }
+                                                ?>
+                                                <input type="hidden" id="stringPageNumber"
+                                                       value="<?php echo $stringPageNumber; ?>">
+                                                <input type="hidden" id="sortRate" value="0">
+                                                <?php
+                                            }
+                                            ?>
+
+                                            <div class="pagination_comment">
+                                                <div id="pagination_data"></div>
+                                            </div>
+
+                                            <div class="list_bt_action">
+                                                <div class="item_write_bt">
+                                                    <a href="javascript:write_all_comment();" class="active">
+                                                        <span>Viết đánh giá</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="box_empty_rating text-center">
+                                                <div class="icon">
+                                                    <span></span>
+                                                </div>
+                                                <p>Hãy là người đầu tiên nhận xét cho sản phẩm này</p>
+                                                <div class="box-full-with">
+                                                    <div class="item_write_bt">
+                                                        <a href="javascript:write_all_comment();" class="">
+                                                            <span>Viết đánh giá</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <?php
+                            if ($productImagePopup) {
+                                $array = explode("-", $productImagePopup);
+                                $time = date("Y/m/d", $array[0]) . "/";
+                                $imagePopup = PATH_IMAGE_PRO . $time . "268x268-" . $productImagePopup;
+                            } else {
+                                $imagePopup = "";
+                            }
+                            ?>
+                            <div class="modal" id="mobile-rep-modal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content modal-mobile modal_write">
+                                        <div class="modal-header box_shadow_all">
+                                            <a href="javascript:close_modal_rep_comment();" class="back_and_close">
+                                                <svg width="18" height="18" aria-hidden="true" focusable="false"
+                                                     data-prefix="fal" data-icon="times" role="img"
+                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                                                     class="svg-inline--fa fa-times fa-w-10 fa-2x">
+                                                    <path fill="currentColor"
+                                                          d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+                                                          class=""></path>
+                                                </svg>
+                                            </a>
+                                            <h3 class="title_box_all">Viết đánh giá</h3>
+                                        </div>
+
+                                        <div class="box-rep-modal">
+                                            <div class="card-body">
+
+                                                <div class="item_product_comment">
+                                                    <div class="img_comment">
+                                                        <img src="<?php echo $imagePopup; ?>"
+                                                             alt="<?php echo $detail['name_vi']; ?>">
+                                                    </div>
+                                                    <div class="title_product">
+                                                        <span><?php echo $detail['name_vi']; ?></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="box_rating_action">
+                                                    <div class='success-box'>
+                                                        <div class='clearfix'></div>
+                                                        <div class='text-message'>Tuyệt vời</div>
+                                                        <div class='clearfix'></div>
+                                                    </div>
+                                                    <section class='rating-widget'>
+
+                                                        <!-- Rating Stars Box -->
+                                                        <div class='rating-stars star_big_size text-center'>
+                                                            <ul id='stars'>
+                                                                <li class='star selected' title='Rất kém'
+                                                                    data-value='1'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star selected' title='Kém' data-value='2'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star selected' title='Tạm được'
+                                                                    data-value='3'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star selected' title='Tốt' data-value='4'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star selected' title='Tuyệt vời'
+                                                                    data-value='5'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+
+                                                    </section>
+
+                                                </div>
+
+                                                <div class="box_content_comment">
+                                                <textarea name="content" id="comment_content"
+                                                          class="text_area form-control" rows="6"></textarea>
+                                                    <p class="string_character">
+                                                            <span class="text_character">
+                                                                <span id="number_character_write">0</span> ký tự - Tối thiểu 10
+                                                            </span>
+                                                        <span class="up_img_comment">
+                                                                <label for="uploadImage">
+                                                                    <span>Đăng ảnh</span>
+                                                                    <i class="fa fa-camera-jp"></i>
+                                                                    <input type="file" onchange="readURLAddImg(this);"
+                                                                           name="images[]" id="uploadImage"
+                                                                           accept="image/*"
+                                                                           multiple>
+                                                                </label>
+                                                            </span>
+                                                    </p>
+                                                    <div class="list_img_uploaded" id="show_list_img_uploaded">
+                                                    </div>
+                                                    <p class="alert_upload text-center" style="display: none;">Chỉ được
+                                                        đăng tối đa 4 ảnh</p>
+                                                </div>
+
+                                                <div class="form-group form_input_text">
+                                                    <label for="">Họ và tên</label>
+                                                    <input type="text" name="fullname" id="comment_fullname"
+                                                           class="form-input form-control"
+                                                           placeholder="Nhập họ và tên"
+                                                           value="<?php if (!empty($data_user)) {
+                                                               echo $data_user['name'];
+                                                           } ?>">
+                                                </div>
+                                                <div class="form-group form_input_text">
+                                                    <label for="">Số điện thoại</label>
+                                                    <input type="number" name="phone" id="comment_phone"
+                                                           class="form-input form-control"
+                                                           placeholder="Nhập số điện thoại"
+                                                           value="<?php if (!empty($data_user)) {
+                                                               echo $data_user['mobile'];
+                                                           } ?>">
+                                                </div>
+                                                <input type="hidden" name="rating" id="comment_rating" value="5">
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer modal-footer-rep-comment">
+                                            <a href="javascript:submitComment();" class="btn_modal_footer">
+                                                <span>Gửi đánh giá</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal" id="mobile-rep-success-modal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content modal-mobile modal_write">
+                                        <div class="modal-header box_shadow_all">
+                                            <a href="javascript:close_modal_rep_success_comment();"
+                                               class="back_and_close">
+                                                <svg width="18" height="18" aria-hidden="true" focusable="false"
+                                                     data-prefix="fal" data-icon="times" role="img"
+                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                                                     class="svg-inline--fa fa-times fa-w-10 fa-2x">
+                                                    <path fill="currentColor"
+                                                          d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+                                                          class=""></path>
+                                                </svg>
+                                            </a>
+                                            <h3 class="title_box_all">Viết đánh giá</h3>
+                                        </div>
+
+
+                                        <div class="box-rep-success-modal">
+                                            <div class="card-body text-center">
+                                                <div class="img_success">
+                <span class="img_sucess"
+                      style="background-image: url('<?php echo URL_ASSET ?>images/success.gif');"></span>
+                                                </div>
+                                                <div class="text-success">
+                                                    <p class="thank_text">Cám ơn quý khách đã đánh giá!</p>
+                                                    <?php
+                                                    /*khong can duyet*/
+                                                    if (isset($approve_comment) && $approve_comment == 0) {
+                                                        ?>
+                                                        <p class="text_show_sucess">Đánh giá sẽ được hiển thị sau khi ban quản trị phê duyệt</p>
+                                                    <?php } ?>
+                                                </div>
+                                                <div class="action_success">
+                                                    <button class="btn_back" type="button"
+                                                            onclick="close_modal_rep_success_comment();">Quay lại trang
+                                                        trước
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <?php
+                    if ($product1_column1) {
+                        $this->product1_column1($product1_column1['template']);
+                    }
+
+
+                ?>
+            </div>
+
+        </div>
+        <!-- START cartPopup -->
+        <div class="box-popup-cart">
+            <div id="cartPopup" class="panel panel-default add-to-cart-success">
+                <div class="panel-heading arrow-up-cart-popup">
+                    <span style="line-height: 20px; vertical-align: middle;">Thêm vào giỏ hàng thành công!</span>
+                    <span class="close close-popup-cart">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background: new 0 0 24 24;" xml:space="preserve">
+                        <polygon class="st1" points="23,2.7 21.3,1 12,10.3 2.7,1 1,2.7 10.3,12 1,21.3 2.7,23 12,13.7 21.3,23 23,21.3 13.7,12 "></polygon>
+                    </svg>
+                </span>
+                </div>
+                <?php
+                if($productImagePopup){
+                    $array = explode("-", $productImagePopup);
+                    $time = date("Y/m/d",$array[0])."/";
+                    $imagePopup = PATH_IMAGE_PRO.$time."268x268-".$productImagePopup;
+                }else{
+                    $imagePopup = "";
+                }
+                ?>
+                <div class="panel-body" style="position: relative;">
+                    <div class="minicar-body">
+                        <img id="justAddedImage" src="<?= $imagePopup;?>" />
+                        <div class="minicar-content">
+                            <div id="justAddedTitle"><?= $detail["name_vi"]; ?></div>
+                            <div class="box-price-quantity">
+                                <div class="all-price">
+                                    <?php if (intval($hienthi) > 0) { ?>
+
+                                        <p itemprop="price" style="display:none;"><?php echo intval($price_promotion); ?></p>
+                                        <p class="new-price"> <?php echo number_format(intval($price_promotion), "0", ",", "."); ?>đ</p>
+                                    <?php } else { ?>
+
+                                        <span class="justAddedPrice" id="justAddedPrice">
+                                        <?= $price = number_format($detail["price"], "0", ",", "."); ?>đ
+                                    </span>
+                                    <?php } ?>
+                                </div>
+
+                                <span>Số lượng: </span> <span id="justAddedQuantity">11</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="justAddedTotal">
+                        <p>Tạm tính: </p>
+                        <span class="justAddedPrice" id="cartTotalPrice">2.615.000</span>
+                    </div>
+                    <div class="payment-popup">
+                        <a class="btn-mua-hang btn-popup-goto-cart convert-background-color-15B02A" href="<?=  URL;?>gio-hang.jp" rel="nofollow">
+                            Xem giỏ hàng và thanh toán
+                        </a>
+                    </div>
+                    <?php if($listProductInCategory) : ?>
+                        <div id="boughtTogetherBox">
+                            <div class="title-bought-together-popup">
+                                <p>Mua cùng giảm thêm:</p>
+                            </div>
+                            <div class="minicart-group">
+                                <?php $max = count($listProductInCategory); 
+                                foreach ($listProductInCategory as $key => $value) :
+                                    if($value["status_num"] == 1) :
+                                    $url1 = URL . $value["slug_vi"] . "-sp-" . $value["id_product_in_category"]; ?>
+                                    <?php
+                                    if(!empty($value["images"])){
+                                        $array = explode("-", $value["images"]);
+                                        $time = date("Y/m/d",$array[0])."/";
+                                        $images = PATH_IMAGE_PRO.$time."268x268-".$value["images"];
+                                    }else{
+                                        $images = "";
+                                    }
+                                    ?>
+                                    <div class="item-cart-popup">
+                                        <div style="text-align: center;">
+                                            <a href="<?= $url1 ?>">
+                                                <img src="<?php echo $images;?>" alt="<?= $value["name_vi"] ?>">
+                                            </a>
+                                        </div>
+                                        <div class="title-box">
+                                            <div class="title-line">
+                                                <a href="<?= $url1 ?>" title="<?= $value["name_vi"] ?>"><?= $value["name_vi"] ?></a>
+                                            </div>
+                                            <span class="price-popup-bought-together"><?= number_format($value["price"], "0", ",", "."); ?>đ </span>
+                                        </div>
+                                    </div>
+                                    <?php if($count < $max) : ?>
+                                    <p class="plus-purchased">+</p>
+                                <?php endif; ?>
+                                <?php 
+                                    endif;
+                                    $count++;
+                                endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <!-- END cartPopup -->
+    </div>
+</div>
+
+<ul class='social-side'>
+    <li><a rel="nofollow" class="fa fa-youtube-play"
+           href="https://www.youtube.com/channel/UCzQ9dzWRTTDs8x3QBa2ewZQ?view_as=subscriber"> </a></li>
+    <li><a rel="nofollow" class="fa fa-facebook" href="https://www.facebook.com/japana.sieuthinhat/"> </a></li>
+</ul>
+<!-- BEGIN GCR Language Code -->
+
+<input type="hidden" id="totalPrice" value="<?= \Admin\Helper\Helper::totalPriceCart();?>">
+<input type="hidden" id="totalCart" value="<?= \Admin\Helper\Helper::totalCart();?>">
+<input type="hidden" id="totalQuantityCart" value="<?= \Admin\Helper\Helper::totalQuantityCart();?>">
+<input type="hidden" id="totalQuantityCartById" value="<?= \Admin\Helper\Helper::totalQuantityCart($detail["id"]);?>">
+
+<script>
+    window.___gcfg = {
+        lang: 'vi'
+    };
+</script>
+<!-- END GCR Language Code -->
+<!-- BEGIN GCR Badge Code -->
+<script src="https://apis.google.com/js/platform.js?onload=renderBadge" async defer></script>
+<script>
+    window.renderBadge = function () {
+        let ratingBadgeContainer = document.createElement("div");
+        document.body.appendChild(ratingBadgeContainer);
+        window.gapi.load('ratingbadge', function () {
+            window.gapi.ratingbadge.render(
+                ratingBadgeContainer, {
+                    "merchant_id": 139845714,
+                    "position": "BOTTOM_LEFT"
+                }
+            );
+        });
+    }
+</script>
+<!-- END GCR Badge Code -->
+<script>
+    fbq('track', 'ViewContent', {
+        content_type: 'product',
+        content_ids: ["<?php echo $detail["id"];?>"],
+        value:    <?php
+        if (intval($price_promotion) > 0) {
+            echo $price_promotion;
+        } else {
+            echo $detail["price"];
+        }
+        ?>,
+        currency: 'VND',
+        content_category: "<?php echo $breadcrumb;?>",
+    });
+</script>
+<script async="async">
+    !function(t,i,s,e){function n(i,s){this.element=i,this._name=a,this.settings=t.extend({},r,s),this._defaults=r,this._name=a,this.init(),this.settings.timeLimit=parseInt(this.settings.timeLimit),this.settings.timeStart=parseInt(this.settings.timeStart)}var a="progressBarTimer",r={timeLimit:60,warningThreshold:5,autoStart:!0,timeStart:0,onFinish:function(){},baseStyle:"",warningStyle:"bg-danger",smooth:!1,completeStyle:"bg-success"};t.extend(n.prototype,{init:function(){t(this).empty();var i=t("<div>").addClass("progress active progress-striped");t("<div>").addClass("progress-bar").addClass(this.settings.baseStyle).attr("role","progressbar").attr("aria-valuenow","0").attr("aria-valuemin","0").attr("aria-valuemax",this.settings.timeLimit).appendTo(i),i.appendTo(this.element),this.settings.smooth?(this.timerInterval=20,this.ticks=50*this.settings.timeLimit):(this.timerInterval=1e3,this.ticks=this.settings.timeLimit),this.remainingTicks=this.ticks,this.settings.autoStart&&this.start(),this.bindEvents()},destroy:function(){this.unbindEvents(),this.element.removeData()},bindEvents:function(){},unbindEvents:function(){this.element.off("."+this._name)},start:function(){this.interval=setInterval(jQuery.proxy(this._draw,this),this.timerInterval)},stop:function(t){clearInterval(this.interval),t&&t()},getElapsedTime:function(){return(this.ticks-this.remainingTicks)*this.timerInterval},getTimeRemaining:function(){return this.remainingTicks*this.timerInterval},addSeconds:function(t){var i=this.setings.smooth?20*t:t;this.ticks+=i,this.remainingTicks+=i},_draw:function(){var i=t(this.element).find(".progress-bar"),s=this.ticks-this.remainingTicks+this.settings.timeStart;s/this.ticks*100>100&&this.stop(),i.width(s/this.ticks*100+"%"),0==this.remainingTicks--&&(this.stop(),i.removeClass(this.settings.baseStyle).removeClass(this.settings.warningStyle).addClass(this.settings.completeStyle),this.settings.onFinish())}}),t.fn.progressBarTimer=function(i){var s;return this.each(function(){(s=t.data(this,"plugin_"+a))||(s=new n(this,i),t.data(this,"plugin_"+a,s))}),s}}(jQuery,window,document);
+
+    !function (a) {
+        "use strict";
+        "function" == typeof define && define.amd ? define(["jquery"], a) : a(jQuery)
+    }(function (a) {
+        "use strict";
+        $('#progressBar').progressBarTimer({
+            timeLimit: '<?=$time_total?>',
+            warningThreshold: 0,
+            autostart: false,
+            timeStart: '<?=$time_lost?>',
+            completeStyle: 'bg-success'
+        });
+        function b(a) {
+            if (a instanceof Date) return a;
+            if (String(a).match(g)) return String(a).match(/^[0-9]*$/) && (a = Number(a)), String(a).match(/\-/) && (a = String(a).replace(/\-/g, "/")), new Date(a);
+            throw new Error("Couldn't cast `" + a + "` to a date object.")
+        }
+
+        function c(a) {
+            let b = a.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+            return new RegExp(b)
+        }
+
+        function d(a) {
+            return function (b) {
+                let d = b.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
+                if (d) for (let f = 0, g = d.length; g > f; ++f) {
+                    let h = d[f].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), j = c(h[0]), k = h[1] || "", l = h[3] || "",
+                        m = null;
+                    h = h[2], i.hasOwnProperty(h) && (m = i[h], m = Number(a[m])), null !== m && ("!" === k && (m = e(l, m)), "" === k && 10 > m && (m = "0" + m.toString()), b = b.replace(j, m.toString()))
+                }
+                return b = b.replace(/%%/, "%")
+            }
+        }
+
+        function e(a, b) {
+            let c = "s", d = "";
+            return a && (a = a.replace(/(:|;|\s)/gi, "").split(/\,/), 1 === a.length ? c = a[0] : (d = a[0], c = a[1])), 1 === Math.abs(b) ? d : c
+        }
+
+        let f = [], g = [], h = {precision: 100, elapse: !1};
+        g.push(/^[0-9]*$/.source), g.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g = new RegExp(g.join("|"));
+        let i = {
+            Y: "years",
+            m: "months",
+            n: "daysToMonth",
+            w: "weeks",
+            d: "daysToWeek",
+            D: "totalDays",
+            H: "hours",
+            M: "minutes",
+            S: "seconds"
+        }, j = function (b, c, d) {
+            this.el = b, this.$el = a(b), this.interval = null, this.offset = {}, this.options = a.extend({}, h), this.instanceNumber = f.length, f.push(this), this.$el.data("countdown-instance", this.instanceNumber), d && ("function" == typeof d ? (this.$el.on("update.countdown", d), this.$el.on("stoped.countdown", d), this.$el.on("finish.countdown", d)) : this.options = a.extend({}, h, d)), this.setFinalDate(c), this.start()
+        };
+        a.extend(j.prototype, {
+            start: function () {
+                null !== this.interval && clearInterval(this.interval);
+                let a = this;
+                this.update(), this.interval = setInterval(function () {
+                    a.update.call(a)
+                }, this.options.precision)
+            }, stop: function () {
+                clearInterval(this.interval), this.interval = null, this.dispatchEvent("stoped")
+            }, toggle: function () {
+                this.interval ? this.stop() : this.start()
+            }, pause: function () {
+                this.stop()
+            }, resume: function () {
+                this.start()
+            }, remove: function () {
+                this.stop.call(this), f[this.instanceNumber] = null, delete this.$el.data().countdownInstance
+            }, setFinalDate: function (a) {
+                this.finalDate = b(a)
+            }, update: function () {
+                if (0 === this.$el.closest("html").length) return void this.remove();
+                let b, c = void 0 !== a._data(this.el, "events"), d = new Date;
+                b = this.finalDate.getTime() - d.getTime(), b = Math.ceil(b / 1e3), b = !this.options.elapse && 0 > b ? 0 : Math.abs(b), this.totalSecsLeft !== b && c && (this.totalSecsLeft = b, this.elapsed = d >= this.finalDate, this.offset = {
+                    seconds: this.totalSecsLeft % 60,
+                    minutes: Math.floor(this.totalSecsLeft / 60) % 60,
+                    hours: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+                    days: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToWeek: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
+                    totalDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+                    weeks: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
+                    months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
+                    years: Math.abs(this.finalDate.getFullYear() - d.getFullYear())
+                }, this.options.elapse || 0 !== this.totalSecsLeft ? this.dispatchEvent("update") : (this.stop(), this.dispatchEvent("finish")))
+            }, dispatchEvent: function (b) {
+                let c = a.Event(b + ".countdown");
+                c.finalDate = this.finalDate, c.elapsed = this.elapsed, c.offset = a.extend({}, this.offset), c.strftime = d(this.offset), this.$el.trigger(c)
+            }
+        }), a.fn.countdown = function () {
+            let b = Array.prototype.slice.call(arguments, 0);
+            return this.each(function () {
+                let c = a(this).data("countdown-instance");
+                if (void 0 !== c) {
+                    let d = f[c], e = b[0];
+                    j.prototype.hasOwnProperty(e) ? d[e].apply(d, b.slice(1)) : null === String(e).match(/^[$A-Z_][0-9A-Z_$]*$/i) ? (d.setFinalDate.call(d, e), d.start()) : a.error("Method %s does not exist on jQuery.countdown".replace(/\%s/gi, e))
+                } else new j(this, b[0], b[1])
+            })
+        }
+    });
+    !function (a) {
+        "use strict";
+        "function" == typeof define && define.amd ? define(["jquery"], a) : a(jQuery)
+    }(function (a) {
+        "use strict";
+
+        function b(a) {
+            if (a instanceof Date) return a;
+            if (String(a).match(g)) return String(a).match(/^[0-9]*$/) && (a = Number(a)), String(a).match(/\-/) && (a = String(a).replace(/\-/g, "/")), new Date(a);
+            throw new Error("Couldn't cast `" + a + "` to a date object.")
+        }
+
+        function c(a) {
+            let b = a.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+            return new RegExp(b)
+        }
+
+        function d(a) {
+            return function (b) {
+                let d = b.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
+                if (d) for (let f = 0, g = d.length; g > f; ++f) {
+                    let h = d[f].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), j = c(h[0]), k = h[1] || "", l = h[3] || "",
+                        m = null;
+                    h = h[2], i.hasOwnProperty(h) && (m = i[h], m = Number(a[m])), null !== m && ("!" === k && (m = e(l, m)), "" === k && 10 > m && (m = "0" + m.toString()), b = b.replace(j, m.toString()))
+                }
+                return b = b.replace(/%%/, "%")
+            }
+        }
+
+        function e(a, b) {
+            let c = "s", d = "";
+            return a && (a = a.replace(/(:|;|\s)/gi, "").split(/\,/), 1 === a.length ? c = a[0] : (d = a[0], c = a[1])), 1 === Math.abs(b) ? d : c
+        }
+
+        let f = [], g = [], h = {precision: 100, elapse: !1};
+        g.push(/^[0-9]*$/.source), g.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g = new RegExp(g.join("|"));
+        let i = {
+            Y: "years",
+            m: "months",
+            n: "daysToMonth",
+            w: "weeks",
+            d: "daysToWeek",
+            D: "totalDays",
+            H: "hours",
+            M: "minutes",
+            S: "seconds"
+        }, j = function (b, c, d) {
+            this.el = b, this.$el = a(b), this.interval = null, this.offset = {}, this.options = a.extend({}, h), this.instanceNumber = f.length, f.push(this), this.$el.data("countdown-instance", this.instanceNumber), d && ("function" == typeof d ? (this.$el.on("update.countdown", d), this.$el.on("stoped.countdown", d), this.$el.on("finish.countdown", d)) : this.options = a.extend({}, h, d)), this.setFinalDate(c), this.start()
+        };
+        a.extend(j.prototype, {
+            start: function () {
+                null !== this.interval && clearInterval(this.interval);
+                let a = this;
+                this.update(), this.interval = setInterval(function () {
+                    a.update.call(a)
+                }, this.options.precision)
+            }, stop: function () {
+                clearInterval(this.interval), this.interval = null, this.dispatchEvent("stoped")
+            }, toggle: function () {
+                this.interval ? this.stop() : this.start()
+            }, pause: function () {
+                this.stop()
+            }, resume: function () {
+                this.start()
+            }, remove: function () {
+                this.stop.call(this), f[this.instanceNumber] = null, delete this.$el.data().countdownInstance
+            }, setFinalDate: function (a) {
+                this.finalDate = b(a)
+            }, update: function () {
+                if (0 === this.$el.closest("html").length) return void this.remove();
+                let b, c = void 0 !== a._data(this.el, "events"), d = new Date;
+                b = this.finalDate.getTime() - d.getTime(), b = Math.ceil(b / 1e3), b = !this.options.elapse && 0 > b ? 0 : Math.abs(b), this.totalSecsLeft !== b && c && (this.totalSecsLeft = b, this.elapsed = d >= this.finalDate, this.offset = {
+                    seconds: this.totalSecsLeft % 60,
+                    minutes: Math.floor(this.totalSecsLeft / 60) % 60,
+                    hours: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+                    days: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToWeek: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
+                    totalDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+                    weeks: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
+                    months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
+                    years: Math.abs(this.finalDate.getFullYear() - d.getFullYear())
+                }, this.options.elapse || 0 !== this.totalSecsLeft ? this.dispatchEvent("update") : (this.stop(), this.dispatchEvent("finish")))
+            }, dispatchEvent: function (b) {
+                let c = a.Event(b + ".countdown");
+                c.finalDate = this.finalDate, c.elapsed = this.elapsed, c.offset = a.extend({}, this.offset), c.strftime = d(this.offset), this.$el.trigger(c)
+            }
+        }), a.fn.countdown = function () {
+            let b = Array.prototype.slice.call(arguments, 0);
+            return this.each(function () {
+                let c = a(this).data("countdown-instance");
+                if (void 0 !== c) {
+                    let d = f[c], e = b[0];
+                    j.prototype.hasOwnProperty(e) ? d[e].apply(d, b.slice(1)) : null === String(e).match(/^[$A-Z_][0-9A-Z_$]*$/i) ? (d.setFinalDate.call(d, e), d.start()) : a.error("Method %s does not exist on jQuery.countdown".replace(/\%s/gi, e))
+                } else new j(this, b[0], b[1])
+            })
+        }
+    });
+    jQuery(function () {
+        jQuery('.countdown1').each(function () {
+            let countdown1 = jQuery(this);
+            let promoperiod;
+            if (countdown1.data('promodate')) {
+                promoperiod = countdown1.data('promodate')
+            }
+            countdown1.countdown(promoperiod, function (event) {
+                jQuery('.countdown1 .item-time').each(function (i) {
+                    if (i == 0) {
+                        jQuery(this).find('.time-new').html(event.strftime('%D'))
+                    }
+                    if (i == 1) {
+                        jQuery(this).find('.time-new').html(event.strftime('%H'))
+                    }
+                    if (i == 2) {
+                        jQuery(this).find('.time-new').html(event.strftime('%M'))
+                    }
+                    if (i == 3) {
+                        jQuery(this).find('.time-new').html(event.strftime('%S'))
+                    }
+                })
+            })
+        })
+        $('.slider-nav').not('.slick-initialized').slick({
+            arrows: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            vertical: true,
+            prevArrow:'<button type="button" class="slick-prev"><i class="ti-angle-up"></i></button>',
+            nextArrow:'<button type="button" class="slick-next"><i class="ti-angle-down"></i></button>',
+            asNavFor: '.slider-for',
+            focusOnSelect: true
+        });
+        $('.slider-for').not('.slick-initialized').slick({
+            autoplay: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav',
+            dots: false,
+        });
+        jQuery('.add-qty').on('click', function () {
+            let quantity = jQuery(this).parent().find(".txtNumPro");
+            let i = +quantity.val();
+            i += 1;
+            quantity.val(i)
+        });
+        jQuery('.sub-qty').on('click', function () {
+            let quantity = jQuery(this).parent().find(".txtNumPro");
+            let i = +quantity.val();
+            if (i <= 2) {
+                i = 1;
+                if (i >= 1) {
+                    jQuery(this).parent().parent().parent().parent().find('.sub-qty').prop('disabled', !1)
+                } else {
+                    jQuery(this).parent().parent().parent().parent().find('.sub-qty').prop('disabled', !0)
+                }
+            } else {
+                i -= 1
+            }
+            quantity.val(i)
+        })
+    })
+    let product = {
+        phone_consulting: function (url, product, sku, linkurl, images) {
+            let phone = $('#phone').val();
+            if ($.trim(phone) == '') {
+                alert('Vui lòng nhập số điện thoại để được tư vấn !');
+                return false;
+            }
+            if ($.trim(phone).length < 10) {
+                alert('Số điện thoại không hợp lệ !');
+                return false;
+            }
+            jQuery.ajax({
+                type: "POST",
+                url: url + 'phone-consulting.jp',
+                cache: false,
+                data: ({
+                    phone: phone,
+                    product: product,
+                    sku: sku,
+                    url: linkurl,
+                    images: images
+                }),
+                beforeSend: function () {
+                    //$("#showview"+id).html('...');
+                },
+                success: function (b) {
+                    if (b == 'true') {
+                        $('#phone').val('');
+                        alert('Chúng tôi sẽ liên hệ với bạn nhanh nhất !');
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+<script>
+    $(".close-popup-cart").on("click", function () {
+        $("#cartPopup").hide();
+    });
+
+    $(document).on('click','body *',function(){
+        $("#cartPopup").hide();
+    });
+
+    const formatter = new Intl.NumberFormat('vi-VI', {
+        style: 'currency',
+        currency: 'vnd',
+        minimumFractionDigits: 0
+    })
+
+    // push product to cart and show popup
+    $(document).on("click", "#push-to-cart" ,function () {
+
+        let id = $(this).attr("data-id");
+        let qty = parseInt($(".txtNumPro").val());
+        $("#justAddedQuantity").html(qty);
+
+        let image          = $(this).attr("data-image");
+        let name           = $(this).attr("data-name");
+        let price_market   = $(this).attr("data-price_market");
+        let url            = $(this).attr("data-url");
+        let sku            = $(this).attr("data-sku");
+        let kg             = $(this).attr("data-kg");
+        let text_qt        = $(this).attr("data-text_qt");
+        let images_qt      = $(this).attr("data-images_qt");
+
+        /*add variation*/
+        if ($("#tier_variation").length > 0) {
+            let data_pro = new Object();
+            if ($("#tier_variation").val() === "2") {
+                let _this = "#tier_id_product_" + $("#tier_1_value").val() + "_" + $("#tier_2_value").val();
+                let data_pro_json = $(_this).val();
+                data_pro = JSON.parse(data_pro_json);
+            } else if ($("#tier_variation").val() === "1") {
+                let _this = "#tier_id_product_" + $("#tier_1_value").val();
+                let data_pro_json = $(_this).val();
+                data_pro = JSON.parse(data_pro_json);
+            }
+            if (data_pro) {
+                id = data_pro.id_product_variation;
+                name = data_pro.name_vi;
+                image = data_pro.images;
+                price_market = data_pro.price;
+                url = data_pro.url;
+                sku = data_pro.sku;
+                kg = data_pro.kg;
+                text_qt = data_pro.text_qt;
+                images_qt = data_pro.images_qt;
+
+                $("#justAddedTitle").html(name)
+            }
+        }
+        /*add variation*/
+        let data = {
+            "id":  parseInt(id),
+            "sl":  qty,
+            "image":  image,
+            "name": name,
+            "price_market":  price_market,
+            "url":  url,
+            "sku":  sku,
+            "kg":  kg,
+            "text_qt":  text_qt,
+            "images_qt":  images_qt
+        };
+
+        // set total price
+        let totalPriceFirst = parseInt($("#totalPrice").val());
+        let totalPriceCalculate = totalPriceFirst + (qty * parseInt(price_market));
+        let totalPriceLast = formatter.format(totalPriceCalculate);
+
+        // set total cart
+        // let totalCartFirst = parseInt($("#totalCart").val());
+        // let totalCartLast = totalCartFirst + 1;
+
+        // set total quantity cart
+        let totalQuantity = parseInt($("#totalQuantityCart").val());
+        let totalQuantityLast = qty + totalQuantity;
+
+        // set total quantity by product id
+        let totalQuantityCartById = parseInt($("#totalQuantityCartById").val());
+        let totalQuantityCartByIdLast = qty + totalQuantityCartById;
+        $.ajax({
+            url: "<?php echo URL;?>frontend/cart/addcart",
+            type: "POST",
+            data: data,
+            cache: false,
+            dataType: "html",
+            success: function(result)
+            {
+                // show cart popup
+                $("#cartPopup").show()
+
+                // set total price
+                $("#cartTotalPrice").html(totalPriceLast);
+                $("#totalPrice").val(totalPriceCalculate)
+
+                // set total cart
+                $(".count-giohang").html(totalQuantityLast);
+                $("#totalQuantityCart").val(totalQuantityLast);
+
+                // set total quantity by product id
+                $("#justAddedQuantity").html(totalQuantityCartByIdLast);
+                $("#totalQuantityCartById").val(totalQuantityCartByIdLast);
+
+            }
+        });
+
+    });
+</script>
+
+<script async>
+    <?php if($detail['status_num'] == 1): ?>
+    setTimeout(function(){ loadProductTogether() }, 1000);
+
+    function loadProductTogether() {
+        var arrProductTogether = {"data": JSON.stringify(<?php echo json_encode($loadDataTogether); ?>)}
+        var loadProduct = document.getElementById('load-product-together');
+        $.ajax({
+            url: "<?php echo URL;?>load-product/loadDataTogether",
+            type: "POST",
+            data: arrProductTogether,
+            dataType: "html",
+            cache: false,
+            success: function (data) {
+                document.getElementById('loading').style.display = "none";
+                loadProduct.innerHTML = data
+                var togetherTotal = parseInt($("#listProductInCategoryTotal").val());
+                (togetherTotal <= 0)? loadProduct.style.display = "none" : "";
+            }
+        });
+    }
+    <?php endif; ?>
+    setTimeout(function(){ loadContentProduct() }, 1500);
+    function loadContentProduct() {
+        var arrDataContent = {"data": JSON.stringify(<?php echo json_encode($detail['id'])?>)}
+        $.ajax({
+            url: "<?php echo URL;?>load-product/loadDataContentProduct",
+            type: "POST",
+            data: arrDataContent,
+            dataType: "html",
+            cache: false,
+            success: function (data) {
+                document.getElementById('loading-content').style.display = "none";
+                document.getElementById('load-data-content').innerHTML = data;
+                youTubes_makeDynamic();
+            }
+        });
+    }
+
+    function changeProductTogether(productId, priceNew) {
+        let purchaseTotalPriceFirst = parseInt($("#purchase-total-price").val());
+        let price = parseInt(priceNew);
+        let purchaseTotalPriceLast = 0;
+
+        let strProduct = $("#arrProductIdInCategory").val();
+        let arrProduct = strProduct.split(',');
+
+        let arrProductNew = [];
+        let flag = false;
+
+        let checked = document.getElementById('product-'+productId).checked;
+
+        if(checked) { // check
+            purchaseTotalPriceLast = purchaseTotalPriceFirst + price;
+
+            arrProduct.find(item => item !== productId ? flag = true : flag = false);
+            if(flag == true){
+                arrProduct.push(productId);
+            }
+
+            arrProductNew = arrProduct;
+        }
+        else { // uncheck
+            purchaseTotalPriceLast = purchaseTotalPriceFirst - price;
+
+            $.each( arrProduct, function( key, value ) {
+                if (productId == value)
+                {
+                    delete arrProduct[key];
+                }
+                else {
+                    arrProductNew.push(value);
+                }
+
+            });
+        }
+
+        // console.log( arrProductNew);
+
+        // set arrProductIdInCategory last
+        let strProductNew = arrProductNew.join(",");
+        $("#arrProductIdInCategory").val(strProductNew);
+
+        $("#purchase-total-price").val(purchaseTotalPriceLast);
+        $("#bought-together-price-total").html(formatter.format(purchaseTotalPriceLast));
+
+        if(purchaseTotalPriceLast <= 0)
+        {
+            $("#box-bought-together-total").hide();
+        }
+        else {
+            $("#box-bought-together-total").show();
+        }
+    }
+
+    function youTubes_makeDynamic() {
+        let $ytIframes = $('iframe[src*="youtube.com"]');
+        $ytIframes.each(function (i, e) {
+            let $ytFrame = $(e);
+            let ytKey;
+            let tmp = $ytFrame.attr('src').split(/\//);
+            tmp = tmp[tmp.length - 1];
+            tmp = tmp.split('?');
+            ytKey = tmp[0];
+            let $ytLoader = jQuery('<div class="ytLoader">');
+            $ytLoader.append(jQuery('<img class="cover" src="https://i.ytimg.com/vi/' + ytKey + '/hqdefault.jpg">'));
+            $ytLoader.append(jQuery('<div class="bg-yt"><i class="box-icon-all2 icon-play"></i>'));
+            $ytLoader.data('$ytFrame', $ytFrame);
+            $ytFrame.replaceWith($ytLoader);
+            $ytLoader.click(function () {
+                let $ytFrame = $ytLoader.data('$ytFrame');
+                $ytFrame.attr('src', $ytFrame.attr('src') + '?autoplay=1');
+                $ytLoader.replaceWith($ytFrame);
+                $ytIframes.css('height', 450);
+                $ytIframes.css('width', 800)
+            })
+        })
+    }
+</script>
+
+<script defer="defer">
+
+    jQuery(function () {
+
+        // add Product Suggestion To Cart
+        $(document).on("click", "#push-to-cart-all", function () {
+            let objNew = [];
+            // get product in category list
+            let jsonProductInCategory = JSON.parse($("#jsonProductInCategory").val());
+            // get string product
+            let strProduct = $("#arrProductIdInCategory").val();
+            // add Product Suggestion
+            $.each( jsonProductInCategory, function( key, value ) {
+                if(strProduct.indexOf(value.id) > -1){ // found
+                    objNew.push(value);
+                }
+            });
+
+            // add product main
+            let id = $(this).attr("data-id");
+            let qty = parseInt($(".txtNumPro").val());
+            $("#justAddedQuantity").html(qty);
+
+            let image          = $(this).attr("data-image");
+            let name           = $(this).attr("data-name");
+            let price_market   = $(this).attr("data-price_market");
+            let url            = $(this).attr("data-url");
+            let sku            = $(this).attr("data-sku");
+            let kg             = $(this).attr("data-kg");
+            let text_qt        = $(this).attr("data-text_qt");
+            let images_qt      = $(this).attr("data-images_qt");
+
+            /*add variation*/
+            if ($("#tier_variation").length > 0) {
+                let data_pro = new Object();
+                if ($("#tier_variation").val() === "2") {
+                    let _this = "#tier_id_product_" + $("#tier_1_value").val() + "_" + $("#tier_2_value").val();
+                    let data_pro_json = $(_this).val();
+                    data_pro = JSON.parse(data_pro_json);
+                } else if ($("#tier_variation").val() === "1") {
+                    let _this = "#tier_id_product_" + $("#tier_1_value").val();
+                    let data_pro_json = $(_this).val();
+                    data_pro = JSON.parse(data_pro_json);
+                }
+                if (data_pro) {
+                    id = data_pro.id_product_variation;
+                    name = data_pro.name_vi;
+                    image = data_pro.images;
+                    price_market = data_pro.price;
+                    url = data_pro.url;
+                    sku = data_pro.sku;
+                    kg = data_pro.kg;
+                    text_qt = data_pro.text_qt;
+                    images_qt = data_pro.images_qt;
+                }
+            }
+            /*add variation*/
+            let data = {
+                "id":  parseInt(id),
+                "sl":  qty,
+                "image":  image,
+                "name": name,
+                "price_market":  price_market,
+                "url":  url,
+                "sku":  sku,
+                "kg":  kg,
+                "text_qt":  text_qt,
+                "images_qt":  images_qt
+            };
+
+            objNew.push(data);
+            addProductSuggestionToCart(objNew)
+        });
+
+    })
+
+    // addProductSuggestionToCart
+    function addProductSuggestionToCart(objNew)
+    {
+        $.ajax({
+            url: "<?= URL;?>frontend/cart/addCartMultiple",
+            type: "POST",
+            data: {cart: objNew},
+            cache: false,
+            dataType: "html",
+            success: function(result)
+            {
+                window.location.href = '<?= URL;?>gio-hang.jp';
+            }
+        });
+    }
+
+    /*start comment*/
+
+    $(document).ready(function () {
+
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function () {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function (e) {
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                }
+                else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function () {
+            $(this).parent().children('li.star').each(function (e) {
+                $(this).removeClass('hover');
+            });
+        });
+
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function () {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = "";
+            let value_rating = 5;
+            if (ratingValue === 1) {
+                msg = "Rất kém";
+                value_rating = 1;
+            } else if (ratingValue === 2) {
+                msg = "Kém";
+                value_rating = 2;
+            }
+            else if (ratingValue === 3) {
+                msg = "Tạm được";
+                value_rating = 3;
+            }
+            else if (ratingValue === 4) {
+                msg = "Tốt";
+                value_rating = 4;
+            }
+            else {
+                msg = "Tuyệt vời";
+            }
+            $("#comment_rating").val(value_rating);
+            $("#star_action_rating").data("stars", value_rating);
+            responseMessage(msg);
+
+        });
+
+
+    });
+
+
+    function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+    }
+
+
+    function view_all_comment() {
+        $("#mobile-comment-modal").show();
+        $("body").addClass('popup-show custom-bg-popup');
+        $("#mobile-comment-modal").css({"opacity": "1", "visibility": "visible"});
+        $("#mobile-comment-modal").addClass("active");
+    }
+
+    function close_modal_comment() {
+        $("body").removeClass('popup-show custom-bg-popup');
+        $("#mobile-comment-modal").css({"opacity": "0", "visibility": "hidden"});
+        $("#mobile-comment-modal").removeClass("active");
+    }
+
+    function write_all_comment() {
+        $("#mobile-rep-modal").modal("show");
+    }
+
+    function close_modal_rep_comment() {
+        // $(".box-rep-success-modal").css("display", "none");
+        // $(".box-rep-modal").css("display", "block");
+        // $(".modal-footer-rep-comment").css("display", "block");
+        $("#mobile-rep-modal").modal("hide");
+    }
+
+    function close_modal_rep_success_comment() {
+        // $(".box-rep-success-modal").css("display", "none");
+        // $(".box-rep-modal").css("display", "block");
+        // $(".modal-footer-rep-comment").css("display", "block");
+        $("#mobile-rep-success-modal").modal("hide");
+    }
+
+    let count_itemImage_uploaded = 0;
+    let ImageListUploaded = [];
+
+    function readURLAddImg(input) {
+        if (input.files.length > 0) {
+            for (let $i = 0; $i < input.files.length; $i++) {
+                if (input.files[$i]) {
+                    count_itemImage_uploaded++;
+                    if (count_itemImage_uploaded > 4) {
+                        $(".alert_upload").css("display", "block");
+                        break;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(".list_img_uploaded").append('' +
+                            ' <span  id="image_uploaded_' + $i + '" class="img_item"\n' +
+                            '  style="background-image: url(' + e.target.result + ');">\n' +
+                            '    <a href="javascript:removeImageAfterUp(' + $i + ');" class="remove_img_item">\n' +
+                            '         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">\n' +
+                            '              <path d="M 4.385 4 L 8 7.615 L 7.615 8 L 4 4.385 L 0.385 8 L 0.001 7.615 L 3.616 4 L 0 0.385 L 0.385 0 L 4 3.615 L 7.615 0 L 8 0.385 Z"\n' +
+                            '              fill="hsl(0, 0%, 100%)"></path>\n' +
+                            '          </svg>\n' +
+                            '    </a>\n' +
+                            ' </span>');
+                    };
+                    reader.readAsDataURL(input.files[$i]);
+                    ImageListUploaded.push(input.files[$i]);
+                }
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        /*fixed menu when open keyboard*/
+        var _originalSize = $(window).width() + $(window).height()
+        $(window).resize(function () {
+            if ($(window).width() + $(window).height() !== _originalSize) {
+                console.log("keyboard active");
+                $(".modal-header").removeClass("fixed");
+            } else {
+                console.log("keyboard closed");
+                $(".footer").addClass("fixed");
+            }
+        });
+
+        /*count character comment*/
+        $("#comment_content").bind("keyup", function (e) {
+            let total_character_comment = this.value + String.fromCharCode(e.keyCode);
+            $("#number_character_write").text(total_character_comment.length - 1);
+        });
+    });
+
+    function submitComment() {
+        let formData = new FormData();
+        let request = new XMLHttpRequest();
+        let content = $("#comment_content").val();
+        let fullname = $("#comment_fullname").val();
+        let phone = $("#comment_phone").val();
+        formData.append("id_product", <?php echo $detail["id"]; ?>);
+        formData.append("product_url", '<?php echo $detail["slug_vi"] . "-sp-" . $detail["id"]; ?>');
+        formData.append("id_member", <?php if (!empty($data_user['id'])) {
+            echo $data_user['id'];
+        } else {
+            echo 0;
+        } ?>);
+        formData.append("comments", content);
+        formData.append("fullname", fullname);
+        formData.append("phone", phone);
+        formData.append("rate", $("#comment_rating").val());
+        if (ImageListUploaded.length > 0) {
+            for (let i = 0; i < ImageListUploaded.length; i++) {
+                formData.append("images[]", ImageListUploaded[i]);
+            }
+            ImageListUploaded = [];
+        }
+
+
+        if (content === "" || content.length < 10) {
+            alert("Nội dung đánh gá cần tối thiểu 10 ký tự");
+            return;
+        }
+        if (fullname === "") {
+            alert("Cần nhập họ và tên");
+            return;
+        }
+        if (phone === "") {
+            alert("Cần nhập số điện thoại");
+            return;
+        }
+
+        let url = "<?php echo URL;?>comment/submit";
+
+        request.onreadystatechange = function () {
+            if (request.readyState === 4) {
+                if (request.response !== "1") {
+                    alert(request.response);
+                } else {
+                    // $(".box-rep-modal").css("display", "none");
+                    // $(".modal-footer-rep-comment").css("display", "none");
+                    // $(".box-rep-success-modal").css("display", "block");
+                    $("#mobile-rep-success-modal").modal("show");
+                    $("#mobile-rep-modal").modal("hide");
+                    /!*reset form after submit*!/
+                    $("#uploadImage").val("");
+                    $("#comment_content").val("");
+                    $("#comment_fullname").val("");
+                    $("#comment_phone").val("");
+                    $("#comment_rating").val(5);
+                    $(".list_img_uploaded").text("");
+                    // $(stars[5]).addClass('selected');
+                    $("#star_action_rating").data("stars", 5);
+
+                    <?php
+                    /*khong can duyet, load lai du lieu*/
+                    if (isset($approve_comment) && $approve_comment == 1) {
+                            ?>
+                    loadContentComment();
+                        <?php } ?>
+                }
+            }
+        };
+
+        request.open("POST", url);
+        request.send(formData);
+
+
+    }
+
+    function removeImageAfterUp(value) {
+        $("#image_uploaded_" + value).remove();
+        if (ImageListUploaded.length > 0) {
+            ImageListUploaded.splice(value, 1);
+            console.log(ImageListUploaded)
+        }
+    }
+
+    setTimeout(function () {
+        loadContentComment();
+        loadContentCommentImage();
+    }, 1000);
+
+    function loadContentComment(page = 1, rate = 0) {
+        if ($("#box_list_bl_box").length > 0) {
+            var arrDataContent = {"data": <?php echo json_encode($detail['id'])?>, "page": page, "rate": rate};
+            $.ajax({
+                url: "<?php echo URL;?>comment/load_comment",
+                type: "POST",
+                data: arrDataContent,
+                dataType: "html",
+                cache: false,
+                success: function (result) {
+                    document.getElementById('box_list_bl_box').innerHTML = result;
+                }
+            });
+        }
+    }
+
+
+    function loadContentCommentModal(page = 1, rate = 0) {
+        if(!$(".item_sort__"+rate).hasClass("active")){
+            $(".item_sort__"+rate).addClass("active");
+        }else{
+            $(".item_sort__"+rate).removeClass("active");
+        }
+        $("#sortRate").val(rate);
+        var arrDataContent = {"data": <?php echo json_encode($detail['id'])?>, "page": page, "rate": rate};
+        $.ajax({
+            url: "<?php echo URL;?>comment/load_comment_ajax",
+            type: "POST",
+            data: arrDataContent,
+            dataType: "html",
+            cache: false,
+            success: function (result) {
+                document.getElementById('box_list_bl_box').innerHTML = result;
+            }
+        });
+    }
+
+    function loadContentCommentImage(page = 1) {
+        if ($("#box_list_bl_box_image").length > 0) {
+            var arrDataContent = {"data": <?php echo json_encode($detail['id'])?>, "page": page};
+            $.ajax({
+                url: "<?php echo URL;?>comment/load_comment_image",
+                type: "POST",
+                data: arrDataContent,
+                dataType: "html",
+                cache: false,
+                success: function (result) {
+                    document.getElementById('box_list_bl_box_image').innerHTML = result;
+                }
+            });
+        }
+    }
+
+    function loadContentData(page) {
+        let rate = $("#sortRate").val();
+        var arrDataContent = {
+            "data": <?php echo json_encode($detail['id'])?>,
+            "page": page,
+            "rate": rate
+        };
+        $.ajax({
+            url: "<?php echo URL;?>comment/load_comment_ajax",
+            type: "POST",
+            data: arrDataContent,
+            success: function (result) {
+                $('#box_list_bl_box').html(result);
+                var elmnt = document.getElementById("mobile-comment-id");
+                elmnt.scrollIntoView();
+                return;
+            }
+        });
+    }
+
+    <?php if(!empty($stringPageNumber)){
+    ?>
+    var container = $('#pagination_data');
+    container.pagination({
+        dataSource: [<?php echo $stringPageNumber; ?>],
+        totalNumber: 120,
+        pageSize: 1,
+        autoHidePrevious: true,
+        autoHideNext: true,
+        pageRange: null,
+        showPageNumbers: true,
+        beforePageOnClick: function (e) {
+            e.preventDefault();
+            var target = e.target || e.srcElement,
+                page = target.textContent || target.innerText;
+            loadContentData(page);
+            return true;
+        },
+        beforeNextOnClick: function (e, args) {
+            var self = this;
+            e.preventDefault();
+            loadContentData(args);
+            return true;
+        },
+        beforePreviousOnClick: function (e, args) {
+            e.preventDefault();
+            loadContentData(args);
+            return true;
+        },
+        className: 'paginationjs-theme-red paginationjs'
+    });
+
+    <?php
+    }
+    ?>
+    $("#box_list_bl_box_image").on("click", function () {
+        $(".show_comment_img").fancybox().trigger('click');
+    });
+
+
+    /*variation*/
+    $(".tier_1_value").on("click", function () {
+        $(".tier_1_value").removeClass("active");
+        $(this).addClass("active");
+        let img_tier = $(this).data("img");
+        let data_tier1 = $(this).data("tier1");
+        $("#tier_1_value").val(data_tier1);
+        let value_tier_1 = $(this).data("tier-value");
+        $("#value_active_tier_1").text(value_tier_1);
+    });
+
+    $(".tier_2_value").on("click", function () {
+        $(".tier_2_value").removeClass("active");
+        $(this).addClass("active");
+        let data_tier2 = $(this).data("tier2");
+        $("#tier_2_value").val(data_tier2);
+        let value_tier_2 = $(this).data("tier-value");
+        $("#value_active_tier_2").text(value_tier_2);
+    });
+    /*variation*/
+</script>
+
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+    window.criteo_q = window.criteo_q || [];
+    window.criteo_q.push(
+        { event: "setAccount", account: 72566 },
+        { event: "setEmail", email: "marketing@japana.vn" },
+        { event: "setSiteType", type: "d" },
+        { event: "viewItem", item: "<?php echo $detail["id"];?>" }
+    );
+</script>

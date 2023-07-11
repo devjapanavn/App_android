@@ -1,0 +1,2612 @@
+<link rel="preload" href="<?php echo URL; ?>assets/opensans/opensans-regular-6.woff2" as="font" crossorigin>
+<link rel="preload" href="<?php echo URL; ?>assets/opensans/opensans-regular-5.woff2" as="font" crossorigin>
+<link rel="preload" href="<?php echo URL; ?>assets/opensans/opensans-regular-7.woff2" as="font" crossorigin>
+<style>
+    .info-detail-2, .other-buy .buy, .box-info .item:last-child .buy, .box-info .item:last-child .title-pro a, .box-info .item:last-child .price, .box-info .info-phone, .title-slide, .txtNumPro, .slider-for .block-sale .sale, .block-sale .sale, .old-price-detail {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400
+    }
+
+    .detail-product .title, .detail-product .info-pro, .detail-product .info-pro span, .all-price span, .all-price .old-price, .ipt-phone input, .all-price .new-price, .promo-intro span, .promo-intro .title-promo, .box-info .title, .box-info .info-phone span, .share span, .normal-text {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600
+    }
+
+    .promo-intro, .promo-intro .price-sale, .box-info, .box-info .item:last-child .box-img, .box-info-bottom, .box-info-bottom .item2, .box-3-icon, .custom-buy, .other-buy .quantity, .other-buy .quantity .btn, .share, .slider-for .block-sale .sale, .block-sale .sale, .ytLoader, .ytLoader .bg-yt, .countdown2 {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .info-detail-2 {
+        margin-top: 4px;
+        text-align: justify
+    }
+
+    .info-detail-2 > h2 > a {
+        color: #bb0029;
+        font-style: italic
+    }
+
+    .info-detail-2 h1, .info-detail-2 h2, .info-detail-2 h3, .info-detail-2 h4 {
+        margin: 0;
+        padding: 0
+    }
+
+    .info-detail-2 h4 {
+        text-align: center !important;
+        margin: 15px 0
+    }
+
+    .info-detail-2 p, .info-detail-2 ul li, {
+        font-weight: 400 !important
+    }
+
+    .info-detail-2 p, .info-detail-2 ul li {
+        margin: 12px 0;
+        font-size: 14px !important;
+        color: #666666 !important
+    }
+
+    .info-detail-2 p span {
+        font-size: 14px !important
+    }
+
+    .info-detail-2 a {
+        text-decoration: underline
+    }
+
+    .info-detail-2 a:hover {
+        color: #ff0000 !important
+    }
+
+    .info-detail-2 ul {
+        margin: 5px 20px;
+        line-height: 1.8;
+        list-style: inside
+    }
+
+    .info-detail-2 h2 strong, .info-detail-2 h3 strong, .info-detail-2 h2, .info-detail-2 h2 span, .info-detail-2 h3, .info-detail-2 h3 span {
+        font-weight: 500 !important
+    }
+
+    .info-detail-2 h2, .info-detail-2 h2 span, .info-detail-2 h3, .info-detail-2 h3 span, .info-detail-2 p, .info-detail-2 ul li, .detail-product .title {
+        line-height: 1.5
+    }
+
+    .info-detail-2 h2, .info-detail-2 h2 span {
+        font-size: 16px !important;
+        color: #333333 !important
+    }
+
+    .info-detail-2 img {
+        max-width: 100% !important;
+        height: auto !important
+    }
+
+    .info-detail-2 h3, .info-detail-2 h3 span {
+        font-size: 15px !important;
+        color: #555555 !important
+    }
+
+    .info-product {
+        width: 440px;
+        float: left
+    }
+
+    .thumb {
+        text-align: center;
+        height: 442px;
+        width: 442px;
+        border: 1px solid #cecece;
+        overflow: hidden;
+        position: relative
+    }
+
+    .thumb img, .slider-nav a, .detail-product .item, .all-price, .ipt-phone, .contact-phone, .box-info-product, .box-info-product .title-top-info, .box-product, .info-detail-product, .side-products, .box-info .item:last-child .title-pro a, .box-info-bottom .item2 .icon-phone, .box-info-bottom .item2 .icon-facebook, .comment iframe, .comment .fb-comments, .icon-play, .icon-promo {
+        display: inline-block
+    }
+
+    .thumb img {
+        height: auto;
+        width: 100%
+    }
+
+    .slider-nav {
+        text-align: center;
+        margin: 20px 0
+    }
+
+    .slider-nav .item, .slider-nav a {
+        width: 90px;
+        height: 90px
+    }
+
+    .slider-nav .item {
+        border: 1px solid #cecece;
+        margin: 0 10px
+    }
+
+    .slider-nav a {
+        text-align: center;
+        padding: 20px
+    }
+
+    .slider-nav a img {
+        width: auto;
+        height: auto
+    }
+
+    .slider-nav img {
+        width: auto;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover
+    }
+
+    .slider-nav .slick-arrow {
+        position: absolute;
+        top: 50%;
+        border: 0;
+        color: #cbcbcb;
+        background: transparent;
+        font-size: 2em
+    }
+
+    .slider-nav .slick-arrow:hover, .slider-nav .slick-arrow:focus, {
+        outline: none
+    }
+
+    .slider-nav .slick-next, .slider-nav .slick-prev {
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%)
+    }
+
+    .slider-nav .slick-next {
+        right: -30px
+    }
+
+    .slider-nav .slick-prev {
+        left: -30px;
+        z-index: 2
+    }
+
+    .detail-product {
+        float: left;
+        width: 430px;
+        padding-left: 23px
+    }
+
+    .detail-product .title {
+        font-size: 20px;
+        color: #2a2a2a;
+        margin-bottom: 0;
+        margin-top: 0
+    }
+
+    .detail-product .info-pro, .detail-product .info-pro span {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .detail-product .info-pro span, .detail-product span {
+        font-weight: 300;
+        color: #999;
+        float: left;
+    }
+
+    .detail-product .item {
+        width: 100%;
+        margin-top: 10px;
+        float: left
+    }
+
+    .detail-product .item .info-pro {
+        width: 100%;
+        line-height: 1.5
+    }
+
+    .detail-product .item .info-pro.width-full {
+        width: 100%
+    }
+
+    .detail-product .item .info-pro:nth-child(even) {
+        border-left: 2px solid #999
+    }
+
+    .detail-product .item .info-pro:nth-child(even) span {
+        padding-left: 22px
+    }
+
+    .detail-product .item .info-pro:first-child {
+        padding-right: 22px
+    }
+
+    .all-price span {
+        color: #333;
+        font-size: 14px;
+        float: left;
+        padding: 11px 0
+    }
+
+    .all-price {
+        width: 100%;
+        margin-bottom: 0;
+        margin-top: 14px
+    }
+
+    .all-price span {
+        padding: 11px 0 0
+    }
+
+    .all-price .old-price {
+        font-weight: 400;
+        font-size: 15px;
+        color: #999;
+        text-decoration: line-through;
+        float: left;
+        padding: 11px 0 0;
+        padding-left: 10px;
+        margin-right: 20px
+    }
+
+    .ipt-phone {
+        position: relative;
+        width: 234px;
+        float: left
+    }
+
+    .ipt-phone input {
+        border-radius: 0;
+        padding-left: 30px;
+        outline: none;
+        font-size: 14px;
+        font-weight: 400;
+        font-style: italic;
+        height: 40px
+    }
+
+    .ipt-phone i {
+        position: absolute;
+        top: 13px;
+        left: 12px;
+        color: #999
+    }
+
+    .all-price .new-price, .promo-intro span {
+        font-size: 20px;
+        color: #bb0029;
+        float: left;
+        padding-top: 7px
+    }
+
+    .all-price .new-price {
+        margin-left: 10px
+    }
+
+    .promo-intro, .box-info .item:last-child .box-img, .box-info-bottom, .box-info-bottom .item2, .box-3-icon, .custom-buy, .other-buy .quantity, .other-buy .quantity .btn, .share, .slider-for .block-sale .sale, .block-sale .sale, .ytLoader .bg-yt {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .promo-intro {
+        padding: 12px 15px;
+        border: 1px solid #cbcbcb;
+        border-left: 3px solid #bb0029;
+        margin-right: 10px;
+        margin-bottom: 10px
+    }
+
+    .promo-intro img {
+        margin-right: 15px;
+        width: 28px
+    }
+
+    .promo-intro .title-promo {
+        font-size: 13px;
+        color: #333;
+        margin-bottom: 0;
+        line-height: 1.5
+    }
+
+    .promo-intro .title-promo img {
+        margin-right: 5px
+    }
+
+    .promo-intro span {
+        font-size: 13px;
+        color: #999;
+        padding-top: 0;
+        float: inherit
+    }
+
+    .other-buy .btn i {
+        font-size: 11px
+    }
+
+    .sale-price span {
+        padding-right: 15px
+    }
+
+    .promo-intro .price-sale {
+        border-bottom: 1px solid #e3e3e3;
+        padding: 9px 0;
+        margin-bottom: 12px
+    }
+
+    .promo-intro .price-sale p {
+        margin-right: 28px
+    }
+
+    .other-buy .buy, .box-info .item:last-child .buy {
+        border: 1px solid #15b02a;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 24px;
+        background: #15b02a;
+        width: 200px;
+        height: 50px
+    }
+
+    .other-buy .buy {
+        margin-left: 40px;
+        border-radius: 4px
+    }
+
+    .custom-buy .buy {
+        font-size: 20px;
+        width: 120px;
+        height: 45px
+    }
+
+    .other-buy .buy:hover, .box-info .item:last-child .buy:hover {
+        background: #fff;
+        border: 1px solid #15b02a;
+        color: #15b02a
+    }
+
+    .box-info .item:last-child .buy {
+        width: 100%;
+        margin-top: 15px
+    }
+
+    .box-info .item:last-child .buy {
+        font-size: 20px;
+        height: 45px
+    }
+
+    .box-info-product {
+        width: 100%;
+        margin-top: 15px
+    }
+
+    .box-info-product .title-top-info {
+        width: 100%;
+        border-bottom: 1px solid #cbcbcb;
+        padding: 5px 0
+    }
+
+    .box-info-product .title-top-info span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #bb0029;
+        border-bottom: 2px solid #bb0029;
+        padding: 2px 0
+    }
+
+    .box-product {
+        width: 870px;
+        margin-bottom: 40px
+    }
+
+    .box-info, .box-info-bottom, .box-3-icon {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+    }
+
+    .box-info {
+        width: 100%;
+        margin: 15px 0
+    }
+
+    .box-info .title {
+        font-size: 18px;
+        color: #bb0029;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 7px
+    }
+
+    .box-info .item:first-child {
+        width: 650px;
+        float: left
+    }
+
+    .box-info .item:last-child {
+        width: 200px;
+        height: 332px;
+        float: left;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+        padding: 15px
+    }
+
+    .box-info .item:last-child .box-img, .other-buy .quantity, .other-buy .quantity .btn, .block-sale .sale, .slider-for .block-sale .sale, .ytLoader .bg-yt {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+    }
+
+    .box-info .item:last-child .box-img {
+        width: 100%;
+        position: relative
+    }
+
+    .box-info .item:last-child .box-img a {
+        display: block;
+        width: 156px;
+        height: 156px
+    }
+
+    .box-info .item:last-child .box-img img {
+        width: 100%;
+        height: auto
+    }
+
+    .box-info .item:last-child .title-pro {
+        margin-bottom: 0;
+        line-height: 1.5
+    }
+
+    .box-info .item:last-child .title-pro a {
+        font-size: 14px;
+        color: #2a2a2a;
+        text-align: center;
+        width: 100%
+    }
+
+    .box-info .item:last-child .title-pro a:hover {
+        color: #bb0029
+    }
+
+    .box-info .item:last-child .price {
+        font-weight: 500;
+        font-size: 16px;
+        color: #bb0029;
+        text-align: center;
+        margin: 5px 0
+    }
+
+    .box-info .item:last-child .buy {
+        font-size: 20px;
+        height: 40px;
+        border-radius: 4px;
+        margin-top: 4px;
+    }
+
+    .box-info .info-phone, .box-info-bottom .item2:last-child {
+        font-weight: 500;
+        color: #bb0029;
+        font-size: 14px;
+    }
+
+    .box-info .info-phone {
+        text-align: center;
+        display: -ms-grid;
+        display: grid
+    }
+
+    .box-info .info-phone span {
+        width: 100%;
+        margin: 0 0 7px 0
+    }
+
+    .box-info .info-phone span {
+        color: #333;
+        font-size: 14px
+    }
+
+    .box-info-bottom {
+        margin-top: 16px
+    }
+
+    .icon-detail-1 {
+        background-position: -580px -92px;
+        width: 122px;
+        height: 115px;
+        display: inline-block
+    }
+
+    .icon-detail-2 {
+        background-position: -715px -91px;
+        width: 130px;
+        height: 115px;
+        display: inline-block
+    }
+
+    .icon-detail-3 {
+        background-position: -865px -93px;
+        width: 130px;
+        height: 115px;
+        display: inline-block
+    }
+
+    .box-info-bottom .item2:first-child a {
+        color: #0c53c7;
+        border-bottom: 1px solid #0c53c7
+    }
+
+    .box-info-bottom .item2 .icon-phone, .box-info-bottom .item2 .icon-facebook {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px
+    }
+
+    .box-info-bottom .item2 .icon-facebook {
+        background-position: -94px -135px
+    }
+
+    .box-info-bottom .item2 .icon-phone {
+        background-position: -186px -12px
+    }
+
+    .title-slide {
+        font-size: 18px;
+        color: #2a2a2a;
+        border-bottom: 2px solid #bb0029;
+        padding-bottom: 4px
+    }
+
+    .detail-pro {
+        width: 870px;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .other-buy {
+        padding: 10px 0 15px
+    }
+
+    .custom-buy {
+        padding-bottom: 14px
+    }
+
+    .other-buy .quantity {
+        border: 1px solid #cbcbcb
+    }
+
+    .other-buy .quantity {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        border-radius: 4px
+    }
+
+    .other-buy .quantity .btn {
+        color: #cbcbcb;
+        width: 31px;
+        height: 31px;
+        background: #fff;
+        border-radius: 4px;
+        font-size: 20px
+    }
+
+    .other-buy .quantity .btn:hover {
+        color: #fff;
+        background: #cbcbcb;
+        border-radius: 0
+    }
+
+    .txtNumPro {
+        width: 40px;
+        height: 31px;
+        font-size: 18px;
+        color: #2a2a2a;
+        text-align: center;
+        border: 0;
+        padding: 7px 0;
+        border-right: 1px solid #cbcbcb;
+        border-left: 1px solid #cbcbcb
+    }
+
+    .share {
+        margin: 15px 0
+    }
+
+    .share span {
+        font-size: 14px;
+        color: #333;
+        float: left;
+        margin-right: 17px;
+        text-decoration: underline
+    }
+
+    button:focus {
+        outline: 0
+    }
+
+    .social-side {
+        height: 220px;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        margin-top: 30px;
+        -webkit-perspective: 1000px;
+        perspective: 1000px
+    }
+
+    .social-side li a {
+        display: block;
+        width: 40px;
+        background: #222;
+        border-bottom: 1px solid #ccc;
+        font: normal normal normal 16px/20px 'FontAwesome', 'Source Sans Pro', Helvetica, Arial, sans-serif;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+        padding: 10px;
+        text-decoration: none;
+        text-align: center;
+        -webkit-transition: background .5s ease .300ms;
+        -o-transition: background .5s ease .300ms;
+        transition: background .5s ease .300ms
+    }
+
+    .social-side li:first-child a {
+        background: #dd4b39
+    }
+
+    .social-side li:nth-child(2) a {
+        background: #3b5998
+    }
+
+    .social-side li a:hover {
+        background: #ccc
+    }
+
+    .social-side li a span {
+        width: 100px;
+        float: left;
+        text-align: center;
+        background: #ccc;
+        color: #000;
+        margin: -25px 74px;
+        padding: 8px;
+        -webkit-transform-origin: 0;
+        -ms-transform-origin: 0;
+        transform-origin: 0;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transform: rotateY(45deg);
+        transform: rotateY(45deg);
+        -webkit-transition: all .5s ease .300ms;
+        -o-transition: all .5s ease .300ms;
+        transition: all .5s ease .300ms
+    }
+
+    .social-side li span:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: -20px;
+        top: 7px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid #ccc;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid transparent
+    }
+
+    .social-side li a:hover span {
+        visibility: visible;
+        opacity: 1;
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0)
+    }
+
+    .slider-for, .slider-nav {
+        display: none
+    }
+
+    .slider-for .block-sale, .slider-for .block-sale2 {
+        position: absolute;
+        top: 0;
+        right: 0
+    }
+
+    .slider-for .block-sale {
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 0;
+        text-align: right;
+        padding-left: 0
+    }
+
+    .slider-for .block-sale2 {
+        bottom: 0;
+        left: 0;
+        top: auto;
+        right: auto;
+        padding: 10px;
+        padding-right: 0;
+        padding-top: 0;
+        width: 100%;
+        text-align: left
+    }
+
+    .slider-for .block-sale3 {
+        top: 0;
+        left: 0;
+        right: auto;
+        text-align: left;
+        position: absolute;
+        padding-left: 10px;
+        padding-top: 10px
+    }
+
+    .slider-for .block-sale .sale {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 60px;
+        height: 60px
+    }
+
+    .slider-for .block-sale2, .slider-for .block-sale {
+        width: 70px;
+        height: 70px
+    }
+
+    .slider-for .block-sale3 {
+        width: auto;
+        max-height: 70px
+    }
+
+    .slider-for .block-sale img, .slider-for .block-sale2 img {
+        height: auto;
+        width: 100%
+    }
+
+    .slider-for .block-sale3 img {
+        max-height: 60px;
+        width: auto
+    }
+
+    .block-sale, .block-sale2 {
+        position: absolute;
+        top: 0;
+        right: 0
+    }
+
+    .block-sale {
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 0;
+        text-align: right;
+        padding-left: 0
+    }
+
+    .block-sale2 {
+        bottom: 0;
+        left: 0;
+        top: auto;
+        right: auto;
+        padding: 10px;
+        padding-right: 0;
+        padding-top: 0;
+        width: 100%;
+        text-align: left
+    }
+
+    .block-sale3 {
+        top: 0;
+        left: 0;
+        right: auto;
+        text-align: left;
+        position: absolute;
+        padding-left: 10px;
+        padding-top: 10px
+    }
+
+    .block-sale .sale {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px
+    }
+
+    .block-sale2 {
+        width: 55px;
+        height: 55px
+    }
+
+    .block-sale3 {
+        width: auto;
+        max-height: 55px
+    }
+
+    .block-sale {
+        width: 60px;
+        height: 60px
+    }
+
+    .block-sale img, .block-sale2 img {
+        height: auto;
+        width: 100%
+    }
+
+    .box-info .block-sale3 img {
+        max-height: 50px;
+        width: auto !important
+    }
+
+    .old-price-detail {
+        font-size: 14px;
+        text-decoration: line-through;
+        color: #666;
+        margin-bottom: 5px
+    }
+
+    .comment iframe, .comment .fb-comments {
+        width: 100% !important
+    }
+
+    .comment span {
+        min-width: 100%
+    }
+
+    .normal-text {
+        line-height: 1.7;
+        font-weight: 500;
+        color: #000;
+        font-size: 12px;
+        border: 1px solid #bb0029;
+        padding: 10px 15px;
+        border-radius: 4px;
+        text-align: justify;
+        margin-top: 10px
+    }
+
+    .ytLoader {
+        position: relative;
+        cursor: pointer;
+        width: 800px;
+        height: 450px;
+        margin: 0 auto
+    }
+
+    .ytLoader > img.cover {
+        width: 100%;
+        height: auto;
+        -o-object-fit: cover;
+        object-fit: cover
+    }
+
+    .ytLoader .bg-yt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .5);
+        width: 100%;
+        height: 100%
+    }
+
+    .icon-play {
+        background-position: 0 -259px;
+        width: 80px;
+        height: 79px;
+        opacity: .7
+    }
+
+    .icon-promo {
+        background-position: 0 -232px;
+        width: 28px;
+        height: 25px
+    }
+
+    .countdown2 {
+        -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+        align-items: baseline;
+        margin: 15px 0
+    }
+
+    .item-time {
+        margin: 0 5px
+    }
+
+    .item-time p {
+        color: red;
+        font-size: 14px
+    }
+
+    .time-icon {
+        background: url("<?php echo URL;?>assets/images/Alarm.png") left no-repeat;
+        background-size: auto;
+        background-size: auto;
+        background-size: 20px;
+        padding-left: 27px;
+        line-height: 20px
+    }
+
+    .box-info .item:last-child .all-price {
+        height: 50px;
+        margin-top: 5px;
+    }
+
+    #box-usually-purchased{
+        display: inline-block;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .box-images {
+        -webkit-border-radius: 14px;
+        -moz-border-radius: 14px;
+        -o-border-radius: 14px;
+        -ms-border-radius: 14px;
+        padding: 3px 0px;
+        border: 1px solid #90949c;
+        width: 100px;
+        float: left;
+        margin-bottom: 20px;
+    }
+    .box-images a img{
+        width: 100%;
+        height: 100px;
+        padding: 5px;
+    }
+
+    .plus-purchased {
+        width: 7%;
+        float: left;
+        font-size: 25px;
+        padding: 5px;
+        color: #7b7b7b;
+        position: relative;
+        top: 45px;
+        left: 18px;
+    }
+
+    /*css popup cart*/
+    .add-to-cart-success {
+        position: absolute;
+        width: 370px;
+        top: 80px;
+        left: 935px;
+        display: none;
+        background: #fff;
+        z-index: 999;
+        box-shadow: 0 3px 3px rgba(0,0,0,.35);
+        border-radius: 3px;
+    }
+    .panel-default>.panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
+
+    .main-bar-right img {
+        height: 24px;
+        margin-right: 5px;
+        object-fit: contain;
+    }
+
+    .panel-default {
+        border-color: #ddd;
+    }
+
+    .panel {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+
+    .panel-default>.panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
+        height: 40px;
+    }
+    .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .add-to-cart-success .close {
+        width: 12px;
+        height: 22px;
+        display: inline-block;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        cursor: pointer;
+        float: none;
+        opacity: .5;
+    }
+
+    .close {
+        float: right;
+        font-size: 21px;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .2;
+    }
+
+    .panel-body {
+        padding: 15px;
+    }
+
+    .minicar-body {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    #justAddedImage {
+        object-fit: contain;
+        width: 86px;
+        height: 86px;
+    }
+
+    .minicar-content {
+        font-size: 12px;
+        color: #777;
+    }
+
+    #justAddedTitle {
+        font-size: 15px;
+        line-height: 17px;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        padding-left: 10px;
+    }
+
+    .justAddedPrice {
+        font-size: 19px;
+        color: #bb0029  !important;
+        font-weight: 700 !important;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 3px;
+        padding: 10px 0;
+    }
+
+    /*.justAddedPrice::after {*/
+    /*    content: "₫";*/
+    /*    font-size: 15px;*/
+    /*    font-weight: 400;*/
+    /*    margin: 0 0 0 2px;*/
+    /*}*/
+
+    .justAddedTotal {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 7px -15px;
+        padding: 7px 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .justAddedTotal .btn-popup-goto-cart {
+        padding: 0 10px 0 10px;
+        background: #fbbf06;
+        padding: 0 15px 0 15px;
+        margin-left: auto;
+    }
+
+    .justAddedTotal .btn-popup-goto-cart:hover {
+        color: white;
+    }
+
+    .btn-mua-hang {
+        border: medium none;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: .5px;
+        line-height: 35px;
+        padding: 0 15px 0 40px;
+        text-align: center;
+        vertical-align: top;
+        white-space: nowrap;
+        text-transform: uppercase;
+        margin: 0 5px 0 3px;
+    }
+
+    .justAddedTotal .justAddedPrice {
+        margin: 0 5px;
+    }
+
+    .minicart-group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .minicart-group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .item-cart-popup {
+        padding-top: 8px;
+    }
+
+    .item-cart-popup {
+        width: 33%;
+        padding: 7px;
+    }
+
+    .item-cart-popup .title-box {
+        font-size: 11px;
+        line-height: 13px!important;
+        padding-top: 8px;
+    }
+
+    .item-cart-popup .title-line {
+        height: 26px;
+        display: -webkit-box;
+        overflow: hidden;
+        line-height: 13px!important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
+    }
+
+    .item-cart-popup img {width: 100%}
+
+    #boughtTogetherBox {
+        display: block;
+        clear: both;
+        font-size: 15px;
+        margin: 0 -15px;
+        padding: 7px 15px 0;
+        border-top: 1px solid #eee;
+    }
+
+
+    .buy {
+        font-size: 16px !important;
+    }
+
+    #push-to-cart , #push-to-cart-all{
+        background: #fbbf06;
+        border: 1px solid #fbbf06;
+        color: #fff;
+        font-size: 15px;
+        width: 120px;
+        height: 45px;
+        margin-left: 15px;
+        border-radius: 4px;
+    }
+    #push-to-cart:hover , #push-to-cart-all:hover{ background-color: #fff;color: #fbbf06  }
+
+    #push-to-cart-all{
+        width: 200px !important;
+        margin-top: 20px;
+    }
+
+    #title-bought-together-total{
+        margin-left: 14px;
+        font-size: 19px;
+        float: left;
+    }
+
+    #bought-together-price-total{
+        color: #bb0029;
+        font-size: 20px;
+        float: left;
+        width: 88%;
+        padding-left: 10px;
+    }
+
+    .product-name-bought-together{
+        padding-top: 5px;
+    }
+    .price-bought-together{
+        color: #bb0029;
+    }
+
+    .minicar-content .all-price{
+        margin-top: 0px!important;
+    }
+
+    #cartPopup {
+        display: none;
+        position: fixed;
+        border: 1px solid rgb(158, 158, 158);
+    }
+
+</style>
+<?php
+
+if (!empty($detail["images"])) {
+    $array = explode("-", $detail["images"]);
+    $time = date("Y/m/d", $array[0]) . "/";
+    $url_image = PATH_IMAGE_PRO . $time . $detail["images"];
+    $url_image_168 = PATH_IMAGE_PRO . $time . "168x168-" . $detail["images"];
+    $img_product["images"] = $detail["images"];
+} else {
+    $url_image = "";
+}
+$price_promotion = "";
+$hienthi = 0;
+$text_qt = "";
+$images_qt = "";
+if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) {
+    if (!empty($detail["text_pt"])) {
+        $price_promotion = $detail["price"] - ($detail["text_pt"] * $detail["price"] / 100);
+    }
+    if (!empty($detail["text_vnd"])) {
+        $price_promotion = $detail["price"] - $detail["text_vnd"];
+        $hienthi = 1;
+    }
+}
+?>
+<div class="box-product detail-pro">
+    <div itemscope itemtype="http://schema.org/Product" class="info-detail-product">
+        <div class="info-product">
+            <?php if (!empty($detail["multi_images"])) { ?>
+                <div class="slider-for">
+                    <?php
+                    foreach ($detail["multi_images"] as $value) {
+                        $array = explode("-", $value["images"]);
+                        $time = date("Y/m/d", $array[0]) . "/";
+                        $images = PATH_IMAGE_PRO . $time . $value["images"];
+                        ?>
+                        <div class="thumb">
+                            <img data-lazy="<?php echo $images; ?>" alt="<?php echo $detail["name_vi"]; ?>"/>
+                            <link itemprop="image" href="<?php echo $images; ?>"/>
+                            <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                                <?php if (!empty($detail["text_pt"])) { ?>
+                                    <div class="block-sale">
+                                        <img src="<?php echo $km_images; ?>" alt="hình">
+                                        <span class="sale">-<?php echo $detail["text_pt"] ?>%</span>
+                                    </div>
+                                <?php } ?>
+
+                                <?php if (!empty($detail["text_qt"])) { ?>
+                                    <div class="block-sale2">
+                                        <img src="<?php echo $km_images_qt; ?>" alt="hình">
+                                    </div>
+                                    <?php
+                                    $text_qt = $detail["text_qt"];
+                                    $images_qt = $km_images_qt;
+                                    ?>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                                <?php if (!empty($list_product[$detail["id"]])) { ?>
+                                    <div class="block-sale3">
+                                        <img src="<?php echo $list_product[$detail["id"]]; ?>" alt="hình">
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                    <?php }
+                    ?>
+                </div>
+                <?php if (count($detail["multi_images"]) >= 2) { ?>
+                    <div class="slider-nav">
+                        <?php
+                        foreach ($detail["multi_images"] as $value) {
+                            ?>
+                            <?php
+                            $array = explode("-", $value["images"]);
+                            $time = date("Y/m/d", $array[0]) . "/";
+                            $images = PATH_IMAGE_PRO . $time . $value["images"];
+                            ?>
+                            <div class="item">
+                                <img data-lazy="<?php echo $images; ?>"/>
+                                <link itemprop="image" href="<?php echo $images; ?>"/>
+                            </div>
+                        <?php }
+                        ?>
+                    </div>
+                <?php } ?>
+            <?php } else { ?>
+                <div class="slider-for">
+                    <div class="thumb">
+                        <link itemprop="image" href="<?php echo $url_image; ?>"/>
+                        <img alt="<?php echo $detail["name_vi"]; ?>" src="<?php echo $url_image; ?>">
+                        <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                            <?php if (!empty($detail["text_pt"])) { ?>
+                                <div class="block-sale">
+                                    <img src="<?php echo $km_images; ?>" alt="hình">
+                                    <span class="sale">-<?php echo $detail["text_pt"] ?>%</span>
+                                </div>
+                            <?php } ?>
+
+                            <?php if (!empty($detail["text_qt"])) { ?>
+                                <div class="block-sale2">
+                                    <img src="<?php echo $km_images_qt; ?>" alt="hình">
+                                </div>
+                                <?php
+                                $text_qt = $detail["text_qt"];
+                                $images_qt = $km_images_qt;
+                                ?>
+                            <?php } ?>
+                        <?php } ?>
+                        <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                            <?php if (!empty($list_product[$detail["id"]])) { ?>
+                                <div class="block-sale3">
+                                    <img src="<?php echo $list_product[$detail["id"]]; ?>" alt="hình">
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="detail-product">
+            <h1 itemprop="name" class="title"><?php echo $detail["name_vi"]; ?></h1>
+            <p style="display:none;"><?php echo $detail["sku"]; ?></p>
+            <div itemprop="mpn" class="item">
+                <p class="info-pro"><span>Mã sản phẩm: </span><span
+                            style="font-family: 'Open Sans',sans-serif;font-weight: 600;font-size: 14px;color: #333;text-transform:uppercase;"><?php echo $detail["sku"]; ?></span>
+                </p>
+            </div>
+            <?php if (!empty($detail["brand"])) { ?>
+                <div itemprop="brand" class="item">
+                    <p class="info-pro width-full"><span>Thương hiệu: </span>
+                        <a href="<?php echo URL . $detail["slug"] . "-brand.jp"; ?>"
+                           title="<?php echo $detail["brand"]; ?>" style="font-weight: 600; color: #333;">
+                            <?php echo $detail["brand"]; ?>
+                        </a>
+                    </p>
+                </div>
+            <?php } else { ?>
+                <div itemprop="brand" class="item">
+                    <p style="display: none;" class="info-pro width-full"><span>Thương hiệu: </span>
+                        <a href="#" title="Japana" style="font-weight: 600; color: #333;">
+                            Japana
+                        </a>
+                    </p>
+                </div>
+            <?php } ?>
+            <?php if (!empty($detail["country"])) { ?>
+                <div class="item">
+                    <p class="info-pro"><span>Xuất xứ: </span><?php echo $detail["country"]; ?></p>
+
+                </div>
+                <?php
+                $id_madein = $obj_country->getCountry($detail["id_madein"])['name'];
+                if (!empty($id_madein)) {
+                    ?>
+                    <div class="item">
+                        <p class="info-pro">
+                            <span>Sản xuất tại: </span><?php echo $obj_country->getCountry($detail["id_madein"])['name']; ?>
+                        </p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+            <?php if (!empty($detail["style"])) { ?>
+                <div class="item">
+                    <p class="info-pro"><span>Quy cách: </span><?php echo $detail["style"]; ?></p>
+                </div>
+            <?php } ?>
+			<article itemscope itemtype="http://schema.org/Review">
+				<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Product">
+					<h1 itemprop="name"><?php echo $detail["name_vi"]; ?></h1>
+				</div>
+			</article>
+            <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
+                <link itemprop="url" href="https://japana.vn<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
+                <meta itemprop="availability" content="https://schema.org/InStock"/>
+                <meta itemprop="priceCurrency" content="VND"/>
+                <meta itemprop="priceValidUntil" content="2020-11-05"/>
+                <div class="all-price">
+                    <span>Giá: </span>
+                    <?php if (intval($hienthi) > 0) { ?>
+                        <p class="old-price"><?php echo $price = number_format($detail["price"], "0", ",", "."); ?>đ</p>
+                        <p itemprop="price" style="display:none;"><?php echo intval($price_promotion); ?></p>
+                        <p class="new-price"> <?php echo number_format(intval($price_promotion), "0", ",", "."); ?>đ</p>
+                    <?php } else { ?>
+                        <p itemprop="price" style="display:none;"><?php echo $detail["price"]; ?></p>
+                        <p class="new-price"><?php echo $price = number_format($detail["price"], "0", ",", "."); ?>đ</p>
+                    <?php } ?>
+                </div>
+            </div>
+            <div itemprop="aggregateRating" itemtype="http://schema.org/AggregateRating" itemscope>
+                <meta itemprop="reviewCount" content="89"/>
+                <meta itemprop="ratingValue" content="4.4"/>
+            </div>
+            <meta itemprop="description" content="<?php echo $detail["notes_vi"]; ?>"/>
+            <div itemprop="review" itemtype="http://schema.org/Review" itemscope>
+                <div itemprop="author" itemtype="http://schema.org/Person" itemscope>
+                    <meta itemprop="name" content="Japana"/>
+                </div>
+                <div itemprop="reviewRating" itemtype="http://schema.org/Rating" itemscope>
+                    <meta itemprop="ratingValue" content="4"/>
+                    <meta itemprop="bestRating" content="5"/>
+                </div>
+            </div>
+            <meta itemprop="sku" content="<?php echo $detail["sku"]; ?>"/>
+            <?php
+            if ($detail["status_product"] == 1
+                && $detail["show_timeline"] == 1
+                && strtotime($detail["date_start"]) <= strtotime(date("y-m-d"))
+                && strtotime($detail["date_end"]) > strtotime(date("y-m-d"))) {
+                $time_end = strtotime($detail["date_end"]);
+                ?>
+                <div class="time-icon countdown2 countdown1"
+                     data-promodate="<?php echo date("Y-m-d H:i:s", $time_end); ?>">
+                    Khuyến mãi còn:
+                    <div class="item-time"><p class="time-new">00</p></div>
+                    <span style="color: red; margin-right: -5px;">ngày</span>
+                    <div class="item-time"><p class="time-new">00</p></div>
+                    <b style="color: red">:</b>
+                    <div class="item-time"><p class="time-new">00</p></div>
+                    <b style="color: red">:</b>
+                    <div class="item-time"><p class="time-new">00</p></div>
+                </div>
+            <?php } ?>
+            <div class="other-buy custom-buy">
+                <?php
+                if ($detail['status_num'] == 1) {
+                    ?>
+                    <div class="quantity">
+                        <button title="bớt" class="sub-qty btn"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        <input id="sl" type="text" name="qty" value="1" class="txtNumPro">
+                        <button title="thêm" class="add-qty btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+
+
+                    <button onclick="addCart(
+                            '<?php echo $detail["id"] ?>',
+                            1,
+                            '<?php echo $url_image_168; ?>',
+                            '<?php echo addslashes($detail["name_vi"]); ?>',
+                            '<?php
+                    if (intval($price_promotion) > 0) {
+                        echo $price_promotion;
+                    } else {
+                        echo $detail["price"];
+                    }
+                    ?>',
+                            '<?php echo $url; ?>',
+                            '<?php echo $detail["sku"];; ?>',
+                            '<?php echo $detail["kg"]; ?>'
+                    <?php if (!empty($text_qt)) {
+                        echo ",'" . $text_qt . "'";
+                    } ?>
+                    <?php if (!empty($images_qt)) {
+                        echo ",'" . $images_qt . "'";
+                    } ?> )" type="button" class="muahang buy convert-background-color-15B02A">Mua ngay
+                    </button>
+
+                    <button id="push-to-cart"
+                            data-id="<?= $detail["id"] ?>"
+                            data-image="<?= $url_image_168 ?>"
+                            data-name="<?= addslashes($detail["name_vi"]) ?>"
+                            data-price_market="<?php
+                            if (intval($price_promotion) > 0) {
+                                echo $price_promotion;
+                            } else {
+                                echo $detail["price"];
+                            }
+                            ?>"
+                            data-url="<?php echo $url; ?>"
+                            data-sku="<?php echo $detail["sku"]; ?>"
+                            data-kg="<?php echo $detail["kg"]; ?>"
+                            data-text_qt="<?= $text_qt ? $text_qt : '';?>"
+                            images_qt="<?= $images_qt ? $images_qt : '';?>"
+                    >
+                       THÊM VÀO GIỎ
+                    </button>
+
+
+                <?php } else { ?>
+                    <p style="color:red; line-height: 1.5;">* Tạm hết hàng, vui lòng để lại số điện thoại, nhận thông
+                        tin ngay khi có hàng.</p>
+                <?php } ?>
+            </div>
+
+
+
+
+            <?php if (!empty($list_pro)) { ?>
+                <?php foreach ($list_pro as $key => $value) { ?>
+                    <?php if (!empty($value["description"])) { ?>
+                        <div class="promo-intro">
+                            <i class="box-icon-all2 icon-promo"></i>
+                            <p class="title-promo">
+                                <?php echo $value["description"]; ?>
+                            </p>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+            <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                <?php if (!empty($detail["mota"])) { ?>
+                    <div class="promo-intro">
+                        <i class="box-icon-all2 icon-promo"></i>
+                        <p class="title-promo">
+                            <?php echo $detail["mota"]; ?>
+                        </p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+            <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                <?php if (!empty($detail["mota_k"])) { ?>
+                    <div class="promo-intro">
+                        <i class="box-icon-all2 icon-promo"></i>
+                        <p class="title-promo">
+                            <?php echo $detail["mota_k"]; ?>
+                        </p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+    </div>
+
+    <?php if ($listProductInCategory) : $count = 1; ?>
+        <div class="box-info-product">
+            <p class="title-top-info">
+                <span class="color-man">Sản Phẩm Gợi Ý</span>
+            </p>
+                <div id="box-usually-purchased">
+
+                    <?php
+                    $max = count($listProductInCategory);
+                    foreach ($listProductInCategory as $key => $value) :
+                        $url = URL . $value["slug_vi"] . "-sp-" . $value["id_product_in_category"]; ?>
+                        <?php
+                        if(!empty($value["images"])){
+                            $array = explode("-", $value["images"]);
+                            $time = date("Y/m/d",$array[0])."/";
+                            $images = PATH_IMAGE_PRO.$time."268x268-".$value["images"];
+                        }else{
+                            $images = "";
+                        }
+                        ?>
+
+                        <div class="box-images">
+                            <a href="<?= $url ?>" title="<?= $value["name_vi"] ?>" class="image ">
+                                <img src="<?php echo $images;?>" alt="<?= $value["name_vi"] ?>">
+                            </a>
+                        </div>
+
+                        <?php if($count < $max) : ?>
+                        <p class="plus-purchased">+</p>
+                    <?php endif; ?>
+
+                        <?php $count++;endforeach; ?>
+                </div>
+
+                <div class="item-bought-together box-check">
+                    <?php foreach ($listProductInCategory as $key => $value) : ?>
+
+                        <label class="check-custom">
+                            <p class="product-name-bought-together">
+                                <?= $value["name_vi"] ?>
+                            </p>
+                            <p class="price-bought-together"><?= number_format($value["price"], "0", ",", "."); ?>đ </p>
+                            <input type="checkbox" name="" id="product-<?= $value["id_product_in_category"] ?>" data-id="<?= $value["id_product_in_category"] ?>" data-price="<?= $value["price"] ?>" class="checkbox-bought-together" checked>
+                            <span class="checkmark"></span>
+                        </label>
+
+                    <?php endforeach; ?>
+                </div>
+
+                <div id="box-bought-together-total">
+                    <span id="title-bought-together-total">Tổng tiền: </span>
+                    <p id="bought-together-price-total"> <?= number_format($purchaseTotalPrice, "0", ",", "."); ?> đ </p>
+                    <br />
+                    <button
+                        id="push-to-cart-all"
+                        data-id="<?= $detail["id"] ?>"
+                        data-image="<?= $url_image_168 ?>"
+                        data-name="<?= addslashes($detail["name_vi"]) ?>"
+                        data-price_market="<?php
+                        if (intval($price_promotion) > 0) {
+                            echo $price_promotion;
+                        } else {
+                            echo $detail["price"];
+                        }
+                        ?>"
+                        data-url="<?php echo $url; ?>"
+                        data-sku="<?php echo $detail["sku"]; ?>"
+                        data-kg="<?php echo $detail["kg"]; ?>"
+                        data-text_qt="<?php if (!empty($text_qt)) {
+                            echo "'" . $text_qt . "'";
+                        } ?>"
+
+                        images_qt="<?php if (!empty($images_qt)) {
+                            echo "'" . $images_qt . "'";
+                        } ?>"
+
+                    >
+                        THÊM CẢ VÀO GIỎ HÀNG
+                    </button>
+                </div>
+
+                <input type="hidden" id="purchase-total-price" value="<?= $purchaseTotalPrice ?>">
+        </div>
+    <?php endif; ?>
+
+    <div class="box-info-product">
+        <p class="title-top-info">
+            <span class="color-man">Chi Tiết Sản Phẩm</span>
+        </p>
+        <div id="thongtin" class="tab-pane fade in active">
+            <?php if (!empty($detail["desc_vi"])) { ?>
+                <div class="info-detail-2">
+                    <?php echo $detail["desc_vi"]; ?>
+                </div>
+            <?php } ?>
+            <div class="box-info">
+                <div class="item">
+                    <div class="box-3-icon">
+                        <div class="item2">
+                            <i class="box-icon-all icon-detail-1"></i>
+                            <p class="info-phone"><span>Chính hãng</span>100%</p>
+                        </div>
+                        <div class="item2">
+                            <i class="box-icon-all icon-detail-2"></i>
+                            <p class="info-phone"><span>Miễn phí đổi trả</span>LÊN ĐẾN 90 NGÀY</p>
+                        </div>
+                        <div class="item2">
+                            <i class="box-icon-all icon-detail-3"></i>
+                            <p class="info-phone"><span>Giao hàng</span>NHANH CHÓNG</p>
+                        </div>
+                    </div>
+                    <div class="normal-text">
+                        <p>* Bạn có thể mua hàng ngay tại website bằng cách nhấn vào nút Mua Ngay, hoặc liên hệ với
+                            chúng tôi qua các thông tin bên dưới.</p>
+                        <p>* JAPANA.VN cam kết bán hàng chính hãng từ Nhật Bản. Những thông tin bên trên được nhà sản
+                            xuất đưa ra, các sản phẩm làm đẹp và sức khỏe tùy vào cơ địa của mỗi khách hàng sẽ có hiệu
+                            quả tương thích.</p>
+                        <p>* Mẫu mã của sản phẩm có thể được thay đổi khi bạn mua hàng.</p>
+                    </div>
+                    <div class="box-info-bottom">
+                        <div class="item2">
+                            <i class="box-icon-all icon-facebook"></i>
+                            <a rel="nofollow" href="https://www.facebook.com/japana.sieuthinhat/">
+                                https://www.facebook.com/japana.sieuthinhat/
+                            </a>
+                        </div>
+                        <div class="item2">
+                            <i class="box-icon-all icon-phone"></i>
+                            (028) 7108 8889 - 0935 600 800
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box-img">
+                        <a href="#" title="<?php echo $detail["name_vi"]; ?>">
+                            <img src="<?php echo $url_image_168; ?>" alt="<?php echo $detail["name_vi"]; ?>">
+                        </a>
+                        <?php if ($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))) { ?>
+                            <?php if (!empty($detail["text_pt"])) { ?>
+                                <div class="block-sale">
+                                    <img src="<?php echo $km_images; ?>" alt="hình">
+                                    <span class="sale">-<?php echo $detail["text_pt"] ?>%</span>
+                                </div>
+                            <?php } ?>
+
+                            <?php if (!empty($detail["text_qt"])) { ?>
+                                <div class="block-sale2">
+                                    <img src="<?php echo $km_images_qt; ?>" alt="hình">
+                                </div>
+                                <?php
+                                $text_qt = $detail["text_qt"];
+                                $images_qt = $km_images_qt;
+                                ?>
+                            <?php } ?>
+                        <?php } ?>
+                        <?php if ($detail["status_product_k"] == 1 && strtotime($detail["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                            <?php if (!empty($list_product[$detail["id"]])) { ?>
+                                <div class="block-sale3">
+                                    <img src="<?php echo $list_product[$detail["id"]]; ?>" alt="hình">
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                    <p class="title-pro">
+                        <a href="<?= $url ?>"
+                           title="<?php echo $detail["name_vi"]; ?>"><?php echo $this->CutString($detail["name_vi"], 40); ?></a>
+                    </p>
+                    <div class="all-price">
+                        <?php if (intval($hienthi) > 0) { ?>
+                            <p itemprop="price"
+                               class="price"> <?php echo number_format(intval($price_promotion), "0", ",", "."); ?>đ</p>
+                            <p itemprop="price"
+                               class="old-price-detail"><?php echo $price = number_format($detail["price"], "0", ",", "."); ?>
+                                đ</p>
+                        <?php } else { ?>
+                            <p class="price"><?php echo $price = number_format($detail["price"], "0", ",", "."); ?>đ</p>
+                        <?php } ?>
+                    </div>
+                    <?php
+                    if ($detail['status_num'] == 1) {
+                        ?>
+                        <button onclick="addCart(
+                                '<?php echo $detail["id"] ?>',
+                                1,
+                                '<?php echo $url_image_168; ?>',
+                                '<?php echo addslashes($detail["name_vi"]); ?>',
+                                '<?php
+                        if (intval($price_promotion) > 0) {
+                            echo $price_promotion;
+                        } else {
+                            echo $detail["price"];
+                        }
+                        ?>',
+                                '<?php echo $url; ?>',
+                                '<?php echo $detail["sku"];; ?>',
+                                '<?php echo $detail["kg"]; ?>'
+                        <?php if (!empty($text_qt)) {
+                            echo ",'" . $text_qt . "'";
+                        } ?>
+                        <?php if (!empty($images_qt)) {
+                            echo ",'" . $images_qt . "'";
+                        } ?>
+                                )" type="button" class="muahang buy convert-background-color-15B02A">MUA NGAY
+                        </button>
+                    <?php } else { ?>
+                        <button class="buy outpro" type="button" disabled="disabled">Hết Hàng</button>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="share">
+                <span>Share:</span>
+                <div class="fb-like" data-href="<?php echo $url; ?>" data-layout="button_count" data-action="like"
+                     data-size="small" data-show-faces="true" data-share="true"></div>
+                <div id="fb-root"></div>
+            </div>
+            <div id="danhgia">
+                <div class="comment detail-pro">
+                    <div class="fb-comments" data-href="<?php echo $url; ?>" data-width="100%" data-numposts="5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php if (!empty($sanphambanquantam)) { ?>
+    <div style="padding: 0; display: inline-block; width: 100%;">
+        <div class="list-pro clear">
+            <h3 class="title-slide">Có thể bạn quan tâm</h3>
+            <div class="list-pro-bottom slide-pro">
+                <?php foreach ($sanphambanquantam as $key => $value) {
+                    if (!empty($value["images"])) {
+                        $array = explode("-", $value["images"]);
+                        $time = date("Y/m/d", $array[0]) . "/";
+                        $images = PATH_IMAGE_PRO . $time . $value["images"];
+                    } else {
+                        $images = "";
+                    }
+                    $url = URL . $value["slug_vi"] . "-sp-" . $value["id"];
+
+                    $price_promotion = "";
+                    $hienthi = 0;
+                    $text_qt = "";
+                    $images_qt = "";
+                    if ($value["status_product"] == 1 && strtotime($value["date_start"]) <= strtotime(date("y-m-d")) && strtotime($value["date_end"]) >= strtotime(date("y-m-d"))) {
+                        if (!empty($value["text_pt"])) {
+                            $price_promotion = $value["price"] - ($value["text_pt"] * $value["price"] / 100);
+                        }
+                        if (!empty($value["text_vnd"])) {
+                            $price_promotion = $value["price"] - $value["text_vnd"];
+                            $hienthi = 1;
+                        }
+                    } ?>
+                    <div class="item item-product-custom">
+                        <div class="box-item">
+                            <div class="box-img">
+                                <a href="<?php echo $url; ?>" title="<?php echo $value["name_vi"]; ?>">
+                                    <img src="<?php echo $images; ?>" alt="<?php echo $value["name_vi"]; ?>">
+                                </a>
+                                <?php
+                                if ($value["status_product"] == 1 && strtotime($value["date_start"]) <= strtotime(date("y-m-d")) && strtotime($value["date_end"]) >= strtotime(date("y-m-d"))) {
+                                    ?>
+                                    <?php if (!empty($value["text_pt"])) { ?>
+                                        <div class="block-sale">
+                                            <img src="<?php echo $km_images; ?>" alt="hình">
+                                            <span class="sale">-<?php echo $value["text_pt"] ?>%</span>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (!empty($value["text_qt"])) { ?>
+                                        <div class="block-sale2">
+                                            <img src="<?php echo $km_images_qt; ?>" alt="hình">
+                                        </div>
+                                        <?php
+                                        $text_qt = $value["text_qt"];
+                                        $images_qt = $km_images_qt;
+                                        ?>
+                                    <?php } ?>
+                                <?php } ?>
+                                <?php if ($value["status_product_k"] == 1 && strtotime($value["date_start_k"]) <= strtotime(date("y-m-d")) && strtotime($value["date_end_k"]) >= strtotime(date("y-m-d"))) { ?>
+                                    <?php if (!empty($list_product[$value["id"]])) { ?>
+                                        <div class="block-sale3">
+                                            <img src="<?php echo $list_product[$value["id"]]; ?>" alt="hình">
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">
+                                    <a href="<?php echo $url; ?>" title="<?php echo $value["name_vi"]; ?>">
+                                        <?php echo $this->cutString($value["name_vi"], 40); ?>
+                                    </a>
+                                </h3>
+                                <div class="box-price">
+                                    <?php if (intval($hienthi) > 0) { ?>
+                                        <p class="price-sale"><?php echo number_format($value["price"], 0, "", "."); ?>
+                                            đ</p>
+                                        <p class="price"><?php echo number_format(intval($price_promotion), "0", ",", "."); ?>
+                                            đ</p>
+                                    <?php } else { ?>
+                                        <p class="price"
+                                           style="width: 100%; text-align: right;"><?php echo number_format($value["price"], 0, "", "."); ?>
+                                            đ</p>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
+                            <!-- <div class="action">
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo $url; ?>" title="<?php echo $value["name_vi"]; ?>" class="btn d-flex align-items-center justify-content-center btn-chitiet-custom" tabindex="0">
+                                            CHI TIẾT
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <button class="muahang cls-btn-product-to-cart btn-themvaogio-custom"
+                                                data-id="<?= $value["id"] ?>"
+                                                data-image="<?= $images ?>"
+                                                data-name="<?= $value["name_vi"] ?>"
+                                                data-price_market="<?= intval($price_promotion) > 0 ? $price_promotion : $value["price"]; ?>"
+                                                data-url="<?php echo $url; ?>"
+                                                data-sku="<?php echo $value["sku"]; ?>"
+                                                data-kg="<?php echo $value["kg"]; ?>"
+                                                data-text_qt="<?= $text_qt ? $text_qt : '';?>"
+
+                                                data-images_qt="<?= $images_qt ? $images_qt : '' ;?>"
+                                        >Thêm vào giỏ</button>
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
+
+
+                    </div>
+                    <?php
+                }//end for
+                ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<ul class='social-side'>
+    <li><a rel="nofollow" class="fa fa-youtube-play"
+           href="https://www.youtube.com/channel/UCzQ9dzWRTTDs8x3QBa2ewZQ?view_as=subscriber"> </a></li>
+    <li><a rel="nofollow" class="fa fa-facebook" href="https://www.facebook.com/japana.sieuthinhat/"> </a></li>
+</ul>
+<!-- BEGIN GCR Language Code -->
+
+<!-- START cartPopup -->
+<div id="cartPopup" class="panel panel-default add-to-cart-success">
+    <div class="panel-heading">
+        <span style="line-height: 20px; vertical-align: middle;">Thêm vào giỏ hàng thành công!</span>
+        <span class="close close-popup-cart">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background: new 0 0 24 24;" xml:space="preserve">
+                <polygon class="st1" points="23,2.7 21.3,1 12,10.3 2.7,1 1,2.7 10.3,12 1,21.3 2.7,23 12,13.7 21.3,23 23,21.3 13.7,12 "></polygon>
+            </svg>
+        </span>
+    </div>
+
+
+    <?php
+        if($productImagePopup){
+            $array = explode("-", $productImagePopup);
+            $time = date("Y/m/d",$array[0])."/";
+            $imagePopup = PATH_IMAGE_PRO.$time."268x268-".$productImagePopup;
+        }else{
+            $imagePopup = "";
+        }
+    ?>
+
+    <div class="panel-body" style="position: relative;">
+        <div class="minicar-body">
+            <img id="justAddedImage" src="<?= $imagePopup;?>" />
+            <div class="minicar-content">
+                <div id="justAddedTitle"><?= $detail["name_vi"]; ?></div>
+                <div>
+                    <span style="padding-left: 10px;">Số lượng: </span> <span id="justAddedQuantity">11</span>
+
+                    <div class="all-price">
+                            <?php if (intval($hienthi) > 0) { ?>
+
+                                <p itemprop="price" style="display:none;"><?php echo intval($price_promotion); ?></p>
+                                <p class="new-price"> <?php echo number_format(intval($price_promotion), "0", ",", "."); ?>đ</p>
+                            <?php } else { ?>
+
+                            <span class="justAddedPrice" id="justAddedPrice">
+                                <?= $price = number_format($detail["price"], "0", ",", "."); ?>đ
+                            </span>
+                        <?php } ?>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="justAddedTotal">
+            <p>Tổng tiền: </p>
+            <span class="justAddedPrice" id="cartTotalPrice">2.615.000</span>
+            <a class="btn-mua-hang btn-popup-goto-cart convert-background-color-15B02A" href="<?=  URL;?>checkout.jp" rel="nofollow">Thanh toán</a>
+        </div>
+
+        <?php if($listProductInCategory) : ?>
+            <div id="boughtTogetherBox">
+
+                <div class="minicart-group">
+                        <?php $max = count($listProductInCategory); foreach ($listProductInCategory as $key => $value) :
+                            $url = URL . $value["slug_vi"] . "-sp-" . $value["id_product_in_category"]; ?>
+                            <?php
+                            if(!empty($value["images"])){
+                                $array = explode("-", $value["images"]);
+                                $time = date("Y/m/d",$array[0])."/";
+                                $images = PATH_IMAGE_PRO.$time."268x268-".$value["images"];
+                            }else{
+                                $images = "";
+                            }
+                            ?>
+                                <div class="item-cart-popup">
+                                    <div style="text-align: center;">
+                                        <a href="<?= $url ?>">
+                                            <img src="<?php echo $images;?>" alt="<?= $value["name_vi"] ?>">
+                                        </a>
+                                    </div>
+                                    <div class="title-box">
+                                        <div class="title-line">
+                                            <a href="<?= $url ?>" title="<?= $value["name_vi"] ?>"><?= $value["name_vi"] ?></a>
+                                        </div>
+                                        <span style="color: #ff0000; padding-top: 7px; font-weight: bold;"><?= number_format($value["price"], "0", ",", "."); ?>đ </span>
+                                    </div>
+
+
+
+                            <?php if($count < $max) : ?>
+                            <p class="plus-purchased">+</p>
+
+                        <?php endif; ?>
+                       <?php $count++;endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+
+</div>
+<!-- END cartPopup -->
+
+
+<input type="hidden" id="totalPrice" value="<?= \Admin\Helper\Helper::totalPriceCart();?>">
+<input type="hidden" id="totalCart" value="<?= \Admin\Helper\Helper::totalCart();?>">
+<input type="hidden" id="totalQuantityCart" value="<?= \Admin\Helper\Helper::totalQuantityCart();?>">
+<input type="hidden" id="totalQuantityCartById" value="<?= \Admin\Helper\Helper::totalQuantityCart($detail["id"]);?>">
+<input type="hidden" id="arrProductIdInCategory" value='<?= $arrProductIdInCategory ?>'>
+<!--<input type="hidden" id="jsonProductInCategory" value=''>-->
+
+<script>
+    window.___gcfg = {
+        lang: 'vi'
+    };
+</script>
+<!-- END GCR Language Code -->
+<!-- BEGIN GCR Badge Code -->
+<script src="https://apis.google.com/js/platform.js?onload=renderBadge" async defer></script>
+<script>
+    window.renderBadge = function () {
+        let ratingBadgeContainer = document.createElement("div");
+        document.body.appendChild(ratingBadgeContainer);
+        window.gapi.load('ratingbadge', function () {
+            window.gapi.ratingbadge.render(
+                ratingBadgeContainer, {
+                    "merchant_id": 139845714,
+                    "position": "BOTTOM_LEFT"
+                }
+            );
+        });
+    }
+</script>
+<!-- END GCR Badge Code -->
+<script>
+    fbq('track', 'ViewContent', {
+        content_type: 'product',
+        content_ids: ["<?php echo $detail["sku"];?>"],
+        value:    <?php
+        if (intval($price_promotion) > 0) {
+            echo $price_promotion;
+        } else {
+            echo $detail["price"];
+        }
+        ?>,
+        currency: 'VND',
+        content_category: "<?php echo $breadcrumb;?>",
+    });
+</script>
+<script async="async">
+    !function (a) {
+        "use strict";
+        "function" == typeof define && define.amd ? define(["jquery"], a) : a(jQuery)
+    }(function (a) {
+        "use strict";
+
+        function b(a) {
+            if (a instanceof Date) return a;
+            if (String(a).match(g)) return String(a).match(/^[0-9]*$/) && (a = Number(a)), String(a).match(/\-/) && (a = String(a).replace(/\-/g, "/")), new Date(a);
+            throw new Error("Couldn't cast `" + a + "` to a date object.")
+        }
+
+        function c(a) {
+            let b = a.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+            return new RegExp(b)
+        }
+
+        function d(a) {
+            return function (b) {
+                let d = b.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
+                if (d) for (let f = 0, g = d.length; g > f; ++f) {
+                    let h = d[f].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), j = c(h[0]), k = h[1] || "", l = h[3] || "",
+                        m = null;
+                    h = h[2], i.hasOwnProperty(h) && (m = i[h], m = Number(a[m])), null !== m && ("!" === k && (m = e(l, m)), "" === k && 10 > m && (m = "0" + m.toString()), b = b.replace(j, m.toString()))
+                }
+                return b = b.replace(/%%/, "%")
+            }
+        }
+
+        function e(a, b) {
+            let c = "s", d = "";
+            return a && (a = a.replace(/(:|;|\s)/gi, "").split(/\,/), 1 === a.length ? c = a[0] : (d = a[0], c = a[1])), 1 === Math.abs(b) ? d : c
+        }
+
+        let f = [], g = [], h = {precision: 100, elapse: !1};
+        g.push(/^[0-9]*$/.source), g.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g = new RegExp(g.join("|"));
+        let i = {
+            Y: "years",
+            m: "months",
+            n: "daysToMonth",
+            w: "weeks",
+            d: "daysToWeek",
+            D: "totalDays",
+            H: "hours",
+            M: "minutes",
+            S: "seconds"
+        }, j = function (b, c, d) {
+            this.el = b, this.$el = a(b), this.interval = null, this.offset = {}, this.options = a.extend({}, h), this.instanceNumber = f.length, f.push(this), this.$el.data("countdown-instance", this.instanceNumber), d && ("function" == typeof d ? (this.$el.on("update.countdown", d), this.$el.on("stoped.countdown", d), this.$el.on("finish.countdown", d)) : this.options = a.extend({}, h, d)), this.setFinalDate(c), this.start()
+        };
+        a.extend(j.prototype, {
+            start: function () {
+                null !== this.interval && clearInterval(this.interval);
+                let a = this;
+                this.update(), this.interval = setInterval(function () {
+                    a.update.call(a)
+                }, this.options.precision)
+            }, stop: function () {
+                clearInterval(this.interval), this.interval = null, this.dispatchEvent("stoped")
+            }, toggle: function () {
+                this.interval ? this.stop() : this.start()
+            }, pause: function () {
+                this.stop()
+            }, resume: function () {
+                this.start()
+            }, remove: function () {
+                this.stop.call(this), f[this.instanceNumber] = null, delete this.$el.data().countdownInstance
+            }, setFinalDate: function (a) {
+                this.finalDate = b(a)
+            }, update: function () {
+                if (0 === this.$el.closest("html").length) return void this.remove();
+                let b, c = void 0 !== a._data(this.el, "events"), d = new Date;
+                b = this.finalDate.getTime() - d.getTime(), b = Math.ceil(b / 1e3), b = !this.options.elapse && 0 > b ? 0 : Math.abs(b), this.totalSecsLeft !== b && c && (this.totalSecsLeft = b, this.elapsed = d >= this.finalDate, this.offset = {
+                    seconds: this.totalSecsLeft % 60,
+                    minutes: Math.floor(this.totalSecsLeft / 60) % 60,
+                    hours: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+                    days: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToWeek: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
+                    totalDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+                    weeks: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
+                    months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
+                    years: Math.abs(this.finalDate.getFullYear() - d.getFullYear())
+                }, this.options.elapse || 0 !== this.totalSecsLeft ? this.dispatchEvent("update") : (this.stop(), this.dispatchEvent("finish")))
+            }, dispatchEvent: function (b) {
+                let c = a.Event(b + ".countdown");
+                c.finalDate = this.finalDate, c.elapsed = this.elapsed, c.offset = a.extend({}, this.offset), c.strftime = d(this.offset), this.$el.trigger(c)
+            }
+        }), a.fn.countdown = function () {
+            let b = Array.prototype.slice.call(arguments, 0);
+            return this.each(function () {
+                let c = a(this).data("countdown-instance");
+                if (void 0 !== c) {
+                    let d = f[c], e = b[0];
+                    j.prototype.hasOwnProperty(e) ? d[e].apply(d, b.slice(1)) : null === String(e).match(/^[$A-Z_][0-9A-Z_$]*$/i) ? (d.setFinalDate.call(d, e), d.start()) : a.error("Method %s does not exist on jQuery.countdown".replace(/\%s/gi, e))
+                } else new j(this, b[0], b[1])
+            })
+        }
+    });
+    !function (a) {
+        "use strict";
+        "function" == typeof define && define.amd ? define(["jquery"], a) : a(jQuery)
+    }(function (a) {
+        "use strict";
+
+        function b(a) {
+            if (a instanceof Date) return a;
+            if (String(a).match(g)) return String(a).match(/^[0-9]*$/) && (a = Number(a)), String(a).match(/\-/) && (a = String(a).replace(/\-/g, "/")), new Date(a);
+            throw new Error("Couldn't cast `" + a + "` to a date object.")
+        }
+
+        function c(a) {
+            let b = a.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+            return new RegExp(b)
+        }
+
+        function d(a) {
+            return function (b) {
+                let d = b.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
+                if (d) for (let f = 0, g = d.length; g > f; ++f) {
+                    let h = d[f].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), j = c(h[0]), k = h[1] || "", l = h[3] || "",
+                        m = null;
+                    h = h[2], i.hasOwnProperty(h) && (m = i[h], m = Number(a[m])), null !== m && ("!" === k && (m = e(l, m)), "" === k && 10 > m && (m = "0" + m.toString()), b = b.replace(j, m.toString()))
+                }
+                return b = b.replace(/%%/, "%")
+            }
+        }
+
+        function e(a, b) {
+            let c = "s", d = "";
+            return a && (a = a.replace(/(:|;|\s)/gi, "").split(/\,/), 1 === a.length ? c = a[0] : (d = a[0], c = a[1])), 1 === Math.abs(b) ? d : c
+        }
+
+        let f = [], g = [], h = {precision: 100, elapse: !1};
+        g.push(/^[0-9]*$/.source), g.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source), g = new RegExp(g.join("|"));
+        let i = {
+            Y: "years",
+            m: "months",
+            n: "daysToMonth",
+            w: "weeks",
+            d: "daysToWeek",
+            D: "totalDays",
+            H: "hours",
+            M: "minutes",
+            S: "seconds"
+        }, j = function (b, c, d) {
+            this.el = b, this.$el = a(b), this.interval = null, this.offset = {}, this.options = a.extend({}, h), this.instanceNumber = f.length, f.push(this), this.$el.data("countdown-instance", this.instanceNumber), d && ("function" == typeof d ? (this.$el.on("update.countdown", d), this.$el.on("stoped.countdown", d), this.$el.on("finish.countdown", d)) : this.options = a.extend({}, h, d)), this.setFinalDate(c), this.start()
+        };
+        a.extend(j.prototype, {
+            start: function () {
+                null !== this.interval && clearInterval(this.interval);
+                let a = this;
+                this.update(), this.interval = setInterval(function () {
+                    a.update.call(a)
+                }, this.options.precision)
+            }, stop: function () {
+                clearInterval(this.interval), this.interval = null, this.dispatchEvent("stoped")
+            }, toggle: function () {
+                this.interval ? this.stop() : this.start()
+            }, pause: function () {
+                this.stop()
+            }, resume: function () {
+                this.start()
+            }, remove: function () {
+                this.stop.call(this), f[this.instanceNumber] = null, delete this.$el.data().countdownInstance
+            }, setFinalDate: function (a) {
+                this.finalDate = b(a)
+            }, update: function () {
+                if (0 === this.$el.closest("html").length) return void this.remove();
+                let b, c = void 0 !== a._data(this.el, "events"), d = new Date;
+                b = this.finalDate.getTime() - d.getTime(), b = Math.ceil(b / 1e3), b = !this.options.elapse && 0 > b ? 0 : Math.abs(b), this.totalSecsLeft !== b && c && (this.totalSecsLeft = b, this.elapsed = d >= this.finalDate, this.offset = {
+                    seconds: this.totalSecsLeft % 60,
+                    minutes: Math.floor(this.totalSecsLeft / 60) % 60,
+                    hours: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+                    days: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToWeek: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                    daysToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
+                    totalDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+                    weeks: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
+                    months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
+                    years: Math.abs(this.finalDate.getFullYear() - d.getFullYear())
+                }, this.options.elapse || 0 !== this.totalSecsLeft ? this.dispatchEvent("update") : (this.stop(), this.dispatchEvent("finish")))
+            }, dispatchEvent: function (b) {
+                let c = a.Event(b + ".countdown");
+                c.finalDate = this.finalDate, c.elapsed = this.elapsed, c.offset = a.extend({}, this.offset), c.strftime = d(this.offset), this.$el.trigger(c)
+            }
+        }), a.fn.countdown = function () {
+            let b = Array.prototype.slice.call(arguments, 0);
+            return this.each(function () {
+                let c = a(this).data("countdown-instance");
+                if (void 0 !== c) {
+                    let d = f[c], e = b[0];
+                    j.prototype.hasOwnProperty(e) ? d[e].apply(d, b.slice(1)) : null === String(e).match(/^[$A-Z_][0-9A-Z_$]*$/i) ? (d.setFinalDate.call(d, e), d.start()) : a.error("Method %s does not exist on jQuery.countdown".replace(/\%s/gi, e))
+                } else new j(this, b[0], b[1])
+            })
+        }
+    });
+    jQuery(function () {
+        jQuery('.countdown1').each(function () {
+            let countdown1 = jQuery(this);
+            let promoperiod;
+            if (countdown1.data('promodate')) {
+                promoperiod = countdown1.data('promodate')
+            }
+            countdown1.countdown(promoperiod, function (event) {
+                jQuery('.countdown1 .item-time').each(function (i) {
+                    if (i == 0) {
+                        jQuery(this).find('.time-new').html(event.strftime('%D'))
+                    }
+                    if (i == 1) {
+                        jQuery(this).find('.time-new').html(event.strftime('%H'))
+                    }
+                    if (i == 2) {
+                        jQuery(this).find('.time-new').html(event.strftime('%M'))
+                    }
+                    if (i == 3) {
+                        jQuery(this).find('.time-new').html(event.strftime('%S'))
+                    }
+                })
+            })
+        })
+        jQuery('.slider-for').not('.slick-initialized').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: !0,
+            asNavFor: '.slider-nav',
+            preletrow: '',
+            nextArrow: '',
+            lazyLoad: 'ondemand',
+        });
+        jQuery('.slider-nav').not('.slick-initialized').slick({
+            infinite: !0,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            centerMode: !1,
+            focusOnSelect: !0,
+            verticalSwiping: !0,
+            vertical: !1,
+            lazyLoad: 'ondemand',
+            preletrow: '<span class="slick-prev"><i class="ti-angle-left"></i></span>',
+            nextArrow: '<span class="slick-next"><i class="ti-angle-right"></i></span>',
+            responsive: [{
+                breakpoint: 992,
+                settings: {verticalSwiping: !1, slidesToShow: 3, slidesToScroll: 1}
+            }, {breakpoint: 750, settings: {verticalSwiping: !1, slidesToShow: 3, slidesToScroll: 1}}, {
+                breakpoint: 480,
+                settings: {verticalSwiping: !1, slidesToShow: 2, slidesToScroll: 1}
+            }]
+        });
+        jQuery('.add-qty').on('click', function () {
+            let quantity = jQuery(this).parent().find(".txtNumPro");
+            let i = +quantity.val();
+            i += 1;
+            quantity.val(i)
+        });
+        jQuery('.sub-qty').on('click', function () {
+            let quantity = jQuery(this).parent().find(".txtNumPro");
+            let i = +quantity.val();
+            if (i <= 2) {
+                i = 1;
+                if (i >= 1) {
+                    jQuery(this).parent().parent().parent().parent().find('.sub-qty').prop('disabled', !1)
+                } else {
+                    jQuery(this).parent().parent().parent().parent().find('.sub-qty').prop('disabled', !0)
+                }
+            } else {
+                i -= 1
+            }
+            quantity.val(i)
+        })
+    })
+    let product = {
+        phone_consulting: function (url, product, sku, linkurl, images) {
+            let phone = $('#phone').val();
+            if ($.trim(phone) == '') {
+                alert('Vui lòng nhập số điện thoại để được tư vấn !');
+                return false;
+            }
+            if ($.trim(phone).length < 10) {
+                alert('Số điện thoại không hợp lệ !');
+                return false;
+            }
+            jQuery.ajax({
+                type: "POST",
+                url: url + 'phone-consulting.jp',
+                cache: false,
+                data: ({
+                    phone: phone,
+                    product: product,
+                    sku: sku,
+                    url: linkurl,
+                    images: images
+                }),
+                beforeSend: function () {
+                    //$("#showview"+id).html('...');
+                },
+                success: function (b) {
+                    if (b == 'true') {
+                        $('#phone').val('');
+                        alert('Chúng tôi sẽ liên hệ với bạn nhanh nhất !');
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+<script>
+    $(".close-popup-cart").on("click", function () {
+        $("#cartPopup").hide();
+    });
+
+    $(document).on('click','body *',function(){
+        $("#cartPopup").hide();
+    });
+
+    const formatter = new Intl.NumberFormat('vi-VI', {
+        style: 'currency',
+        currency: 'vnd',
+        minimumFractionDigits: 0
+    })
+
+    // push product to cart and show popup
+    $(document).on("click", "#push-to-cart" ,function () {
+
+        let id = $(this).attr("data-id");
+        let qty = parseInt($(".txtNumPro").val());
+        $("#justAddedQuantity").html(qty);
+
+        let image          = $(this).attr("data-image");
+        let name           = $(this).attr("data-name");
+        let price_market   = $(this).attr("data-price_market");
+        let url            = $(this).attr("data-url");
+        let sku            = $(this).attr("data-sku");
+        let kg             = $(this).attr("data-kg");
+        let text_qt        = $(this).attr("data-text_qt");
+        let images_qt      = $(this).attr("data-images_qt");
+
+        let data = {
+            "id":  parseInt(id),
+            "sl":  qty,
+            "image":  image,
+            "name": name,
+            "price_market":  price_market,
+            "url":  url,
+            "sku":  sku,
+            "kg":  kg,
+            "text_qt":  text_qt,
+            "images_qt":  images_qt
+        };
+
+        // set total price
+        let totalPriceFirst = parseInt($("#totalPrice").val());
+        let totalPriceCalculate = totalPriceFirst + (qty * parseInt(price_market));
+        let totalPriceLast = formatter.format(totalPriceCalculate);
+
+        // set total cart
+        // let totalCartFirst = parseInt($("#totalCart").val());
+        // let totalCartLast = totalCartFirst + 1;
+
+        // set total quantity cart
+        let totalQuantity = parseInt($("#totalQuantityCart").val());
+        let totalQuantityLast = qty + totalQuantity;
+
+        // set total quantity by product id
+        let totalQuantityCartById = parseInt($("#totalQuantityCartById").val());
+        let totalQuantityCartByIdLast = qty + totalQuantityCartById;
+
+        console.log(data);
+
+        $.ajax({
+            url: "<?php echo URL;?>frontend/cart/addcart",
+            type: "POST",
+            data: data,
+            cache: false,
+            dataType: "html",
+            success: function(result)
+            {
+                // show cart popup
+                $("#cartPopup").show()
+
+                // set total price
+                $("#cartTotalPrice").html(totalPriceLast);
+                $("#totalPrice").val(totalPriceCalculate)
+
+                // set total cart
+                $(".count-giohang").html(totalQuantityLast);
+                $("#totalQuantityCart").val(totalQuantityLast);
+
+                // set total quantity by product id
+                $("#justAddedQuantity").html(totalQuantityCartByIdLast);
+                $("#totalQuantityCartById").val(totalQuantityCartByIdLast);
+
+            }
+        });
+
+    });
+</script>
+
+<script defer="defer">
+
+    jQuery(function () {
+
+        youTubes_makeDynamic();
+
+        function youTubes_makeDynamic() {
+            let $ytIframes = $('iframe[src*="youtube.com"]');
+            $ytIframes.each(function (i, e) {
+                let $ytFrame = $(e);
+                let ytKey;
+                let tmp = $ytFrame.attr('src').split(/\//);
+                tmp = tmp[tmp.length - 1];
+                tmp = tmp.split('?');
+                ytKey = tmp[0];
+                let $ytLoader = jQuery('<div class="ytLoader">');
+                $ytLoader.append(jQuery('<img class="cover" src="https://i.ytimg.com/vi/' + ytKey + '/hqdefault.jpg">'));
+                $ytLoader.append(jQuery('<div class="bg-yt"><i class="box-icon-all2 icon-play"></i>'));
+                $ytLoader.data('$ytFrame', $ytFrame);
+                $ytFrame.replaceWith($ytLoader);
+                $ytLoader.click(function () {
+                    let $ytFrame = $ytLoader.data('$ytFrame');
+                    $ytFrame.attr('src', $ytFrame.attr('src') + '?autoplay=1');
+                    $ytLoader.replaceWith($ytFrame);
+                    $ytIframes.css('height', 450);
+                    $ytIframes.css('width', 800)
+                })
+            })
+        }
+
+        $(".checkbox-bought-together").change(function() {
+
+            let productId = $(this).attr("data-id");
+            let purchaseTotalPriceFirst = parseInt($("#purchase-total-price").val());
+            let price = parseInt($(this).attr("data-price"));
+            let purchaseTotalPriceLast = 0;
+
+            let strProduct = $("#arrProductIdInCategory").val();
+            let arrProduct = strProduct.split(',');
+
+            let arrProductNew = [];
+            let flag = false;
+            if(this.checked) { // check
+                purchaseTotalPriceLast = purchaseTotalPriceFirst + price;
+
+                arrProduct.find(item => item !== productId ? flag = true : flag = false);
+                if(flag == true){
+                    arrProduct.push(productId);
+                }
+
+                arrProductNew = arrProduct;
+            }
+            else { // uncheck
+                purchaseTotalPriceLast = purchaseTotalPriceFirst - price;
+
+                $.each( arrProduct, function( key, value ) {
+                    if (productId == value)
+                    {
+                        delete arrProduct[key];
+                    }
+                    else {
+                        arrProductNew.push(value);
+                    }
+
+                });
+            }
+
+            // console.log( arrProductNew);
+
+            // set arrProductIdInCategory last
+            let strProductNew = arrProductNew.join(",");
+            $("#arrProductIdInCategory").val(strProductNew);
+
+            $("#purchase-total-price").val(purchaseTotalPriceLast);
+            $("#bought-together-price-total").html(formatter.format(purchaseTotalPriceLast));
+
+            if(purchaseTotalPriceLast <= 0)
+            {
+               $("#box-bought-together-total").hide();
+            }
+            else {
+               $("#box-bought-together-total").show();
+            }
+
+        });
+
+        // add Product Suggestion To Cart
+        $(document).on("click", "#push-to-cart-all", function () {
+
+            let objNew = [];
+
+            // get product in category list
+            let jsonProductInCategory = <?= $jsonProductInCategory;?>
+
+                // get string product
+                let strProduct = $("#arrProductIdInCategory").val();
+
+            // add Product Suggestion
+            $.each( jsonProductInCategory, function( key, value ) {
+                if(strProduct.indexOf(value.id) > -1){ // found
+                    objNew.push(value);
+                }
+            });
+
+            console.log(objNew);
+
+            // add product main
+            let id = $(this).attr("data-id");
+            let qty = parseInt($(".txtNumPro").val());
+            $("#justAddedQuantity").html(qty);
+
+            let image          = $(this).attr("data-image");
+            let name           = $(this).attr("data-name");
+            let price_market   = $(this).attr("data-price_market");
+            let url            = $(this).attr("data-url");
+            let sku            = $(this).attr("data-sku");
+            let kg             = $(this).attr("data-kg");
+            let text_qt        = $(this).attr("data-text_qt");
+            let images_qt      = $(this).attr("data-images_qt");
+
+            let data = {
+                "id":  parseInt(id),
+                "sl":  qty,
+                "image":  image,
+                "name": name,
+                "price_market":  price_market,
+                "url":  url,
+                "sku":  sku,
+                "kg":  kg,
+                "text_qt":  text_qt,
+                "images_qt":  images_qt
+            };
+
+            objNew.push(data);
+            addProductSuggestionToCart(objNew)
+        });
+
+    })
+
+    // addProductSuggestionToCart
+    function addProductSuggestionToCart(objNew)
+    {
+
+        console.log(objNew);
+
+        $.ajax({
+            url: "<?= URL;?>frontend/cart/addCartMultiple",
+            type: "POST",
+            data: {cart: objNew},
+            cache: false,
+            dataType: "html",
+            success: function(result)
+            {
+                window.location.href = '<?= URL;?>gio-hang.jp';
+            }
+        });
+    }
+
+
+
+</script>

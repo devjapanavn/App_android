@@ -1,0 +1,429 @@
+<link href="<?php echo URL_ASSET?>frontend/assets/css/sidebarCustom.css" rel="stylesheet" type="text/css" />
+
+
+<style>
+    .sidebar-detail {
+        margin-top: 0;
+        width: 300px;
+        padding-left: 30px;
+        float: right
+    }
+
+    .sidebar-detail .info-detail {
+        margin-top: 24px
+    }
+
+    .custom-sidepro .item {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        margin-bottom: 25px
+    }
+
+    .custom-sidepro .item:hover {
+        border-radius: 5px;
+        box-shadow: -2px 1px 7px -1px rgba(221,228,238,.75);
+    }
+
+    .custom-sidepro .item .buy-now {
+        position: absolute;
+        top: 205px;
+        width: 165px;
+        left: 0;
+        right: 0;
+        margin: auto
+    }
+
+    .custom-sidepro .item .box-item {
+        border: 1px solid #ddd
+    }
+
+    .custom-sidepro {
+        display: inline-block;
+        margin-bottom: 13px
+    }
+
+    .custom-sidepro .item:nth-child(4n) {
+        margin-right: 0
+    }
+
+    .custom-sidepro .item .box-img {
+        position: relative;
+        text-align: center
+    }
+
+    .custom-sidepro .item .box-img a {
+        display: inline-block;
+        text-align: center
+    }
+
+    .custom-sidepro .item .box-img a img {
+        width: 100%
+    }
+
+    .custom-sidepro .item .box-item .detail {
+        padding: 0 15px
+    }
+
+    .custom-sidepro .item .box-item .detail .title {
+        margin-bottom: 10px
+    }
+
+    .custom-sidepro .item .box-item {
+        border: 1px solid #fff;
+        padding-bottom: 8px
+    }
+
+    .custom-sidepro .item:hover .box-item {
+        border: 1px solid #ddd
+    }
+
+    .custom-sidepro .item:hover .buy-now {
+        visibility: visible
+    }
+
+    .custom-sidepro .item .detail .title {
+        margin-bottom: 0
+    }
+
+    .custom-sidepro .item .detail .title a,
+    .buy-now,
+    .custom-sidepro .block-sale span,
+    .box-support p,
+    .box-support .box-phone-news .btn-phone-news,
+    .phone-sp span {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400
+    }
+
+    .custom-sidepro .item .detail .title a {
+        font-size: 14px;
+        color: #333;
+        min-height: 35px;
+        display: inline-block;
+        width: 100%;
+        line-height: 1.5
+    }
+
+    .custom-sidepro .item .detail .title a:hover {
+        color: #bb0029
+    }
+
+    .custom-sidepro .item .detail .box-price,
+    .custom-sidepro .item .detail .box-price,
+    .custom-sidepro .block-sale span {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .custom-sidepro .item .detail .box-price {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .custom-sidepro .item .detail .box-price .price-sale {
+        font-size: 14px;
+        margin: 0;
+        color: #666;
+        text-decoration: line-through
+    }
+
+    .custom-sidepro .item .detail .box-price .price {
+        font-size: 18px;
+        color: #bb0029;
+        margin-top: 0
+    }
+
+    .custom-sidepro .item .box-item {
+        border: 1px solid #ddd
+    }
+
+    .custom-sidepro .item {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        margin-bottom: 25px
+    }
+
+    .custom-sidepro .item:hover .buy-now {
+        visibility: visible
+    }
+
+    .buy-now:hover {
+        background: #fff;
+        border: 1px solid #15b02a;
+        color: #15b02a
+    }
+
+    .custom-sidepro .block-sale,
+    .custom-sidepro .block-sale2 {
+        position: absolute;
+        top: 0;
+        right: 0
+    }
+
+    .custom-sidepro .block-sale {
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+        padding-bottom: 0;
+        text-align: right;
+        padding-left: 0
+    }
+
+    .custom-sidepro .block-sale2 {
+        bottom: 0;
+        left: 0;
+        top: auto;
+        right: auto;
+        padding: 10px;
+        padding-right: 0;
+        padding-top: 0;
+        width: 55px;
+        height: 55px;
+        text-align: left
+    }
+
+    .custom-sidepro .block-sale3 {
+        top: 0;
+        left: 0;
+        right: auto;
+        text-align: left;
+        position: absolute;
+        padding-left: 10px;
+        padding-top: 10px;
+        max-height: 55px;
+        width: auto
+    }
+
+    .custom-sidepro .block-sale span {
+        font-size: 13px;
+        font-weight: 500;
+        color: #fff;
+        position: absolute;
+        top: 9px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+    }
+
+    .custom-sidepro .block-sale img,
+    .custom-sidepro .block-sale2 img {
+        height: auto;
+        width: 100%
+    }
+
+    .custom-sidepro .block-sale3 img {
+        max-height: 50px;
+        width: auto
+    }
+
+    .info-service {
+        height: 440px
+    }
+
+    .icon-pc {
+        background: url(https://japana.vn/assets/frontend/assets/images/icon-detail.png) no-repeat;
+        display: inline-block
+    }
+
+    .info-service .title-side {
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #fff;
+        background: #bb0029;
+        text-align: center;
+        padding: 10px
+    }
+
+    .box-info-service {
+        border: 1px solid #dedede;
+        display: inline-block;
+        border-top: 0
+    }
+
+    .icon-service1,
+    .icon-service2,
+    .icon-service3,
+    .icon-service4,
+    .icon-service5 {
+        background-position: 1px -3px;
+        width: 23%;
+        height: 41px;
+        background-size: 64px;
+        float: left
+    }
+
+    .box-info-service .item p {
+        width: 77%;
+        float: left
+    }
+
+    .icon-service2 {
+        background-position: 1px -62px
+    }
+
+    .icon-service3 {
+        background-position: 1px -124px
+    }
+
+    .icon-service4 {
+        background-position: 1px -183px
+    }
+
+    .box-info-service .item:nth-child(4) {
+        display: inline-block
+    }
+
+    .box-info-service .item span {
+        color: #bb0029
+    }
+
+    .icon-service5 {
+        background-position: 1px -240px
+    }
+
+    .box-info-service .item {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        float: left;
+        padding: 10px 0;
+        display: flex;
+        width: 100%;
+        align-items: center
+    }
+
+    .hotline-service {
+        margin: 10px 0 0
+    }
+
+    .box-support {
+        margin-top: 20px
+    }
+
+    .box-support p {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+        margin-bottom: 14px
+    }
+
+    .box-support .box-phone-news {
+        position: relative
+    }
+
+    .box-support .box-phone-news i {
+        position: absolute;
+        top: 50%;
+        left: 6%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        color: #999
+    }
+
+    .box-support .box-phone-news .ipt-phone-news {
+        border-radius: 0;
+        height: 38px;
+        font-style: italic;
+        border: 1px solid #cbcbcb;
+        width: 75%;
+        padding-left: 30px;
+        border-radius: 20px
+    }
+
+    .box-support .box-phone-news .btn-phone-news {
+        background: #bb0029;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        height: 38px;
+        border-radius: 0;
+        border: 1px solid #bb0029;
+        width: 20%;
+        float: right;
+        border-radius: 20px
+    }
+
+    .box-support .box-phone-news .btn-phone-news:hover {
+        color: #bb0029;
+        background: #fff
+    }
+
+    .box-support hr {
+        margin: 18px auto;
+        width: 80%
+    }
+
+    .phone-sp {
+        text-align: center
+    }
+
+    .phone-sp span {
+        color: #bb0029;
+        font-weight: 500;
+        font-size: 16px
+    }
+
+    .info-detail>.title {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #2a2a2a;
+        border-bottom: 2px solid #bb0029;
+        padding-bottom: 3px;
+        margin-top: 6px;
+        margin-bottom: 17px
+    }
+</style>
+
+<aside class="sidebar sidebar-primary sidebar-detail">
+
+    <?php
+        if (!empty($load_product)) {
+    ?>
+	<section class="widget info-detail card">
+
+        <div class="card-header">
+            <h3 class="title-item">Sản phẩm cùng danh mục</h3>
+        </div>
+        <div class="card-body">
+		    <div id="load-data" class="custom-sidepro">
+                <div id="loading_category" style="text-align: center; justify-content: center"><img src="<?php echo URL?>/uploads/system/loading.gif" width="30%" height="auto"></div>
+	        </div>
+        </div>
+
+	</section>
+    <?php
+        }//end fun
+    ?>
+</aside>
+
+<script>
+    setTimeout(function(){ loadProduct() }, 3000);
+    function loadProduct() {
+        var arrData = {"data":JSON.stringify(<?php echo json_encode($load_product) ?>)};
+        $.ajax({
+            url: "<?php echo URL;?>load-product/loadData",
+            type: "POST",
+            data: arrData,
+            dataType: "html",
+            cache: false,
+            success: function (data) {
+                document.getElementById('loading_category').style.display = "none";
+                document.getElementById('load-data').innerHTML = data;
+            }
+        });
+    }
+
+</script>

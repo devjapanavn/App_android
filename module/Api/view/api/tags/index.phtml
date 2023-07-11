@@ -1,0 +1,37 @@
+<?php
+$this->headTitle ($meta_titles);
+$this->headMeta ()
+    ->appendName ( 'keywords',      $config["meta_web_keyword"])
+    ->appendName ( 'description',   $meta_desc)
+    ->setProperty('og:image',       $config["og_image"])
+    ->setProperty('og:description', $meta_desc)
+    ->setProperty('og:title',       $meta_titles)
+    ->setProperty('og:url',         $config["url"])
+    ->setProperty("og:type", "website")
+    ->setProperty("og:site_name", "japana.vn");
+?>
+<?php
+    foreach ($list_block as $key => $value){
+        if($key == 1){
+            echo '<div class="site-inner">
+                <div class="content-sidebar-wrap">
+                <main class="home content">';
+        }
+        if($value["begin"] == 1){
+            echo '<div class="container">';
+        }
+        $namecode = $value["name_code"];
+        $this->$namecode(array(
+            "adapter" => $adapter,
+            "active" => $active,
+            "id_block_page" => $value["id"],
+            "list" => $list
+        ));
+        if($value["end"] == 1){
+            echo "</div>";
+        }
+        if($key == (count($list_block) - 2)){
+            echo "</main></div></div>";
+        }
+    }
+?>

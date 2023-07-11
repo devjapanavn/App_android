@@ -1,0 +1,26 @@
+<?php
+$this->headTitle ( "Japana Việt Nam" );
+$this->headMeta ()
+    ->appendName ( 'keywords', "Japana Việt Nam" )
+    ->appendName ( 'description', "Japana Việt Nam" )
+    ->setProperty('og:title', 'Japana Việt Nam')
+    ->setProperty("og:type", "website")
+    ->setProperty("og:site_name", "https://japana.vn");
+    ?>
+<?php
+    foreach ($list_block as $key => $value){
+        
+        if($key == 1){
+            echo '
+            <div class="site-inner">
+                <div class="content-sidebar-wrap">
+                    <main class="cart content">
+                        <div class="container">';
+        }
+        $namecode = $value["name_code"];
+        $this->$namecode($data);
+        if($key == (count($list_block) - 2)){
+            echo "</div></main></div></div>";
+        }
+    }
+?>

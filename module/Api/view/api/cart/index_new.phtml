@@ -1,0 +1,210 @@
+<link href="<?php echo URL_ASSET?>frontend/assets/css/cartCustom.css" rel="stylesheet" type="text/css" />
+
+<!--START header-->
+<?php
+$this->header(array(
+    "adapter" => $adapter,
+    "active" => $active
+));
+
+?>
+<!--END header-->
+
+<div id="cart" class="container">
+    <div class="content-product">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title-cart m-0">GIỎ HÀNG <span>- 2 sản phẩm</span></h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-item">
+                    <li class="item">
+                        <div class="box-img float-left">
+                            <a href="http://test.jpe.vn/vien-uong-collagen-teinei-suppon-komachi-62-vien?sku=077FAG90" title="Viên uống Collagen Teinei Suppon Komachi 62 viên">
+                                <img src="http://test.jpe.vn/uploads/files/DanhMuc/SanPham/1574655664-omachi-62-vien-sieu-thi-nhat-ban-japana-0-(3).jpeg" alt="Viên uống Collagen Teinei Suppon Komachi 62 viên" />
+                            </a>
+                        </div>
+                        <div class="detail float-left">
+                            <h3 class="title">
+                                <a href="http://test.jpe.vn/vien-uong-collagen-teinei-suppon-komachi-62-vien?sku=077FAG90" title="Viên uống Collagen Teinei Suppon Komachi 62 viên">
+                                    Viên uống Collagen Teinei Suppon Komachi 62 viên
+                                </a>
+                            </h3>
+                            <!---->
+                            <a href="javascript:void(0)" title="Xóa" class="delete">Xóa</a>
+                        </div>
+                        <div class="box-price float-left">
+                            <p class="price">1,190,000 đ</p>
+                            <!---->
+                        </div>
+                        <div class="quantity float-right">
+                            <a href="javascript:void(0)" title="Giảm" class="btn mr-2"> - </a> <input type="text" name="qty" value="1" class="txtNumPro" />
+                            <a href="javascript:void(0)" title="Tăng" class="btn ml-2"> + </a>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="box-img float-left">
+                            <a href="http://test.jpe.vn/quan-jean-be-trai?sku=2BP20S004" title="Quần jean bé trai"><img src="http://test.jpe.vn/uploads/files/DanhMuc/SanPham/2bp20s004-sj520-120.jpg" alt="Quần jean bé trai" /></a>
+                        </div>
+                        <div class="detail float-left">
+                            <h3 class="title">
+                                <a href="http://test.jpe.vn/quan-jean-be-trai?sku=2BP20S004" title="Quần jean bé trai">
+                                    Quần jean bé trai
+                                </a>
+                            </h3>
+                            <!---->
+                            <a href="javascript:void(0)" title="Xóa" class="delete">Xóa</a>
+                        </div>
+                        <div class="box-price float-left">
+                            <p class="price">100,000 đ</p>
+                            <p class="old-price"><span>199,000 đ</span> <span>(-50%)</span></p>
+                        </div>
+                        <div class="quantity float-right">
+                            <a href="javascript:void(0)" title="Giảm" class="btn mr-2"> - </a> <input type="text" name="qty" class="txtNumPro" />
+                            <a href="javascript:void(0)" title="Tăng" class="btn ml-2"> + </a>
+                        </div>
+                    </li>
+                </ul>
+                <!---->
+            </div>
+        </div>
+        <div class="promotion">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Mã khuyến mãi</h4>
+                    <div class="form-group input-promotion"><input type="text" placeholder="Nhập mã..." class="form-control" /> <button type="button">Áp dụng</button></div>
+                    <!---->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body list-price">
+                    <p><span>Tạm tính:</span> <span>1,290,000 đ</span></p>
+                    <!---->
+                    <hr />
+                    <p class="m-0"><span>Tổng cộng:</span> <span class="total-order">1,290,000 đ</span></p>
+                </div>
+            </div>
+            <a href="http://test.jpe.vn/order/shipping" title="ĐẶT HÀNG" class="continue-checkout">ĐẶT HÀNG</a>
+        </div>
+        <!---->
+    </div>
+</div>
+
+<div class="list-cart">
+    <?php
+        $tong = 0;
+        foreach ($this->list as $value){
+            $tong = $tong + $value["price_market"]*$value["sl"];
+            $km = $product->getItem(array(
+                "id" => $value["id"]
+        ));
+     ?>
+        <div id="item_<?php echo $value["id"]; ?>" class="item price_market">
+            <div class="box-img">
+                <a href="<?php echo $value["url"];?>">
+                    <img src="<?php echo $value["image"];?>" alt="item">
+                </a>
+            </div>
+
+            <div class="detail">
+                <h3 class="title">
+                    <a href="<?php echo $value["url"];?>" title="<?php echo $value["name"];?>">
+                        <?php echo $value["name"];?>
+                    </a>
+                </h3>
+                <div class="box-price-cart">
+                    <span>Giá:</span>
+                    <?php if($km["price"] != $value["price_market"]){?>
+                        <span class="old-price-cart"><?php echo number_format($km["price"] ,"0",",",".");?> đ</span>
+                        <p id="price"> <?php echo number_format($value["price_market"],"0",",",".");?> đ</p>
+                    <?php }else{?>
+                        <p id="price"> <?php echo number_format($value["price_market"],"0",",",".");?> đ</p>
+                    <?php }?>
+                </div>
+                <div class="count-price">
+                    <div class="quantity">
+                        <button onclick="editCart('<?php echo $value["id"];?>','-','qty_sl_<?php echo $value["id"];?>',<?php echo $value["price_market"];?>)" title="bớt" class="sub-qty btn"><span class="ti-minus"></span></button>
+                        <input readonly id="qty_sl_<?php echo $value["id"];?>" type="text" name="qty" value="<?php echo $value["sl"];?>" class="txtNumPro">
+                        <button onclick="editCart('<?php echo $value["id"];?>','+','qty_sl_<?php echo $value["id"];?>',<?php echo $value["price_market"];?>)" title="thêm" class="add-qty btn"><span class="ti-plus"></span></button>
+                    </div>
+                    <div class="final-price">
+                        <input id="sum-final-price-<?php echo $value["id"]?>" type="hidden" value="<?php echo $value["price_market"]*$value["sl"];?>" >
+                        <span>Tổng: </span><p id="total_<?php echo $value["id"]; ?>"><?php echo number_format($value["price_market"]*$value["sl"],"0",",",".");?> đ</p>
+                    </div>
+                </div>
+                <?php
+                if(!empty($value["pro_promo"])){?>
+                    <?php foreach ($value["pro_promo"] as $k => $v){?>
+                        <?php if(!empty($v["description"])){?>
+                            <div class="box-promo-info">
+                                <p class="title-promo"><?php echo $v["description"];?></p>
+                            </div>
+                        <?php }?>
+                    <?php }?>
+                <?php }?>
+            </div>
+
+            <div class="delete-item">
+                <a href="javascript:deleteCart(<?php echo $value["id"];?>)" title="xóa">
+                    <span class="ti ti-close"></span>
+                </a>
+            </div>
+        </div>
+        <?php if(!empty($value["text_qt"])){
+            ?>
+            <div id="item_qt<?php echo $value["id"]; ?>" class="item price_market">
+                <div class="box-img box-gift">
+                    <a style="cursor: auto;" href="javascript:void(0);" title="qt">
+                        <?php
+                        $array = explode("-", $value["text_qt"]["images"]);
+                        $time = date("Y/m/d", $array[0]) . "/";
+                        $images = PATH_IMAGE_PRO . $time . $value["text_qt"]["images"];
+                        ?>
+                        <img src="<?php echo $images;?>" alt="item">
+                    </a>
+                    <img src="<?php echo $value["images_qt"];?>" alt="gift" class="gift-icon">
+                </div>
+                <div class="detail">
+                    <h3 class="title">
+                        <a style="cursor: auto;">
+                            <?php echo $value["text_qt"]["name_vi"];?>
+                        </a>
+                    </h3>
+                    <div class="box-price-cart">
+                        <span>Giá:</span>
+                        <!-- <span class="old-price-cart"><?php number_format($value["text_qt"]["price"],"0",".","");?> đ</span> -->
+                        <p style="color: #e62e6b;"> 0 đ</p>
+                    </div>
+                    <div class="box-price-cart">
+                        <span>Số lượng:</span>
+                        <p><?php echo $value["sl"];?></p>
+                    </div>
+                </div>
+            </div>
+        <?php }?>
+
+
+    <?php }?>
+</div>
+<div class="final-cart">
+    <?php if(!empty($this->list)){?>
+        <div class="side-cart-final">
+            <h3 class="info-cart">Thông tin đơn hàng</h3>
+            <p class="total-cart"><span style="font-size: 16px;">Tạm tính: </span><span id="text-sum-price" class="notional-price"><?php echo number_format($tong,"0",",",".");?> đ</span></p>
+            <input id="sum_price" type="hidden" value="<?php echo $tong;?>">
+            <a href="<?php echo URL;?>checkout.jp" class="btn-pay convert-background-color-15B02A" title="Tiến hành thanh toán">Tiến hành thanh toán</a>
+        </div>
+        <!--                <a href="--><?php //echo URL;?><!--" title="Tiếp tục mua hàng" class="continue-buy" style="margin-top: 0">-->
+        <!--                    <i class="fa fa-home" aria-hidden="true"></i><span>Tiếp tục mua hàng</span>-->
+        <!--                </a>-->
+    <?php }?>
+</div>
+
+
+
+
+<!--START footer-->
+<?php
+$this->footer(array("adapter" => $adapter));
+?>
+<!--END footer-->

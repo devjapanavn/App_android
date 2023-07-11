@@ -1,0 +1,108 @@
+<style>
+.sidebar-filter{width:223px;float:left}.sidebar-filter .widget{border:1px solid #cbcbcb;padding:0 10px}.title-side,.title-box,.btn-price button,#scroll-brand p a,#scroll-brand p span{font-family:'Roboto',sans-serif;font-weight:400}.title-side,.control,.control .form-group{display:-webkit-box;display:-ms-flexbox;display:flex}.title-side{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.title-side,.control,.control .form-group{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.title-side{background:#bb0029;border:1px solid #bb0029;color:#fff;padding:5px 15px;font-size:14px;margin-bottom:0;cursor:pointer}.title-side i{font-size:20px;-webkit-transform:scaleX(-1);-ms-transform:scaleX(-1);transform:scaleX(-1)}.sidebar-filter .widget:last-child{margin-top:10px}.title-box{color:#333;font-size:14px;font-weight:500;border-bottom:1px solid #ddd;padding:8px 0;margin-bottom:5px}.ui-widget{height:1em}.ui-slider .ui-slider-handle{width:.9em;height:.9em}.ui-widget-content{background:#fff;border:1px solid #c5c5c5}.ui-slider-horizontal .ui-slider-handle{top:50%;transform:translate(0,-50%);margin-left:-.5em}.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default,.ui-button,html .ui-button.ui-state-disabled:hover,html .ui-button.ui-state-disabled:active{border-radius:100%;background:#fff}.ui-widget-content .ui-state-active{background:#bb0029;border:none}.ui-corner-all,.ui-corner-bottom,.ui-corner-right,.ui-corner-br{border-bottom-right-radius:6px}.ui-corner-all,.ui-corner-bottom,.ui-corner-left,.ui-corner-bl{border-bottom-left-radius:6px}.ui-corner-all,.ui-corner-top,.ui-corner-right,.ui-corner-tr{border-top-right-radius:6px}.ui-corner-all,.ui-corner-top,.ui-corner-left,.ui-corner-tl{border-top-left-radius:6px}.ui-widget-header{background:#bbb}.price-all{border-radius:0;height:30px;border-radius:5px;text-align:right}.control,.control .form-group{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.control{margin:7px 0}.control .form-group{margin-bottom:0}.slider_price_spantext{margin:0 5px}.btn-price{text-align:center;margin-bottom:15px}.btn-price button{background:#fff;padding:6px 30px;color:#333;text-align:center;border:1px solid #cbcbcb;border-radius:6px}.btn-price button:hover{color:#fff;background:#bb0029;border:1px solid #bb0029}.custom-search{position:relative}.custom-search button{-webkit-transform:scaleX(-1);-ms-transform:scaleX(-1);transform:scaleX(-1);position:absolute;top:0;right:0;border:0;background:transparent;padding:9px 10px 6px;font-size:17px;color:#ccc}.custom-search .search-brand{border-radius:5px}#scroll-brand{height:215px;position:relative;width:100%;overflow:auto}#scroll-brand p{margin-top:15px}#scroll-brand p a,#scroll-brand p span{font-size:13px;color:#555}#scroll-brand p a:hover,#scroll-brand p a.active,.dropdown-filter ul li a.active{color:#bb0029}#scroll-brand p span{color:#999}.ps__rail-x,.ps__rail-y{opacity:.6}.dropdown-filter ul li{padding:10px 0}
+</style>
+<aside class="sidebar sidebar-primary sidebar-filter ">
+    <p class="title-side color-man-background">Lọc sản phẩm<i class="fa fa-filter" aria-hidden="true"></i></p>
+    <section class="widget dropdown-filter">
+       <p class="title-box">Hiển thị</p>
+       <input name="limit" id="limit" value="<?php echo $arrayParam['limit']?>" type="hidden">
+        <ul>
+          <li><a <?php if(($arrayParam['limit'])==24) {?>class="active"<?php }?> href="javascript:limit(24);" >24 sản phẩm</a></li>
+          <li><a <?php if(($arrayParam['limit'])==36) {?>class="active"<?php }?> href="javascript:limit(36);" >36 sản phẩm</a></li>
+          <li><a <?php if(($arrayParam['limit'])==48) {?>class="active"<?php }?> href="javascript:limit(48);" >48 sản phẩm</a></li>
+       </ul>
+        <p class="title-box">Sắp xếp</p>
+        <input name="order" id="order" value="<?php echo $arrayParam['order']?>" type="hidden">
+        <ul class="sort-item">
+          <li><a <?php if(($arrayParam['order'])=="sortincat asc") {?>class="active"<?php }?> href="javascript:order('sortincat asc');" title="Mặc định">Mặc định</a></li>
+          <li><a <?php if(($arrayParam['order'])=="price desc") {?>class="active"<?php }?> href="javascript:order('price desc');" title="Giá từ cao đến thấp">Giá từ cao đến thấp</a></li>
+          <li><a <?php if(($arrayParam['order'])=="price asc") {?>class="active"<?php }?> href="javascript:order('price asc');" title="Giá từ thấp đến cao">Giá từ thấp đến cao</a></li>
+          <li><a <?php if(($arrayParam['order'])=="name_vi asc") {?>class="active"<?php }?> href="javascript:order('name_vi asc');" title="Từ A đến Z">Từ A đến Z</a></li>
+          <li><a <?php if(($arrayParam['order'])=="name_vi desc") {?>class="active"<?php }?> href="javascript:order('name_vi desc');" title="Từ Z đến A">Từ Z đến A</a></li>
+        </ul>
+    </section>
+    <section class="widget">
+      <?php if(!empty($count_category)){?>
+      <h3 class="title-box">Danh mục</h3>
+        <?php foreach ($count_category as $key => $value){?>
+        <div class="check-side check-all" style="margin-bottom: 15px;">
+          <label class="check-custom"><?php echo $value["name_vi"];?><span class="count-item"> (<?php echo $value["count"];?>)</span>
+            <?php if(isset($category_check[$value['id']])){ ?>
+            <input name="category[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" checked="checked">
+            <?php }else{ ?>
+            <input name="category[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" >
+            <?php } ?>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <?php }?>
+      <?php }?>
+        <p class="title-box">Giá</p>
+        <div id="slider-range"></div>
+        <div class="control">
+            <input type="hidden" name="minprice" id="minprice" value="<?php echo $max_min["minPrice"] ?>">
+            <input type="hidden" name="beginMinPrice" id="minprice1" value="<?php echo $arrayParam['beginMinPrice'];?>">
+            <input type="hidden" name="maxprice" id="maxprice" value="<?php echo $max_min["maxPrice"] ?>">
+            <input type="hidden" name="endMaxPrice" id="maxprice1" value="<?php echo $arrayParam['endMaxPrice'];?>">
+            <div class="form-group">
+                <input autocomplete="off" type="text" class="slider_price_textbox price-all form-control" id="amount1" value='<?php echo $arrayParam['fromprice'];?>' disabled>
+            </div>
+            <span class="slider_price_spantext">-</span>
+            <div class="form-group">
+                <input autocomplete="off" type="text" class="slider_price_textbox price-all form-control" id="amount2" value='<?php echo $arrayParam['toprice'];?>' disabled>
+            </div>
+        </div>
+        <div class="btn-price">
+            <button class="submit_click" type="button">OK</button>
+        </div>
+        <?php if(!empty($count_brand)){?>
+        <p class="title-box">Thương hiệu</p>
+          <div class="custom-search">
+            <div class="form-group">
+              <input autocomplete="off" id='brand_search' type="text" class="search-brand form-control" placeholder="Tìm kiếm...">
+              <button id='brand_search_button' type="button"><span class="ti-search"></span></button>
+            </div>
+          </div>
+          <div class="box-item" id="scroll-brand">
+          	<?php foreach ($count_brand as $key => $value){?>
+                <div class="check-side check-all" style="margin-bottom: 15px;">
+                  <label class="check-custom"><?php echo $value["name_vi"];?><span class="count-item"> (<?php echo $value["count"];?>)</span>
+                    <?php if(isset($brand_check[$value['id']])){ ?>
+                    	<input checked="checked" name="id_brand[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" >
+                    	<span class="checkmark"></span>
+                    <?php }else{?>
+                    	<input name="id_brand[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" >
+                    	<span class="checkmark"></span>
+                    <?php }?>
+                  </label>
+                </div>
+            <?php }?>
+          </div>
+        <?php }?>
+      </section>
+	</aside>
+<script>
+  if(jQuery("#scroll-brand").length){new PerfectScrollbar('#scroll-brand')}
+jQuery(function(){initSlidePrice()});var initSlidePrice=function(){var min_price1=parseInt(jQuery("#minprice").val());var max_price1=parseInt(jQuery("#maxprice").val());if(($("#minprice1")).val()){var min_price=parseInt(jQuery("#minprice1").val())}else{var min_price=parseInt(jQuery("#minprice").val())}
+if(($("#maxprice1")).val()){var max_price=parseInt(jQuery("#maxprice1").val())}else{var max_price=parseInt(jQuery("#maxprice").val())}
+jQuery("#slider-range").slider({range:!0,min:min_price1,max:max_price1,values:[min_price,max_price],slide:function(event,ui){jQuery("#amount").html("$"+ui.values[0]+" - $"+ui.values[1]);var amount1=formatCurrency(ui.values[0]);var amount2=formatCurrency(ui.values[1]);jQuery("#amount1").val(amount1);jQuery("#amount2").val(amount2);jQuery("#minprice1").val(ui.values[0]);jQuery("#maxprice1").val(ui.values[1])}});jQuery("#amount").html("$"+jQuery("#slider-range").slider("values",0)+" - $"+jQuery("#slider-range").slider("values",1));var from1st=formatCurrency(min_price);var to1st=formatCurrency(max_price);$("#amount1").val(from1st);$("#amount2").val(to1st);jQuery(".slider_price_textbox").on("keypress",function(e){var code=e.charCode||e.keyCode;if(code=='8')return!0;if(String.fromCharCode(code).match(/[^0-9]/g)){return!1}
+return!0});jQuery(".slider_price_textbox").keyup(function(e){var code=e.charCode||e.keyCode;if(code=='8')return!0;if(String.fromCharCode(code).match(/[^0-9]/g)){return!1}
+return!0});jQuery(".slider_price_textbox").focusout(function(){jQuery(this).val(formatCurrency(jQuery(this).val()))});jQuery(".slider_price_submit").click(function(){var from=formatNumber(jQuery("#amount1").val());var to=formatNumber(jQuery("#amount2").val());var sliderPriceURL="http://japana.vn";sliderPriceURL=sliderPriceURL.replace("amshopby_slider_from",from);sliderPriceURL=sliderPriceURL.replace("amshopby_slider_to",to);jQuery(".slider_price_form").attr("action",sliderPriceURL);return!0});jQuery("#min-price").val(jQuery("#slider-range").slider("values",0));jQuery("#max-price").val(jQuery("#slider-range").slider("values",1));function formatCurrency(val){return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")}
+function formatNumber(val){return val.toString().split('.').join("")}
+function isNumberKey(evt){var charCode=(evt.which)?evt.which:event.keyCode;if(charCode==59||charCode==46)
+return!0;if(charCode>31&&(charCode<48||charCode>57))
+return!1;return!0}}
+function limit(id){jQuery("#limit").val(id);jQuery("#filter_from").submit()}
+function order(id){jQuery("#order").val(id);jQuery("#filter_from").submit()}
+$(document).ready(function(){jQuery(".submit_click").click(function(){jQuery("#filter_from").submit()});$('#brand_search').on('keyup input',function(){var term=$('#brand_search').val().trim();if(term.length===0){$('#scroll-brand .check-side').each(function(){$(this).show(0);$(this).removeClass('active');if($(this).data('lte.pushmenu.active')){$(this).addClass('active')}});return}
+$('#scroll-brand .check-side').each(function(){if($(this).text().toLowerCase().indexOf(term.toLowerCase())===-1){$(this).hide(0);$(this).removeClass('pushmenu-search-found',!1);if($(this).is('.treeview')){$(this).removeClass('active')}}else{$(this).show(0);$(this).addClass('pushmenu-search-found');if($(this).is('.treeview')){$(this).addClass('active')}
+var parent=$(this).parents('.check-side').first();if(parent.is('.treeview')){parent.show(0)}}
+if($(this).is('.header')){$(this).show()}
+if($(this).text()==''){$(this).show(0)}});$('#scroll-brand .check-side.pushmenu-search-found.treeview').each(function(){$(this).find('.pushmenu-search-found').show(0)})});jQuery(".slider_price_textbox").on("keypress",function(e){var code=e.charCode||e.keyCode;if(code=='8')return!0;if(String.fromCharCode(code).match(/[^0-9]/g)){return!1}
+return!0});jQuery(".slider_price_textbox").keyup(function(e){var code=e.charCode||e.keyCode;if(code=='8')return!0;if(String.fromCharCode(code).match(/[^0-9]/g)){return!1}
+return!0});jQuery(".slider_price_textbox").focusout(function(){jQuery(this).val(formatCurrency(jQuery(this).val()))});jQuery(".slider_price_submit").click(function(){var from=formatNumber(jQuery("#amount1").val());var to=formatNumber(jQuery("#amount2").val());var sliderPriceURL="https://japana.vn";sliderPriceURL=sliderPriceURL.replace("amshopby_slider_from",from);sliderPriceURL=sliderPriceURL.replace("amshopby_slider_to",to);jQuery(".slider_price_form").attr("action",sliderPriceURL);return!0});jQuery("#min-price").val(jQuery("#slider-range").slider("values",0));jQuery("#max-price").val(jQuery("#slider-range").slider("values",1));function formatCurrency(val){return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")}
+function formatNumber(val){return val.toString().split('.').join("")}
+function isNumberKey(evt){var charCode=(evt.which)?evt.which:event.keyCode;if(charCode==59||charCode==46)
+return!0;if(charCode>31&&(charCode<48||charCode>57))
+return!1;return!0}})
+</script>

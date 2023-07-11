@@ -1,0 +1,368 @@
+
+<link href="<?php echo URL_ASSET?>frontend/assets/css/productCategoryCustom.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo URL_ASSET?>frontend/assets/css/checkboxCustom.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo URL_ASSET?>frontend/assets/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+
+
+<!--START header-->
+<?php
+$this->header(array(
+    "adapter" => $adapter,
+    "active" => $active
+));
+
+?>
+<!--END header-->
+
+<!--START breadcrumb-->
+<div  class="bread-crumb">
+    <div  class="container">
+        <div  class="breadcrumb-view">
+            <ol  class="breadcrumb">
+                <li  class="breadcrumb-item"><a  href="http://test.jpe.vn/" target="_self" class="">Trang chủ</a></li>
+                <li  class="breadcrumb-item"><a  href="http://test.jpe.vn/colagen" target="_self" class="">Colagen</a></li>
+                <li  class="breadcrumb-item active"><span  aria-current="location">Viên uống Collagen Teinei Suppon Komachi 62 viên</span></li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--END breadcrumb-->
+
+<div class="product-list">
+    <div class="container">
+        <div class="content">
+            <div class="content-item">
+                <div class="left-side">
+                    <div class="card">
+                        <div class="card-header card-header-custom">
+                            <h3 class="title-item">Danh mục </h3>
+                            <div class="box-search box-search-caregory">
+                                <form method="GET" name="frm" id="frm" action="http://japana.local/search.jp?q=" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input autocomplete="off" x-webkit-speech_off="" x-webkit-grammar_off="builtin:search" id="search-category" name="search" class="form-control ipt-search" placeholder="Tìm kiếm ..." type="text" value="">
+                                        <button type="button" class="icon-search"><span class="icon-mm icon-search-mm"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="box-scroll-wrap box-check box-check-custom">
+
+                                <?php for($i = 0; $i < 15;$i++) : ?>
+                                    <label class="check-custom">
+                                        <p class="product-name-bought-together">
+                                            Làm đẹp (22)
+                                        </p>
+
+                                        <input type="checkbox" name="" id="product-12949" data-id="12949" data-price="0" class="checkbox-bought-together" checked="">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                <?php endfor;?>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><h3 class="title-item">Giá</h3></div>
+                        <div class="card-body">
+                            <div class="range-price">
+                                <div id="slider" class="noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr">
+                                    <div class="noUi-base">
+                                        <div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(1, 1);"></div></div>
+                                        <div class="noUi-origin" style="transform: translate(-1000%, 0px); z-index: 5;">
+                                            <div
+                                                    class="noUi-handle noUi-handle-lower"
+                                                    data-handle="0"
+                                                    tabindex="0"
+                                                    role="slider"
+                                                    aria-orientation="horizontal"
+                                                    aria-valuemin="0.0"
+                                                    aria-valuemax="2100000.0"
+                                                    aria-valuenow="0.0"
+                                                    aria-valuetext="0.00"
+                                            >
+                                                <div class="noUi-touch-area"></div>
+                                            </div>
+                                        </div>
+                                        <div class="noUi-origin" style="transform: translate(0%, 0px); z-index: 4;">
+                                            <div
+                                                    class="noUi-handle noUi-handle-upper"
+                                                    data-handle="1"
+                                                    tabindex="0"
+                                                    role="slider"
+                                                    aria-orientation="horizontal"
+                                                    aria-valuemin="0.0"
+                                                    aria-valuemax="2100000.0"
+                                                    aria-valuenow="2100000.0"
+                                                    aria-valuetext="2100000.00"
+                                            >
+                                                <div class="noUi-touch-area"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <div class="form-group mr-1">
+                                        <p class="title-range">Min</p>
+                                        <div class="box-input"><input type="text" class="form-control" /> <span>đ</span></div>
+                                    </div>
+                                    <div class="form-group ml-1">
+                                        <p class="title-range">Max</p>
+                                        <div class="box-input"><input type="text" class="form-control" /> <span>đ</span></div>
+                                    </div>
+                                </div>
+                                <button type="button">Áp dụng</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header card-header-custom">
+                            <h3 class="title-item">Thương hiệu </h3>
+                            <div class="box-search box-search-caregory">
+                                <form method="GET" name="frm" id="frm" action="http://japana.local/search.jp?q=" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input autocomplete="off" x-webkit-speech_off="" x-webkit-grammar_off="builtin:search" id="search-category" name="search" class="form-control ipt-search" placeholder="Tìm kiếm ..." type="text" value="">
+                                        <button type="button" class="icon-search"><span class="icon-mm icon-search-mm"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="box-scroll-wrap box-check box-check-custom">
+                                <?php for($i = 0; $i < 15;$i++) : ?>
+                                <label class="check-custom">
+                                    <p class="product-name-bought-together">
+                                        Attack (26)
+                                    </p>
+
+                                    <input type="checkbox" name="" id="product-12949" data-id="12949" data-price="0" class="checkbox-bought-together" checked="">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <?php endfor;?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div class="content-item">
+                <div class="card product-cate">
+                    <div class="card-header">
+                        <h3 class="title">
+                            Thời trang
+                            <span>
+                                ( 10 )
+                            </span>
+                        </h3>
+                        <ul class="d-flex align-items-center mt-3">
+                            <li><span>Sắp xếp theo:</span></li>
+                            <li name="" class="ml-2">
+                                <button class="active btn btn-circle-1"><span>Mặc định</span></button>
+                            </li>
+                            <li name="newest" class="ml-2">
+                                <button class="btn btn-circle-1"><span>Mới</span></button>
+                            </li>
+                            <li name="promotion" class="ml-2">
+                                <button class="btn btn-circle-1"><span>Sale</span></button>
+                            </li>
+                            <li name="price" class="ml-2">
+                                <button class="btn btn-circle-1"><span>Giá thấp</span></button>
+                            </li>
+                            <li name="price" class="ml-2">
+                                <button class="btn btn-circle-1"><span>Giá cao</span></button>
+                            </li>
+                            <!---->
+                        </ul>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-product">
+                            <div class="item">
+                                <div class="box-img">
+                                    <a href="http://test.jpe.vn/quan-jean-be-trai" title="Quần jean bé trai"><img src="http://test.jpe.vn/uploads/files/DanhMuc/SanPham/2bp20s004-sj520-120.jpg" alt="Quần jean bé trai" /></a>
+                                </div>
+                                <div class="detail">
+                                    <h3 class="title"><a href="http://test.jpe.vn/quan-jean-be-trai" title="Quần jean bé trai">Quần jean bé trai</a></h3>
+                                    <ul class="box-price">
+                                        <li class="price">100,000 đ</li>
+                                        <li class="old-price">199,000 đ</li>
+                                    </ul>
+                                </div>
+                                <!-- <div class="action">
+                                    <ul>
+                                        <li><a href="http://test.jpe.vn/quan-jean-be-trai" title="CHI TIẾT" class="btn btn-chitiet-custom d-flex align-items-center justify-content-center">CHI TIẾT</a></li>
+                                        <li>
+                                            <button class="btn btn-muangay-custom d-flex align-items-center justify-content-center">
+                                                <span>MUA NGAY</span>
+                                                
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                            <div class="item">
+                                <div class="box-img">
+                                    <a href="http://test.jpe.vn/nu-dam-xe-ta-ngan-tay-short-sleeve-dress" title="NỮ Đầm Xẻ Tà Ngắn Tay SHORT SLEEVE DRESS">
+                                        <img src="http://test.jpe.vn/uploads/files/1.jpg" alt="NỮ Đầm Xẻ Tà Ngắn Tay SHORT SLEEVE DRESS" />
+                                    </a>
+                                </div>
+                                <div class="detail">
+                                    <h3 class="title"><a href="http://test.jpe.vn/nu-dam-xe-ta-ngan-tay-short-sleeve-dress" title="NỮ Đầm Xẻ Tà Ngắn Tay SHORT SLEEVE DRESS">NỮ Đầm Xẻ Tà Ngắn Tay SHORT SLEEVE DRESS</a></h3>
+                                    <ul class="box-price">
+                                        <li class="price">600,000 đ</li>
+                                        <!---->
+                                    </ul>
+                                </div>
+                                <!-- <div class="action">
+                                    <ul>
+                                        <li><a href="http://test.jpe.vn/nu-dam-xe-ta-ngan-tay-short-sleeve-dress" title="CHI TIẾT" class="btn btn-chitiet-custom d-flex align-items-center justify-content-center">CHI TIẾT</a></li>
+                                        <li>
+                                            <button class="btn btn-muangay-custom d-flex align-items-center justify-content-center">
+                                                <span>MUA NGAY</span>
+                                               
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                            <div class="item">
+                                <div class="box-img">
+                                    <a href="http://test.jpe.vn/do-mac-nha-thun-lanh-cho-be-trai" title="Đồ mặc nhà thun lạnh cho bé trai">
+                                        <img src="http://test.jpe.vn/uploads/files/DanhMuc/SanPham/2ls20s004-sb194-120-ghep.jpg" alt="Đồ mặc nhà thun lạnh cho bé trai" />
+                                    </a>
+                                </div>
+                                <div class="detail">
+                                    <h3 class="title"><a href="http://test.jpe.vn/do-mac-nha-thun-lanh-cho-be-trai" title="Đồ mặc nhà thun lạnh cho bé trai">Đồ mặc nhà thun lạnh cho bé trai</a></h3>
+                                    <ul class="box-price">
+                                        <li class="price">209,300 đ</li>
+                                        <li class="old-price">299,000 đ</li>
+                                    </ul>
+                                </div>
+                                <!-- <div class="action">
+                                    <ul>
+                                        <li><a href="http://test.jpe.vn/do-mac-nha-thun-lanh-cho-be-trai" title="CHI TIẾT" class="btn btn-chitiet-custom d-flex align-items-center justify-content-center">CHI TIẾT</a></li>
+                                        <li>
+                                            <button class="btn btn-muangay-custom d-flex align-items-center justify-content-center">
+                                                <span>MUA NGAY</span>
+                                                
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                            <div class="item">
+                                <div class="box-img">
+                                    <a href="http://test.jpe.vn/dam" title="Đầm"><img src="http://test.jpe.vn/uploads/files/DanhMuc/SanPham/Dress/%C4%90%E1%BA%A6M%20MIDI-6.png" alt="Đầm" /></a>
+                                </div>
+                                <div class="detail">
+                                    <h3 class="title"><a href="http://test.jpe.vn/dam" title="Đầm">Đầm</a></h3>
+                                    <ul class="box-price">
+                                        <li class="price">595,000 đ</li>
+                                        <!---->
+                                    </ul>
+                                </div>
+                                <!-- <div class="action">
+                                    <ul>
+                                        <li><a href="http://test.jpe.vn/dam" title="CHI TIẾT" class="btn btn-chitiet-custom d-flex align-items-center justify-content-center">CHI TIẾT</a></li>
+                                        <li>
+                                            <button class="btn btn-muangay-custom d-flex align-items-center justify-content-center">
+                                                <span>MUA NGAY</span>
+                                                
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div data-v-0eeacc37="" class="d-flex align-items-center justify-content-end paginate" offset="1">
+                            <!---->
+                            <!---->
+                            <span data-v-0eeacc37="">Hiển thị 1 - 10 của 10 sản phẩm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card slider-product">
+            <div class="card-header"><h3 class="title-item">Sản phẩm đã xem</h3></div>
+            <div class="card-body">
+                <div class="slider-item slick-initialized slick-slider">
+                    <div class="slick-list draggable">
+                        <div class="slick-track" style="opacity: 1; width: 214px; transform: translate3d(0px, 0px, 0px);">
+                            <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 214px;">
+                                <div>
+                                    <div data-v-e5928f26="" class="item" style="width: 100%; display: inline-block;">
+                                        <div data-v-e5928f26="" class="box-img">
+                                            <a data-v-e5928f26="" href="http://test.jpe.vn/vien-uong-collagen-teinei-suppon-komachi-62-vien" title="Viên uống Collagen Teinei Suppon Komachi 62 viên" tabindex="0">
+                                                <img
+                                                        data-v-e5928f26=""
+                                                        src="http://test.jpe.vn/uploads/files/DanhMuc/SanPham/1574655664-omachi-62-vien-sieu-thi-nhat-ban-japana-0-(3).jpeg"
+                                                        alt="Viên uống Collagen Teinei Suppon Komachi 62 viên"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div data-v-e5928f26="" class="detail">
+                                            <h3 data-v-e5928f26="" class="title">
+                                                <a data-v-e5928f26="" href="http://test.jpe.vn/vien-uong-collagen-teinei-suppon-komachi-62-vien" title="Viên uống Collagen Teinei Suppon Komachi 62 viên" tabindex="0">
+                                                    Viên uống Collagen Teinei Suppon Komachi 62 viên
+                                                </a>
+                                            </h3>
+                                            <ul data-v-e5928f26="" class="box-price">
+                                                <li data-v-e5928f26="" class="price">1,190,000 đ</li>
+                                                <!---->
+                                            </ul>
+                                        </div>
+                                        <!-- <div data-v-e5928f26="" class="action">
+                                            <ul data-v-e5928f26="">
+                                                <li data-v-e5928f26="">
+                                                    <a
+                                                            data-v-e5928f26=""
+                                                            href="http://test.jpe.vn/vien-uong-collagen-teinei-suppon-komachi-62-vien"
+                                                            title="CHI TIẾT"
+                                                            class="btn btn-chitiet-custom d-flex align-items-center justify-content-center"
+                                                            tabindex="0"
+                                                    >
+                                                        CHI TIẾT
+                                                    </a>
+                                                </li>
+                                                <li data-v-e5928f26="">
+                                                    <button data-v-e5928f26="" class="btn btn-muangay-custom d-flex align-items-center justify-content-center" tabindex="0"><span data-v-e5928f26="">MUA NGAY</span></button>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="<?php echo URL_ASSET?>frontend/assets/js/perfect-scrollbar.min.js"></script>
+
+<script>
+
+   $(document).ready(function(){
+
+       // $(".box-scroll-wrap").perfectScrollbar();
+   });
+</script>
+
+
+
+
+<!--START footer-->
+<?php
+$this->footer(array("adapter" => $adapter));
+?>
+<!--END footer-->

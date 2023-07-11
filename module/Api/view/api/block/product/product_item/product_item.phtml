@@ -1,0 +1,84 @@
+<style>
+	.pro-item .detail .title-pro a,.pro-item .detail .code-pro,.pro-item .detail .box-bottom .box-price .price,.pro-item .detail .box-bottom .box-price .old-price,.pro-item .detail .box-bottom .buy{font-family:'Roboto',sans-serif;font-weight:500}.pro-item{background:#FFFFFF;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:end;-ms-flex-align:end;align-items:end;margin:20px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc}.pro-item .box-img{display:inline-block;width:150px;height:auto;float: left;}.pro-item .box-img a{display:inline-block;position:relative;width:100%;height:100%;border:0;}.pro-item .box-img a img{width:100%;height:auto}.pro-item .detail{line-height:1.5;margin-left:38px;width:500px;float:left;}.pro-item .detail .box-top{padding-top:10px}.pro-item .detail .title-pro{margin-bottom:5px}.pro-item .detail .title-pro a{font-size:16px;color:#333;line-height:1.5;text-decoration:none}.pro-item .detail .title-pro a:hover{color:#bb0029!important}.pro-item .detail .code-pro{font-size:14px;color:#555}.pro-item .detail .box-bottom{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-top:20px}.pro-item .detail .box-bottom .box-price .price{font-size:18px;color:#bb0029}.pro-item .detail .box-bottom .box-price .old-price{font-size:14px;font-weight:400;color:#666;text-decoration:line-through;height:25px}.pro-item .detail .box-bottom .buy{border:1px solid #15b02a;color:#fff;font-size:18px;font-weight:400;background:#15b02a;width:134px;height:40px;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:4px}.pro-item .detail .box-bottom .buy:hover{background:#fff;border:1px solid #15b02a;color:#15b02a;-webkit-box-sizing:border-box;box-sizing:border-box}
+
+</style>
+<?php
+if(!empty($detail["images"])) {
+    $array = explode("-", $detail["images"]);
+    $time = date("Y/m/d", $array[0]) . "/";
+    $url_image = PATH_IMAGE_PRO . $time . $detail["images"];
+    $url_image_168 = PATH_IMAGE_PRO . $time . "168x168-" . $detail["images"];
+    $img_product["images"] = $detail["images"];
+}else{
+    $url_image ="";
+}
+$price_promotion = "";
+$hienthi = 0;
+$text_qt = "";
+$images_qt = "";
+if($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))){
+    if(!empty($detail["text_pt"])){
+        $price_promotion = $detail["price"] - ($detail["text_pt"]*$detail["price"]/100);
+        $hienthi = 1;
+    }
+    if(!empty($detail["text_vnd"])){
+        $price_promotion = $detail["price"] - $detail["text_vnd"];
+        $hienthi = 1;
+    }
+}
+$url = URL . $detail["slug_vi"] . "-sp-" . $detail["id"];
+
+?>
+
+
+<div class="pro-item">
+	<div class="box-img">
+		<a href="<?php echo $url;?>" title="<?php echo $detail["name_vi"];?>">
+			<img src="<?php echo $url_image?>" alt="<?php echo $detail["name_vi"];?>">
+		</a>
+	</div>
+	<div class="detail">
+		<div class="box-top">
+			<p class="title-pro">
+				<a href="<?php echo $url;?>" title="<?php echo $detail["name_vi"];?>">
+					<?php echo $detail["name_vi"];?></a>
+			</p>
+			<p class="code-pro">Mã sản phẩm: <?php echo $detail["sku"];?> </p>
+		</div>
+		<div class="box-bottom">
+			<div  class="box-price">
+                <?php if(intval($hienthi) >0 ){ ?>
+				
+				<p style="display:none;"><?php echo intval($price_promotion);?></p>
+				<p itemprop="price" class="price"> <?php echo number_format(intval($price_promotion),"0",",",".");?> đ</p>
+				<p itemprop="price" class="old-price"><?php echo $price = number_format($detail["price"],"0",",",".");?> đ</p>
+			    <?php }else{ ?>
+			    	<p style="display:none;"><?php echo $detail["price"]; ?></p>
+                	<p class="price"><?php echo $price = number_format($detail["price"],"0",",","."); ?> đ</p>
+                	<p itemprop="price" class="old-price"></p>
+                <?php } ?>
+            </div>
+			<!-- <button onclick="addCart(
+	                	'<?php echo $detail["id"]?>',
+	                	1,
+	                	'<?php echo $url_image_168;?>',
+	                	'<?php echo addslashes($detail["name_vi"]);?>',
+	                	'<?php
+                            if(intval($price_promotion) >0 ){
+                                echo $price_promotion;
+                            }else{
+                                echo $detail["price"];
+                            }
+                         ?>',
+	                	'<?php echo $url;?>',
+	                	'<?php echo $detail["sku"];;?>',
+	                	'<?php echo $detail["kg"];?>'
+	                	<?php if(!empty($text_qt)){
+	                	    echo ",'".$text_qt."'";
+	                	}?>
+	                	<?php if(!empty($images_qt)){
+	                	    echo ",'".$images_qt."'";
+	                	}?> )" type="button" class="muahang buy convert-background-color-15B02A">Mua ngay</button> -->
+		</div>
+	</div>
+</div>

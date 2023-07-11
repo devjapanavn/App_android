@@ -1,0 +1,16 @@
+<div class="block-1">
+	<div class="container">
+		<?php foreach ($multi_images["name_images"] as $key => $value){ ?>
+    			<?php
+    			    $array = explode("-", $multi_images["images"][$key]);
+            		$time = $array[0];
+            		$folder_date = PATH_IMAGE_BLOCK.date('Y',$time)."/".date('m',$time)."/".date('d',$time)."/".$multi_images["images"][$key];
+        		?>
+        		<div class="item">
+        			<a rel="nofollow" href="<?php echo $multi_images["link_images"][$key];?>" title="<?php echo $value;?>">
+        				<img src="<?php echo $folder_date;?>" alt="title">
+        			</a>
+        		</div>
+		<?php }?>
+	</div>
+</div>

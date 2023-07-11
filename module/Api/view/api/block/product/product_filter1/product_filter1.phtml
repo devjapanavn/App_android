@@ -1,0 +1,242 @@
+<link href="<?php echo URL_ASSET?>frontend/assets/css/productFilter.css" rel="stylesheet" type="text/css" />
+<aside class="left-side">
+    <?php if(!empty($count_category)){?>
+        <section class="widget">
+            <h3 class="title-box">Danh mục</h3>
+            <div class="box-search">
+                <input 
+                    autocomplete="off" 
+                    id='input_category_search' 
+                    type="text" 
+                    class="form-control input_search" 
+                    placeholder="Tìm kiếm..."
+                    onkeyup="searchText('category_search')"
+                >
+                <button type="button">
+                    <i class="icon-mm icon-search-mm"></i>
+                </button>
+            </div>
+            
+            <div id="category_search" class="list-item">
+            <?php foreach ($count_category as $key => $value){?>
+                <div class="check-side check-all">
+                    <label class="check-custom"><?php echo $value["name_vi"];?><span class="count-item"> (<?php echo $value["count"];?>)</span>
+                        <?php if(isset($category_check[$value['id']])){ ?>
+                        <input name="category[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" checked="checked">
+                        <?php }else{ ?>
+                        <input name="category[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" >
+                        <?php } ?>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            <?php }?>
+            </div>
+        </section>
+    <?php }?>
+    <section class="widget">
+        <h3 class="title-box">GIÁ</h3>
+        <div id="slider-range"></div>
+        <input type="hidden" name="minprice" id="minprice" value="<?php echo $max_min["minPrice"] ?>">
+        <input type="hidden" name="beginMinPrice" id="minprice1" value="<?php echo $arrayParam['beginMinPrice'];?>">
+        <input type="hidden" name="maxprice" id="maxprice" value="<?php echo $max_min["maxPrice"] ?>">
+        <input type="hidden" name="endMaxPrice" id="maxprice1" value="<?php echo $arrayParam['endMaxPrice'];?>">
+        <div class="control">
+            <div class="form-group">
+                <p class="title-range">Min</p>
+                <div class="box-input">
+                    <input autocomplete="off" type="text" class="slider_price_textbox price-all form-control" id="amount1" value='<?php echo $arrayParam['fromprice'];?>' disabled>
+                    <span>đ</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <p class="title-range">Max</p>
+                <div class="box-input">
+                    <input autocomplete="off" type="text" class="slider_price_textbox price-all form-control" id="amount2" value='<?php echo $arrayParam['toprice'];?>' disabled>
+                    <span>đ</span>
+                </div>
+            </div>
+        </div>
+        <button class="submit_click btn-price" type="button">Áp dụng</button>
+    </section>
+    <?php if(!empty($count_brand)){?>
+        <section class="widget">
+            <h3 class="title-box">Thương hiệu</h3>
+            <div class="box-search">
+                <input 
+                    autocomplete="off" 
+                    id='input_brand_search' 
+                    type="text" 
+                    class="form-control input_search" 
+                    placeholder="Tìm kiếm..."
+                    onkeyup="searchText('brand_search')"
+                >
+                <button type="button">
+                    <i class="icon-mm icon-search-mm"></i>
+                </button>
+            </div>
+            
+            <div id="brand_search" class="list-item">
+            <?php foreach ($count_brand as $key => $value){?>
+                <div class="check-side check-all">
+                    <label class="check-custom"><?php echo $value["name_vi"];?><span class="count-item"> (<?php echo $value["count"];?>)</span>
+                        <?php if(isset($brand_check[$value['id']])){ ?>
+                            <input checked="checked" name="id_brand[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" >
+                            <span class="checkmark"></span>
+                        <?php }else{?>
+                            <input name="id_brand[]" class="submit_click" type="checkbox" value="<?php echo $value["id"];?>" >
+                            <span class="checkmark"></span>
+                        <?php }?>
+                    </label>
+                </div>
+            <?php }?>
+            </div>
+        </section>
+    <?php }?>
+</aside>
+<script>
+$('.list-item').each(function(){new PerfectScrollbar(this);});
+jQuery(function () {
+	initSlidePrice()
+});
+function searchText(id) {
+    var input, filter, li, a, i, txtValue;
+    input = $('#input_'+id);
+    filter = input.val().toUpperCase();
+    li = $('#'+id+' .check-side');
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("label")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+var initSlidePrice = function () {
+	var min_price1 = parseInt(jQuery("#minprice").val());
+	var max_price1 = parseInt(jQuery("#maxprice").val());
+	if (($("#minprice1")).val()) {
+		var min_price = parseInt(jQuery("#minprice1").val())
+	} else {
+		var min_price = parseInt(jQuery("#minprice").val())
+	}
+	if (($("#maxprice1")).val()) {
+		var max_price = parseInt(jQuery("#maxprice1").val())
+	} else {
+		var max_price = parseInt(jQuery("#maxprice").val())
+	}
+	jQuery("#slider-range").slider({
+		range: !0,
+		min: min_price1,
+		max: max_price1,
+		values: [min_price, max_price],
+		slide: function (event, ui) {
+			jQuery("#amount").html("$" + ui.values[0] + " - $" + ui.values[1]);
+			var amount1 = formatCurrency(ui.values[0]);
+			var amount2 = formatCurrency(ui.values[1]);
+			jQuery("#amount1").val(amount1);
+			jQuery("#amount2").val(amount2);
+			jQuery("#minprice1").val(ui.values[0]);
+			jQuery("#maxprice1").val(ui.values[1])
+		}
+	});
+	jQuery("#amount").html("$" + jQuery("#slider-range").slider("values", 0) + " - $" + jQuery("#slider-range").slider("values", 1));
+	var from1st = formatCurrency(min_price);
+	var to1st = formatCurrency(max_price);
+	$("#amount1").val(from1st);
+	$("#amount2").val(to1st);
+	jQuery(".slider_price_textbox").on("keypress,keyup", function (e) {
+		var code = e.charCode || e.keyCode;
+		if (code == '8') return !0;
+		if (String.fromCharCode(code).match(/[^0-9]/g)) {
+			return !1
+		}
+		return !0
+	});
+	jQuery(".slider_price_textbox").focusout(function () {
+		jQuery(this).val(formatCurrency(jQuery(this).val()))
+	});
+	jQuery(".slider_price_submit").click(function () {
+		var from = formatNumber(jQuery("#amount1").val());
+		var to = formatNumber(jQuery("#amount2").val());
+		var sliderPriceURL = "http://japana.vn";
+		sliderPriceURL = sliderPriceURL.replace("amshopby_slider_from", from);
+		sliderPriceURL = sliderPriceURL.replace("amshopby_slider_to", to);
+		jQuery(".slider_price_form").attr("action", sliderPriceURL);
+		return !0
+	});
+	jQuery("#min-price").val(jQuery("#slider-range").slider("values", 0));
+	jQuery("#max-price").val(jQuery("#slider-range").slider("values", 1));
+
+	function formatCurrency(val) {
+		return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+	}
+
+	function formatNumber(val) {
+		return val.toString().split('.').join("")
+	}
+
+	function isNumberKey(evt) {
+		var charCode = (evt.which) ? evt.which : event.keyCode;
+		if (charCode == 59 || charCode == 46)
+			return !0;
+		if (charCode > 31 && (charCode < 48 || charCode > 57))
+			return !1;
+		return !0
+	}
+}
+$(document).ready(function () {
+	jQuery(".submit_click").click(function () {
+		jQuery("#filter_from").submit()
+	});
+	
+	jQuery(".slider_price_textbox").on("keypress", function (e) {
+		var code = e.charCode || e.keyCode;
+		if (code == '8') return !0;
+		if (String.fromCharCode(code).match(/[^0-9]/g)) {
+			return !1
+		}
+		return !0
+	});
+	jQuery(".slider_price_textbox").keyup(function (e) {
+		var code = e.charCode || e.keyCode;
+		if (code == '8') return !0;
+		if (String.fromCharCode(code).match(/[^0-9]/g)) {
+			return !1
+		}
+		return !0
+	});
+	jQuery(".slider_price_textbox").focusout(function () {
+		jQuery(this).val(formatCurrency(jQuery(this).val()))
+	});
+	jQuery(".slider_price_submit").click(function () {
+		var from = formatNumber(jQuery("#amount1").val());
+		var to = formatNumber(jQuery("#amount2").val());
+		var sliderPriceURL = "https://japana.vn";
+		sliderPriceURL = sliderPriceURL.replace("amshopby_slider_from", from);
+		sliderPriceURL = sliderPriceURL.replace("amshopby_slider_to", to);
+		jQuery(".slider_price_form").attr("action", sliderPriceURL);
+		return !0
+	});
+	jQuery("#min-price").val(jQuery("#slider-range").slider("values", 0));
+	jQuery("#max-price").val(jQuery("#slider-range").slider("values", 1));
+
+	function formatCurrency(val) {
+		return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+	}
+
+	function formatNumber(val) {
+		return val.toString().split('.').join("")
+	}
+
+	function isNumberKey(evt) {
+		var charCode = (evt.which) ? evt.which : event.keyCode;
+		if (charCode == 59 || charCode == 46)
+			return !0;
+		if (charCode > 31 && (charCode < 48 || charCode > 57))
+			return !1;
+		return !0
+	}
+})
+</script>

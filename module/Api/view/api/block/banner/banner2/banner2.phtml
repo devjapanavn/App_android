@@ -1,0 +1,83 @@
+<style>
+	.list-item{display:inline-block;width:100%}.list-item .item,.list-item .item a{display:inline-block;float:left;width:100%;position:relative}.list-item .item iframe{border:0;height:100%}.list-item .item span{position:absolute;top:54%;right:50%;left:0;transform:translate(45%,-50%);width:50vw;height:60vh}.list-item .item img{width:100%;height:auto}.scroll-item{position:fixed;right:0;top:50%;background:transparent;border:0;padding:0}.scroll-item img{width:150px}
+</style>
+<?php
+    if(!empty($detail["images"])) {
+        $array = explode("-", $detail["images"]);
+        $time = date("Y/m/d", $array[0]) . "/";
+        $url_image = PATH_IMAGE_PRO . $time . $detail["images"];
+        $url_image_168 = PATH_IMAGE_PRO . $time . "168x168-" . $detail["images"];
+        $img_product["images"] = $detail["images"];
+    }else{
+        $url_image ="";
+    }
+    $price_promotion = "";
+    $hienthi = 0;
+    $text_qt = "";
+    $images_qt = "";
+    if($detail["status_product"] == 1 && strtotime($detail["date_start"]) <= strtotime(date("y-m-d")) && strtotime($detail["date_end"]) >= strtotime(date("y-m-d"))){
+        if(!empty($detail["text_pt"])){
+            $price_promotion = $detail["price"] - ($detail["text_pt"]*$detail["price"]/100);
+            $hienthi = 1;
+        }
+        if(!empty($detail["text_vnd"])){
+            $price_promotion = $detail["price"] - $detail["text_vnd"];
+            $hienthi = 1;
+        }
+    }
+?>
+<div class="container-fluid nopadding">
+	<div class="list-item">
+		<?php foreach ($multi_images["desktop"] as $key => $value){ ?>
+			<?php
+    	      if(strtotime($value["begin_date"][0]) <= strtotime(date("d-m-Y H:i")) && strtotime($value["end_date"][0]) >= strtotime(date("d-m-Y H:i"))){
+    		    $array = explode("-", $value["upload"][0]);
+        		$time = $array[0];
+        		$folder_date = PATH_IMAGE_BLOCK.date('Y',$time)."/".date('m',$time)."/".date('d',$time)."/".$value["upload"][0];
+            ?>
+    		<div class="item">
+    			<?php if($value["name_images"][0] != "video"){?>
+    			<a href="<?php echo $value["link_images"][0];?>" title="<?php echo $value["name_images"][0]?>">
+    				<img src="<?php echo $folder_date;?>" alt="<?php echo $value["name_images"][0]?>">
+    			</a>
+    			<?php }else{?>
+    			<a href="" title="<?php echo $value["name_images"][0]?>">
+    				<img src="<?php echo $folder_date;?>" alt="<?php echo $value["name_images"][0]?>">
+    				<span class="box-video">
+    					<iframe src="<?php echo $value["link_images"][0];?>" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    				</span>
+    			</a>
+    			<?php }?>
+    		</div>
+		<?php }}?>
+	</div>
+	<button onclick="addCart(
+	                	'<?php echo $detail["id"]?>',
+	                	1,
+	                	'<?php echo $url_image_168;?>',
+	                	'<?php echo addslashes($detail["name_vi"]);?>',
+	                	'<?php
+                            if(intval($price_promotion) >0 ){
+                                echo $price_promotion;
+                            }else{
+                                echo $detail["price"];
+                            }
+                         ?>',
+	                	'<?php echo $url;?>',
+	                	'<?php echo $detail["sku"];;?>',
+	                	'<?php echo $detail["kg"];?>'
+	                	<?php if(!empty($text_qt)){
+	                	    echo ",'".$text_qt."'";
+	                	}?>
+	                	<?php if(!empty($images_qt)){
+	                	    echo ",'".$images_qt."'";
+	                	}?> )" type="button" class="scroll-item">
+        <img src="<?php echo URL;?>assets/images/PC.gif?1553921735" alt="button">
+    </button>
+</div>
+<script>
+	jQuery(function(){
+		var $allVideos=jQuery("iframe"),$fluidEl=jQuery(".box-video");$allVideos.each(function(){jQuery(this).data('aspectRatio',this.height/this.width).removeAttr('height').removeAttr('width')});jQuery(window).resize(function(){var newWidth=$fluidEl.width();var newHeight=$fluidEl.height();$allVideos.each(function(){var $el=jQuery(this);$el.width(newWidth).height(newWidth*$el.data('aspectRatio'));$el.height(newHeight).height(newHeight*$el.data('aspectRatio'))})}).resize()
+jQuery('.site-footer').css('margin-top','0')
+	});
+</script>

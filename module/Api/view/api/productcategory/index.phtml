@@ -1,0 +1,99 @@
+<?php
+$this->headTitle ($config["meta_web_title"]);
+$this->headMeta ()
+    ->appendName ( 'keywords',      $config["meta_web_keyword"])
+    ->appendName ( 'description',   $config["meta_web_desc"])
+    ->setProperty('og:image',       PATH_IMAGE_CATE.$config["og_image"])
+    ->setProperty('og:description', $config["og_desc"])
+    ->setProperty('og:title',       $config["og_title"])
+    ->setProperty('og:url',         $config["url"]);
+$this->headLink(array('rel' => 'canonical', 'href' => $config["url"]));
+?>
+<style>
+/*******************PRODUCTS-SAPO*******************/
+.box-detail-cate{
+  border: 1px solid #cbcbcb;
+  padding: 25px 29px;
+  margin-top: 30px;
+  display: inline-block;
+}
+.box-detail-cate h3 {
+    font-weight: bold;
+    font-family: roboto;
+    color: #e62e6b;
+}
+.box-detail-cate p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    font-family: roboto;
+    color: #666666;
+}
+.box-detail-cate img {
+    margin: 0 1.5% 1.5% 0;
+    width: 300px;
+    height: 168px;
+}
+.mota_sanphamcon {
+    display: inline-block;
+}
+.mota_sanphamcon p {
+    margin-bottom: 5px;
+}
+/*******************END_PRODUCTS-SAPO*******************/
+</style>
+<?php
+    foreach ($list_block as $key => $value){
+        if($key == 1){
+            echo '<div class="site-inner">
+        			<div class="content-sidebar-wrap">
+                        <main class="product content">
+                        <div class="navigation">
+                            <div class="container">
+                                <ul>
+                                    <li><a href="'.URL.'" title="title">Trang chủ</a></li>
+                                    <li> / '. $config["name_vi"].'</li>
+                                </ul>
+                            </div>
+                        </div>
+                  </div>';
+        }
+        if($value["begin"] == 1){?>
+        <style>
+        #filter_from{
+            margin-top: 10px;
+        }
+        </style>
+            <div class="container">
+              <form action="<?php echo $config["url"];?>" id="filter_from" method="get" name="form-data">
+              
+        <?php }
+        $namecode = $value["name_code"];
+        $this->$namecode(array(
+            "adapter" => $adapter,
+            "active" => $active,
+            "id_block_page" => $value["id"],
+            "id_category"    => $config["id"],
+            "count"   => $arrayParam["count"],
+            "name_vi" => $arrayParam["name_vi"],
+            "paginator"     => $paginator,
+            "arrayParam"    => $arrayParam,
+        ));
+        if($value["end"] == 1){
+            if(!empty($config["desc_vi"])){?>
+               <div class="clear"></div>
+               <div class="box-detail-cate">
+                    <?php
+                       echo $config["desc_vi"];
+                    ?>
+    			</div>
+    		<?php }?>
+          		</form>
+			</div>
+        <?php
+        }
+        if($key == (count($list_block) - 2)){
+            
+            echo "</main></div></div>";
+        }
+    }
+?>

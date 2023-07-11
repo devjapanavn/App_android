@@ -1,0 +1,98 @@
+<!-- boxProductCustom -->
+<link href="<?php echo URL_ASSET?>frontend/assets/css/boxProductCustom.css" rel="stylesheet" type="text/css" />
+
+<?php
+$folder_date = "";
+if(!empty($config["og_image"])){
+    $array = explode("-", $config["og_image"]);
+    $time = $array[0];
+    $folder_date = PATH_IMAGE_PAGES.date('Y',$time)."/".date('m',$time)."/".date('d',$time)."/".$config["og_image"];
+}
+$this->headTitle ($config["meta_web_title"]);
+$this->headMeta ()
+    ->appendName ( 'keywords',      $config["meta_web_keyword"])
+    ->appendName ( 'description',   $config["meta_web_desc"])
+    ->setProperty('og:image',       $folder_date)
+    ->setProperty("og:type", "website")
+    ->setProperty('fb:app_id',       "626517987552557")
+    ->setProperty('og:image:secure_url',       $folder_date)
+    ->setProperty('og:description', $config["og_desc"])
+    ->setProperty('og:title',       $config["og_title"])
+    ->setProperty('og:url',         URL);
+$this->headLink(array('rel' => 'canonical', 'href' => URL));
+?>
+<?php
+    $array = array();
+    $t = 0;
+    foreach ($list_block as $key => $value){
+        if($key == 1){
+            echo '<div class="site-inner">
+                <div class="content-sidebar-wrap">
+                <main id="home_content" class="home content">';
+        }
+        if($value["begin"] == 1){
+            echo '<div class="container">';
+        }
+        if($key < 4){
+            $namecode = $value["name_code"];
+            $this->$namecode(array(
+                "adapter" => $adapter,
+                "active" => $active,
+                "id_block_page" => $value["id"]
+            ));
+        }else{
+            $array[$t]["name_code"] = $value["name_code"];
+            $array[$t]["id_block_page"] = $value["id"];
+            $t++;
+        }
+        if($value["end"] == 1){
+            echo "</div>";
+        }
+        if($key == (count($list_block) - 3)){
+            echo "</main></div></div>";
+        }
+    }
+?>
+<script type="text/javascript">
+	var t = 0;
+	var arrayBlock = [];
+	<?php $i = 0; foreach ($array as $key => $value){?>
+		arrayBlock[<?php echo $i++;?>] = {
+    		"name_code" :    "<?php echo $value["name_code"];?>",
+    		"id_block_page": "<?php echo $value["id_block_page"];?>"
+    	};
+	<?php }?>
+	var flag = 0;
+	 $(window).scroll(function(){
+		if(flag == 0){
+			loadAjax(arrayBlock[t].name_code, arrayBlock[t].id_block_page);
+			flag = 1;
+		}
+	 });
+    function loadAjax(name_code,id_block_page){
+    	var item = new Object();
+    	item.name_code = name_code;
+    	item.id_block_page = id_block_page;
+    	item.active = "index";
+		$.ajax({
+    		url: "<?php echo URL;?>frontend/ajaxs/index",
+    		type: "POST",
+    		data: item,
+    		dataType: "html",
+    		cache: false,
+    		success: function(result)
+    		{
+    			$("#home_content").append(result);
+    		}
+		});
+		timeout = setTimeout(function(){
+	        if(t < arrayBlock.length){
+	        	t++;
+				loadAjax(arrayBlock[t].name_code,arrayBlock[t].id_block_page);
+			}else{
+				clearTimeout(timeout);
+				return false;
+			}
+	    }, 400);
+    }
+</script>

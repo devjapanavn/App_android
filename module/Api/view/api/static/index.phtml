@@ -1,0 +1,82 @@
+<style>
+   .static-detail{float:right;width:870px;padding:20px;background:#f7f7f7;text-align:justify;margin-top:10px;}.detail-static{line-height:1.8}.static-detail .title{text-transform:uppercase;font-family:'Roboto',sans-serif;color:#111;border-bottom:2px solid #bb0029;padding-bottom:5px;margin-bottom:15px}.detail-static a{color:#bb0029}.detail-static strong{font-weight:500}.detail-static ul{list-style-type:disc;-webkit-padding-start:40px}.check-order{background:#f1f1f1;width:270px;margin-top:10px;border:1px solid #e3e3e3;float:left}.check-order ul li{border-bottom:1px solid #fff}.check-order ul li:last-child{border-bottom:0}.check-order ul li a{font-family:'Roboto',sans-serif;font-weight:400;font-size:14px;color:#333;display:inline-block;width:100%;padding:15px}.check-order ul li:hover{background:#bb0029}.check-order ul li:hover a{color:#fff}.check-order ul li.active{background:#bb0029}.check-order ul li.active a{color:#fff}.hover-order{display:none}.check-order ul li a .img-order,.check-order ul li a .hover-order{margin-right:7px;margin-bottom:-2px}.check-order ul li:hover a .img-order,.check-order ul li.active a .img-order{display:none}.check-order ul li:hover a .hover-order,.check-order ul li.active a .hover-order{display:inline-block}.check-order ul li ul{background:#fff;padding:18px}.check-order ul li ul li:hover{background:#fff}.check-order ul li ul li.active{background:transparent}.check-order ul li ul li.active a{color:#bb0029!important}.check-order ul li ul li a{color:#666666!important;font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;padding:0;padding-bottom:10px;line-height:1.5;}.check-order ul li ul li:last-child a{padding-bottom:0;line-height:1.5}.check-order ul li ul li:hover a{color:#bb0029!important}.detail-static h3{font-size:14px;font-weight:500;color:#000;line-height:1.8;margin:3px 0}.detail-static h2{font-size:15px;margin:0;padding:0;font-weight:500;line-height:1.8;color:#000}.detail-static p{font-weight:400;font-size:14px;color:#000;line-height:1.8}.detail-static h4{text-align:center!important;margin:15px 0}
+</style>
+<?php
+$this->headTitle ($config["meta_web_title"]);
+$this->headMeta ()
+    ->appendName ( 'keywords',      $config["meta_web_keyword"])
+    ->appendName ( 'description',   $config["meta_web_desc"])
+    ->setProperty('fb:app_id',       "626517987552557")
+    ->setProperty('og:url',         $url)
+    ->setProperty("og:type", "article")
+    ->setProperty('og:title',       $config["og_title"])
+    ->setProperty('og:locale',       "vi_VN")
+    ->setProperty('og:site_name',       "japana.vn")
+    ->setProperty('og:image',       $config["og_image"])
+    ->setProperty('og:image:secure_url',$config["og_image"])
+    ->setProperty('og:image:width',       "600")
+    ->setProperty('og:image:height',       "315")
+    ->setProperty('og:description', $config["og_desc"]);
+$this->headLink(array('rel' => 'canonical', 'href' => $this->url));
+?>
+<?php
+$this->header(array(
+    "adapter" => $adapter,
+    "active" => $active));
+?>
+    <div class="site-inner">
+        <div class="content-sidebar-wrap">
+            <main class="static content">
+
+                <div class="navigation">
+                    <div class="container">
+                        <ul>
+                            <li><a href="." title="Trang chủ">Trang chủ</a></li>
+                            <li> / <?php echo $info['name'] ;?></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <aside class="sidebar sidebar-primary check-order ">
+                        <ul>
+                            <li><a href="#" title="Japana Việt Nam"><img src="<?php echo URL;?>assets/frontend/sidebar_static/images/icon1b.png" alt="Japana Việt Nam" class="img-order"><img src="<?php echo URL;?>assets/frontend/sidebar_static/images/icon1a.png" alt="Japana Việt Nam" class="hover-order">Japana Việt Nam</a></li>
+                            <li class="active">
+                                <a href="#" title="Chăm sóc khách hàng"><img src="<?php echo URL;?>assets/frontend/sidebar_static/images/icon1b.png" alt="Chăm sóc khách hàng" class="img-order"><img src="<?php echo URL;?>assets/frontend/sidebar_static/images/icon1a.png" alt="Chăm sóc khách hàng" class="hover-order">Chăm sóc khách hàng</a>
+                                <ul>
+                                    <?php
+                                    if(!empty($list_news_static)) {
+                                        foreach ($list_news_static as $item) {
+                                            $url = $item['slug']."-static-".$item['id'].".jp";
+                                            $url2 = "/".$url;
+                                            ?>
+                                            <li <?php if($_SERVER['REQUEST_URI'] == $url2){ ?>class='active'<?php } ?> >
+                                                <a href="<?php echo $url; ?>" title="<?php echo $item['name']; ?>">
+                                                    <?php echo $item['name']; ?>
+                                                </a>
+                                            </li>
+                                            <?php
+                                        } //end for
+                                    }//end if
+                                    ?>
+                                </ul>
+                            </li>
+                            <li><a href="<?php echo URL;?>lien-he.jp" title="Liên hệ"><img src="<?php echo URL;?>assets/frontend/sidebar_static/images/icon1b.png" alt="Liên hệ" class="img-order"><img src="<?php echo URL;?>assets/frontend/sidebar_static/images/icon1a.png" alt="Liên hệ" class="hover-order">Liên hệ</a></li>
+                        </ul>
+                    </aside>
+
+                    <div class="static-detail">
+                        <h3 class="title"><?php echo $info['name'] ;?></h3>
+                        <div class="detail-static">
+                            <?php echo $info['desc'] ;?>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+<?php
+$this->footer(array(
+    "adapter" => $adapter));
+?>

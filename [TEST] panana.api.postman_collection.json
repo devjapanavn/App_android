@@ -1,0 +1,4869 @@
+{
+	"info": {
+		"_postman_id": "a75aa729-95b8-4de0-94a0-4b40ca295a79",
+		"name": "[TEST] japana.api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PRODUCT-CATEGORY",
+			"item": [
+				{
+					"name": "get banner theo category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "categories_id",
+									"value": "1",
+									"description": "id category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/banners",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"banners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get danh sách category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category_id",
+									"value": "649",
+									"description": "0: category lớn nhất - dành cho trang chủ",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "1",
+									"description": "chỉ lấy danh mục cấp lớn nhất",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/categories",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "có thể dùng để get danh mục lớn nhất.\nlọc theo danh mục\nxài chung cho toàn bộ category"
+					},
+					"response": []
+				},
+				{
+					"name": "get detail category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/categories/1",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"1"
+							]
+						},
+						"description": "có thể dùng để get danh mục lớn nhất.\nlọc theo danh mục\nxài chung cho toàn bộ category"
+					},
+					"response": []
+				},
+				{
+					"name": "get danh sách top tìm kiếm category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category_id",
+									"value": "12",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/categories/search",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"search"
+							]
+						},
+						"description": "có thể dùng để get danh mục lớn nhất.\nlọc theo danh mục\nxài chung cho toàn bộ category"
+					},
+					"response": []
+				},
+				{
+					"name": "danh mục - sản phẩm - trang chủ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "parent_id",
+									"value": "2",
+									"description": "ID danh mục cha",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products/home",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list hot, new, sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "0",
+									"description": "gắng page để vào xem tất cả sp của hot",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "new",
+									"description": "new: mới; sale: bán chạy",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "paz",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products/hot",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"hot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list hot, new, sale detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "0",
+									"description": "gắng page để vào xem tất cả sp của hot",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "new",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "paz",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products/hot/3",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"hot",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "danh sách sản phẩm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category_id",
+									"value": "649",
+									"description": "id category",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "paz",
+									"description": "pza: giá từ cao đến thấp; paz: giá từ thấp đến cao;",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "sale",
+									"description": "sale: bán chạy; new: mới nhất; promotion",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "shop_id",
+									"value": "15",
+									"description": "truyền shop_id để lấy sản phẩm của shop",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "keyword",
+									"value": "set áo + quần",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "top_sale",
+									"value": "1",
+									"description": "lấy danh sách top sale",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get danh sách category shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "shop_id",
+									"value": "15",
+									"description": "ID danh mục cha",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/categories/shop",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"shop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list hot, new, sale shop shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "shop_id",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products/hotshop",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"hotshop"
+							]
+						},
+						"description": "api get list new hot sale cua shop. danh cho man hinh shop"
+					},
+					"response": []
+				},
+				{
+					"name": "get prodcuts tap category sản phẩm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_tab_category_id",
+									"value": "1",
+									"description": "id product tap",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get products last detals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "event_id",
+									"value": "1",
+									"description": "id của event",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get detail prodcuts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products/100",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[PRODUCTS] - phân loại theo sản phẩm - chi tiết sản phẩm Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/products/variations/16508",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"variations",
+								"16508"
+							]
+						},
+						"description": "truyền id sp để get phân loại"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SHOP",
+			"item": [
+				{
+					"name": "Thông tin shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://apihugehnship.stackgoo.com/api/v1/shop/15",
+							"protocol": "http",
+							"host": [
+								"apihugehnship",
+								"stackgoo",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shop",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "[FCMTOKEN] check and add fcmtoken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_local}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "fcmtoken",
+									"value": "fcm234234234aaaaa",
+									"type": "text"
+								},
+								{
+									"key": "device_id",
+									"value": "device232343434",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/fcmtoken",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"fcmtoken"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test222",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/login",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get info users by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIzLCJwaG9uZSI6IjA5ODY4ODg4NzkiLCJ1c2VybmFtZSI6InRlc3QyMjIiLCJpZF9hZG1pbiI6MCwiaWF0IjoxNjE4MzI2MzYzLCJleHAiOjE5MzM2ODYzNjN9.E2HmqDqzyDBQOl9aRtKF7S5MpGDlg-QyQOSvdh0UBQE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "23",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/user/info",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list users for chat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwNywicGhvbmUiOiIwOTg2ODAyNjM2IiwidXNlcm5hbWUiOiJ0ZXN0dXNlcjM3IiwiaWF0IjoxNTc4MjI3MDcyLCJleHAiOjE4OTM1ODcwNzJ9.fFW8hhcDv0Ydg3ooy78NVAnFSROM3owhhiOVsGbAQUo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_localhost_chat}}/api/v1/chat/users",
+							"host": [
+								"{{url_localhost_chat}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chat",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list users for chat Copy 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwNywicGhvbmUiOiIwOTg2ODAyNjM2IiwidXNlcm5hbWUiOiJ0ZXN0dXNlcjM3IiwiaWF0IjoxNTc4MjI3MDcyLCJleHAiOjE4OTM1ODcwNzJ9.fFW8hhcDv0Ydg3ooy78NVAnFSROM3owhhiOVsGbAQUo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/chat/user_order?username=test222",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chat",
+								"user_order"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test222"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwNywicGhvbmUiOiIwOTg2ODAyNjM2IiwidXNlcm5hbWUiOiJ0ZXN0dXNlcjM3IiwiaWF0IjoxNTc4MjI3MDcyLCJleHAiOjE4OTM1ODcwNzJ9.fFW8hhcDv0Ydg3ooy78NVAnFSROM3owhhiOVsGbAQUo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/chat/user_order?username=test222",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chat",
+								"user_order"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test222"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list users for chat Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwNywicGhvbmUiOiIwOTg2ODAyNjM2IiwidXNlcm5hbWUiOiJ0ZXN0dXNlcjM3IiwiaWF0IjoxNTc4MjI3MDcyLCJleHAiOjE4OTM1ODcwNzJ9.fFW8hhcDv0Ydg3ooy78NVAnFSROM3owhhiOVsGbAQUo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "test888",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/chat/admin",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chat",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] registers user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "testuser37",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "user1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0986802636",
+									"type": "text"
+								},
+								{
+									"key": "zalo_phone",
+									"value": "0986802676",
+									"type": "text"
+								},
+								{
+									"key": "zalo_name",
+									"value": "0986802676",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/user/add",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS]  update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQ2LCJwaG9uZSI6IjA5ODY4MDQ4MDciLCJ1c2VybmFtZSI6ImRldmhuc2hpcCIsImlhdCI6MTU3Njg0MDMwMSwiZXhwIjoxODkyMjAwMzAxfQ.dxRXC33VMINea-KzcBjm2s-XuApizGNW5k6aBqXEu-M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullname",
+									"value": "LE VAN TEST",
+									"type": "text"
+								},
+								{
+									"key": "zalo_name",
+									"value": "SHOP 123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "123456@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "bank",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_fullname",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_branch",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/user/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS]  logout user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwNywicGhvbmUiOiIwOTg2ODAyNjM2IiwidXNlcm5hbWUiOiJ0ZXN0dXNlcjM3IiwiaWF0IjoxNTc4MjI3MDcyLCJleHAiOjE4OTM1ODcwNzJ9.fFW8hhcDv0Ydg3ooy78NVAnFSROM3owhhiOVsGbAQUo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "507",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/user/logout",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS]  update avatar user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpYXQiOjE1ODQ2Mjk2MDYsImV4cCI6MTg5OTk4OTYwNn0.8YoUTL6_YeKYtswI_tfc6UYVdLZ6Lw2reoli4hpTDKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/PC/Desktop/auto365/banner-sidebar.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/user/update_avatar",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update_avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list address member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQ2LCJwaG9uZSI6IjA5ODY4MDQ4MDciLCJ1c2VybmFtZSI6ImRldmhuc2hpcCIsImlhdCI6MTU3NzE1OTY5MywiZXhwIjoxODkyNTE5NjkzfQ.ZYyJOYYeJ5izmeZJoweMc6rcsv9h0UomxNfg0qYL56M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/address",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"address"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] add address member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_local}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"description": "id member",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "1",
+									"description": "địa chỉ củ thể nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "100",
+									"description": "ID tỉnh thành",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "48341",
+									"description": "ID quận huyện",
+									"type": "text"
+								},
+								{
+									"key": "ward_id",
+									"value": "46",
+									"description": "ID Xã phường",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "TÊN NHẬN HÀNG",
+									"description": "Tên nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0986800000",
+									"description": "Số điện thoại nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Ghi chú khi nhận hàng",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/address/add",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"add"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] update address member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_local}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "1",
+									"description": "địa chỉ củ thể nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "1",
+									"description": "ID tỉnh thành",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "3",
+									"description": "ID quận huyện",
+									"type": "text"
+								},
+								{
+									"key": "ward_id",
+									"value": "7",
+									"description": "ID Xã phường",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "TÊN NHẬN HÀNG",
+									"description": "Tên nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0986800000",
+									"description": "Số điện thoại nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Ghi chú khi nhận hàng",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "671",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/address/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"update"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] delete address member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_local}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "669",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/address/delete",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"delete"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[WALLET] get list transaction history order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQ2LCJwaG9uZSI6IjA5ODY4MDQ4MDciLCJ1c2VybmFtZSI6ImRldmhuc2hpcCIsImlhdCI6MTU3NzE1OTY5MywiZXhwIjoxODkyNTE5NjkzfQ.ZYyJOYYeJ5izmeZJoweMc6rcsv9h0UomxNfg0qYL56M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/wallet/trans_order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"trans_order"
+							]
+						},
+						"description": "danh ssách lịch sử ví khi trừ hoặc cộng ở đơn hàng. chỉ show danh sách cho khách xem thôi."
+					},
+					"response": []
+				},
+				{
+					"name": "get token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "ngocanh2004",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "234",
+									"type": "text"
+								},
+								{
+									"key": "id_admin",
+									"value": "34234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/token",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CART",
+			"item": [
+				{
+					"name": "[CART] get list item cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] add cart item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "96",
+									"description": "id sản phẩm",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"description": "số lượng item thêm vào giỏ",
+									"type": "text"
+								},
+								{
+									"key": "quantity_total_item",
+									"value": "98",
+									"description": "tổng số lượng của item đó",
+									"type": "text"
+								},
+								{
+									"key": "product_detail_id",
+									"value": "585",
+									"description": "id phân loại item test: detail: 134226 - 69, 134222 - 2",
+									"type": "text"
+								},
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "quantity_all",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/add",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"add"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] update cart item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"description": "id member",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "100",
+									"description": "số lượng tăng thêm vào giỏ hoặc -sl nếu giảm xuống\nclient check nếu quantity_total_item< tổng số lượng đặt thì ko cho tăng số lượng nữa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/update/70092",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"update",
+								"70092"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] del cart item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "testuser1",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "user1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0986807777",
+									"type": "text"
+								},
+								{
+									"key": "zalo_phone",
+									"value": "0986807777",
+									"type": "text"
+								},
+								{
+									"key": "zalo_name",
+									"value": "0986807777",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/1",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] remove item cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjg5MCwicGhvbmUiOiIwOTA5MDgxMzE4IiwidXNlcm5hbWUiOiJCYW90cmFuMzUiLCJpZF9hZG1pbiI6MCwiaWF0IjoxNTg4NjQ3NzE2LCJleHAiOjE5MDQwMDc3MTZ9.sEZjc7cGJj7b_qdRx7LmJcXyyAqsvQ-rw4VhYagj2Tk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "890",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/delete/181916",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"delete",
+								"181916"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] update check buy item cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"[{\"0\":\"181515\"},{\"1\":\"181515\"}]"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjg5MCwicGhvbmUiOiIwOTA5MDgxMzE4IiwidXNlcm5hbWUiOiJCYW90cmFuMzUiLCJpZF9hZG1pbiI6MCwiaWF0IjoxNTg4NjQ3NzE2LCJleHAiOjE5MDQwMDc3MTZ9.sEZjc7cGJj7b_qdRx7LmJcXyyAqsvQ-rw4VhYagj2Tk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"description": "id member",
+									"type": "text"
+								},
+								{
+									"key": "check_item",
+									"value": "181938",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/update_check",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"update_check"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] buyagain - mua lại đơn",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjg5MCwicGhvbmUiOiIwOTA5MDgxMzE4IiwidXNlcm5hbWUiOiJCYW90cmFuMzUiLCJpZF9hZG1pbiI6MCwiaWF0IjoxNTg5MjE1MTUxLCJleHAiOjE5MDQ1NzUxNTF9.kdjI5M3Wj--7byG8lVU-0bRvMEmvvO_LIF2ejkDRPrk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "890",
+									"description": "id member",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "53",
+									"description": "ID order",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/buyagain",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"buyagain"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] upload image cart item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_local}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"description": "id member",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "ghi chú sp là bắt buộc ghi chú =>khi trong json_product có is_upload=1",
+									"type": "file",
+									"src": "/C:/Users/PC/Desktop/hnship/sp/opheoxinh4.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/upload_image/3",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"upload_image",
+								"3"
+							]
+						},
+						"description": "đối với 1 số sp cần upload hình mẫu, bắt buộc khách up hình trc khi pass"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] remove image item cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_local}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "2020/01/03/03012020172856-ac2e1e01c4411139.jpg",
+									"description": "image remove",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/removeImage/4",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"removeImage",
+								"4"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[CART] update cart item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "testuser1",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "user1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0986807777",
+									"type": "text"
+								},
+								{
+									"key": "zalo_phone",
+									"value": "0986807777",
+									"type": "text"
+								},
+								{
+									"key": "zalo_name",
+									"value": "0986807777",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/cart/update/1",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHECKOUT-TEMP",
+			"item": [
+				{
+					"name": "[CHECKOUT TEMP] add checkout temp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/add",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"add"
+							]
+						},
+						"description": "khi thực hiện từ màn cart sang màn checkout, check nếu tồn tại checkouttemp này rồi thì trả về info đơn, còn chưa sẽ tự add và trả về info luôn\n::)))"
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] change payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "payment_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/change_payment",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"change_payment"
+							]
+						},
+						"description": "áp dụng cho tất cả đơn hàng. user chọn 1 lần."
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] change delivery",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "ship_index",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "ship_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "shop_id",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/change_delivery",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"change_delivery"
+							]
+						},
+						"description": "Thực hiện thêm địa chỉ tại mục checkout này, sẽ return về địa chỉ member update vào đơn tạm. đồng thời cập nhật phí giao hàng"
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] change address user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "ship_index",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "delivery_id",
+									"value": "11",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_member_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/change_address",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"change_address"
+							]
+						},
+						"description": "Thực hiện thêm địa chỉ tại mục checkout này, sẽ return về địa chỉ member update vào đơn tạm. đồng thời cập nhật phí giao hàng"
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] update checkout temp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "soạn đủ hàng giúp",
+									"description": "ghi chú đơn",
+									"type": "text"
+								},
+								{
+									"key": "shop_id",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] add address user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "48",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "490",
+									"type": "text"
+								},
+								{
+									"key": "ward_id",
+									"value": "20197",
+									"type": "text"
+								},
+								{
+									"key": "default",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "LE VAN",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09868088888",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "123  Lê Văn Tám",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "Thành phố Đà Nẵng",
+									"type": "text"
+								},
+								{
+									"key": "district",
+									"value": "Quận Liên Chiểu",
+									"type": "text"
+								},
+								{
+									"key": "ward",
+									"value": "Phường Hòa Khánh Bắc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/add_address",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"add_address"
+							]
+						},
+						"description": "Thực hiện thêm địa chỉ tại mục checkout này, sẽ return về địa chỉ member update vào đơn tạm. đồng thời cập nhật phí giao hàng"
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] get checkouttemp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "ship_index",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_id",
+									"value": "11",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp"
+							]
+						},
+						"description": "Thực hiện thêm địa chỉ tại mục checkout này, sẽ return về địa chỉ member update vào đơn tạm. đồng thời cập nhật phí giao hàng"
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT TEMP] get list level 4 Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2MywicGhvbmUiOiIwOTI2ODA0ODg4IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTczNzQzNSwiZXhwIjoxODk3MDk3NDM1fQ.UqJot8us-AREHnLSXauQcSq1avAeimPjUzUAIaoHR10",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "563",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "Thành phố Hà Nội",
+									"type": "text"
+								},
+								{
+									"key": "district",
+									"value": "Quận Đống Đa",
+									"type": "text"
+								},
+								{
+									"key": "ward",
+									"value": "Phường Hàng Bột",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkouttemp/get_ship_level4",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkouttemp",
+								"get_ship_level4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHECKOUT",
+			"item": [
+				{
+					"name": "[CHECKOUT] add checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "cus_source_id",
+									"value": "1",
+									"description": "1: web;2: ios, 3: android",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkout/add",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkout",
+								"add"
+							]
+						},
+						"description": "thao tác này sẽ là thanh toán, kết thúc đặt hàng, chuyển sang màn hình xem lịch sử đơn hàng đã đặt này"
+					},
+					"response": []
+				},
+				{
+					"name": "[CHECKOUT] background processer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/checkout/backgroundprocessorder/51",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"checkout",
+								"backgroundprocessorder",
+								"51"
+							]
+						},
+						"description": "thao tác này sẽ là thanh toán, kết thúc đặt hàng, chuyển sang màn hình xem lịch sử đơn hàng đã đặt này"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ORDERS",
+			"item": [
+				{
+					"name": "[USERS] get list orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list orders status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders/order_status",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"order_status"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get list status - total order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2MywicGhvbmUiOiIwOTI2ODA0ODg4IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MjQ3ODc0NCwiZXhwIjoxODk3ODM4NzQ0fQ.4cmMGevNb68iiNIlBhFAvzJsYnRjMwRrwMuPr9xFmXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "563",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders/status",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"status"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get item orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders/order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] get cancel order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsInBob25lIjoiMDk4NjgwMjYzNiIsInVzZXJuYW1lIjoidGVzdDIyMiIsImlkX2FkbWluIjowLCJpYXQiOjE2MDEwMTcxMDAsImV4cCI6MTkxNjM3NzEwMH0.-KS98f08qQoenydfXZ645s9PauxCce2MaLccqR39jy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders/cancel",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"cancel"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[USERS] add ticket orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQ2LCJwaG9uZSI6IjA5ODY4MDQ4MDciLCJ1c2VybmFtZSI6ImRldmhuc2hpcCIsImlhdCI6MTU3NzE1OTY5MywiZXhwIjoxODkyNTE5NjkzfQ.ZYyJOYYeJ5izmeZJoweMc6rcsv9h0UomxNfg0qYL56M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id đơn hàng",
+									"type": "text"
+								},
+								{
+									"key": "contents",
+									"value": "test tickets",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders/addticket",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"addticket"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ORDER] add address order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5NjU0MTQ4MSwiZXhwIjoxOTExOTAxNDgxfQ.n2HD8MDXGgd1eQIW36C_NBK0Byk4LbZfylX_oheVbA0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "48",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "490",
+									"type": "text"
+								},
+								{
+									"key": "ward_id",
+									"value": "20197",
+									"type": "text"
+								},
+								{
+									"key": "default",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "LE VAN",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09868088888",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "123  Lê Văn Tám",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "Thành phố Đà Nẵng",
+									"type": "text"
+								},
+								{
+									"key": "district",
+									"value": "Quận Liên Chiểu",
+									"type": "text"
+								},
+								{
+									"key": "ward",
+									"value": "Phường Hòa Khánh Bắc",
+									"type": "text"
+								},
+								{
+									"key": "order_id",
+									"value": "12898",
+									"type": "text"
+								},
+								{
+									"key": "hamlet",
+									"value": "1111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/orders/add_address",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"add_address"
+							]
+						},
+						"description": "Thực hiện thêm địa chỉ tại mục checkout này, sẽ return về địa chỉ member update vào đơn tạm. đồng thời cập nhật phí giao hàng"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADMIN-ORDER",
+			"item": [
+				{
+					"name": "[ADMIN_ORDER_ECOMERCE] list order ecomerce",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "key_search",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "1",
+									"description": "value: : 1 => mới or 3 => cao đến thấp or 4 => thấp -cao",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_ecom",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_ecom"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_ECOMERCE] list status - total order ecomerce",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_ecom/status",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_ecom",
+								"status"
+							]
+						},
+						"description": "danh sách trạng thái, số lượng đơn theo trạng thái"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_ECOMERCE] item order ecomerce",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "35397",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_ecom/order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_ecom",
+								"order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_LAZADA] list order lazada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "key_search",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "1",
+									"description": "value: : 1 => mới or 3 => cao đến thấp or 4 => thấp -cao",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_lazada",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_lazada"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_ECOMERCE] update order ecomerce",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "32696",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "52",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_ecom/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_ecom",
+								"update"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_LAZADA] list status - total order lazada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_lazada/status",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_lazada",
+								"status"
+							]
+						},
+						"description": "danh sách trạng thái, số lượng đơn theo trạng thái"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_LAZADA] item order lazada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_lazada/order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_lazada",
+								"order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_LAZADA] update order lazada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "52",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_lazada/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_lazada",
+								"update"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_SENDO] list order Sendo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "key_search",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "1",
+									"description": "value: : 1 => mới or 3 => cao đến thấp or 4 => thấp -cao",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_sendo",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_sendo"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_SENDO] list status - total order sendo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_sendo/status",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_sendo",
+								"status"
+							]
+						},
+						"description": "danh sách trạng thái, số lượng đơn theo trạng thái"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_SENDO] item order sendo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_sendo/order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_sendo",
+								"order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER_SENDO] update order sendo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMywicGhvbmUiOiIwOTg2Nzg4ODg5IiwidXNlcm5hbWUiOiJkZXZfYWRtaW4iLCJpZF9hZG1pbiI6NDAsImlhdCI6MTU5ODkyODc4MiwiZXhwIjoxOTE0Mjg4NzgyfQ.jva7uLESE8CUpEtaIjgRMgET-vR_Fc4CI53VLHUwQls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "723",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "52",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/order_sendo/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order_sendo",
+								"update"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] list orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2LCJwaG9uZSI6IjAzNTcxODE0NDYiLCJ1c2VybmFtZSI6IkNhbWxlIiwiaWRfYWRtaW4iOjAsImlhdCI6MTU4NDkwMTAzMSwiZXhwIjoxOTAwMjYxMDMxfQ.tVUjmgkqyjU1Ecla9y5IOCBsr3FkIcOGZ-WzK4nq5bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "56",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "2",
+									"description": "1: mặc định theo trang thái, đơn cũ đến mới\n2: theo trạng thái, đơn mới đến cũ\n3: theo trạng thái, đơn tổng tiền lớn đến nhỏ\n4: theo trạng thái, đơn nhỏ đến lớn",
+									"type": "text"
+								},
+								{
+									"key": "key_search",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] list status - total order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2MywicGhvbmUiOiIwOTI2ODA0ODg4IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MjQ3ODc0NCwiZXhwIjoxODk3ODM4NzQ0fQ.4cmMGevNb68iiNIlBhFAvzJsYnRjMwRrwMuPr9xFmXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "563",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "1",
+									"description": "1: mặc định theo trang thái, đơn cũ đến mới\n2: theo trạng thái, đơn mới đến cũ\n3: theo trạng thái, đơn tổng tiền lớn đến nhỏ\n4: theo trạng thái, đơn nhỏ đến lớn",
+									"type": "text"
+								},
+								{
+									"key": "key_search",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/status",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"status"
+							]
+						},
+						"description": "danh sách trạng thái, số lượng đơn theo trạng thái"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] item order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2Mywic3ViX2FkbWluIjozNCwicGhvbmUiOiIwOTI2ODA0ODg4IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MjIwODQzMywiZXhwIjoxODk3NTY4NDMzfQ.S6lQ7phTp6VuKIYw8cqCnl32RAlLt8qNUqk_I-6pOz8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "563",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "6555",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] list orders merge",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2Mywic3ViX2FkbWluIjozNCwicGhvbmUiOiIwOTI2ODA0ODg4IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MjIwODQzMywiZXhwIjoxODk3NTY4NDMzfQ.S6lQ7phTp6VuKIYw8cqCnl32RAlLt8qNUqk_I-6pOz8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "563",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "5155",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/list_merge_order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"list_merge_order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] merge orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjU2Mywic3ViX2FkbWluIjozNCwicGhvbmUiOiIwOTI2ODA0ODg4IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MjIwODQzMywiZXhwIjoxODk3NTY4NDMzfQ.S6lQ7phTp6VuKIYw8cqCnl32RAlLt8qNUqk_I-6pOz8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "563",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "5146",
+									"type": "text"
+								},
+								{
+									"key": "list_merge_id",
+									"value": "6116",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/merge_order",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"merge_order"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] update order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4881",
+									"description": "id đơn hàng",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "52",
+									"description": "cập nhật user qly đơn hàng này",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "quang",
+									"type": "text"
+								},
+								{
+									"key": "weight",
+									"value": "300",
+									"description": "khối lượng",
+									"type": "text"
+								},
+								{
+									"key": "ship_name",
+									"value": "huynh thi diễm kiều 2",
+									"type": "text"
+								},
+								{
+									"key": "ship_phone",
+									"value": "0332110468",
+									"type": "text"
+								},
+								{
+									"key": "ship_address",
+									"value": "KTX B Đại học quốc gia TP HCM",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "79",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "762",
+									"type": "text"
+								},
+								{
+									"key": "ward_id",
+									"value": "26800",
+									"type": "text"
+								},
+								{
+									"key": "ship_province",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ship_district",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ship_ward",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ship_code",
+									"value": "",
+									"description": "Mã đơn vị vận chuyển",
+									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tax_reason",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "discount_reason",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"update"
+							]
+						},
+						"description": "#update các thông tin đơn hàng, chọn nhân viên\n member_id,id luôn có.\n các biến còn lại có thể update theo cụm được phân quyền: \n 1/ khối lượng, field: weight.\n 2/ thông tin giao hàng, gồm các field: ship_name,ship_phone,ship_address,province_id,district_id,ward_id\n 3/ ship_code\n 4/ chi phí, các field: tax, tax_reason\n 4/ giảm giá, các field: discount, discount_reason"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] del item order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4881",
+									"description": "id đơn hàng",
+									"type": "text"
+								},
+								{
+									"key": "item_id",
+									"value": "52",
+									"description": "id item trong đơn hàng cần xóa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/delete",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"delete"
+							]
+						},
+						"description": "#xóa item sp"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] add tickets order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "52",
+									"description": "cập nhật user qly đơn hàng này, chính là id trong info_admin\n",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4881",
+									"description": "id đơn hàng",
+									"type": "text"
+								},
+								{
+									"key": "contents",
+									"value": "test admin them ticket",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/addticket",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"addticket"
+							]
+						},
+						"description": "thêm ticket từ admin"
+					},
+					"response": []
+				},
+				{
+					"name": "[ADMIN_ORDER] action order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "state_next",
+									"value": "2",
+									"description": "dùng cho các button đơn hàng",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/admin/orders/action",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders",
+								"action"
+							]
+						},
+						"description": "các button user. truyền state_next"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OTHER (survey, version, payments,banners,notification,delivery)",
+			"item": [
+				{
+					"name": "[SURVEY] list question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/survey",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"survey"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "[SURVEY] submit form",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUwOCwicGhvbmUiOiIwOTg2ODA0ODc3IiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTU4MTE4MTM0NiwiZXhwIjoxODk2NTQxMzQ2fQ.MQYTbAIkXlKoAs08Wnx6j6U5oo0c5LbcJPb2F2bRsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "member_id",
+									"value": "508",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "{\"1\":[\"1\",\"3\"],\"2\":\"5\",\"3\":\"okookkkk\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/survey/update",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"survey",
+								"update"
+							]
+						},
+						"description": "sau khi add xong item vào giỏ hàng, sẽ return lại danh sách dc thêm"
+					},
+					"response": []
+				},
+				{
+					"name": "version",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/version",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[PAYMENTS] - list - danh sách phương thức thanh toán",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page",
+									"value": "3",
+									"description": "page là số item mỗi block, page tăng từ 1,2,3,4 đến khi null data",
+									"type": "text"
+								},
+								{
+									"key": "keyword",
+									"value": "",
+									"description": "từ khóa tìm kiếm",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"description": "id danh mục, sẽ lấy sp của danh mục đó",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "new",
+									"description": "new or sale . new: list sp mới nhất, sale: sp bán chạy nhất\nlist ở homepage mặt định sale",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "",
+									"description": "paz or pza sắp xếp sp theo giá,  paz: giá thấp đếncao;  pza: ngược lại",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/payment",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payment"
+							]
+						},
+						"description": "truyền các param theo mô tả ở field body.\ndùng cho tất cả các màn hình:\nhome, \ndanh sách sp,\nsp theo danh mục, \ndanh sách theo danh mục dưới chi tiết sp"
+					},
+					"response": []
+				},
+				{
+					"name": "[banners] - hình ảnh trang chủ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/banners",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"banners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[notification] - lấy 1 thông báo mới",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/notification",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[notification] - lấy danh sach thông báo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/notification/list",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notification",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[DELIVERY] -  đơn vị vận chuyển - thông tin danh sách",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{japana.api}}/api/v1/delivery",
+							"host": [
+								"{{japana.api}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "verion, survey"
+		}
+	]
+}

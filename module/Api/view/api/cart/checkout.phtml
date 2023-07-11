@@ -1,0 +1,1392 @@
+<link href="<?php echo URL_ASSET ?>frontend/assets/css/checkoutCustom.css" rel="stylesheet" type="text/css"/>
+
+
+<style>
+    .box-infocart table tr th {
+        color: #333;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        border-color: #fff
+    }
+
+    .box-infocart table tr td {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #666;
+        background: transparent;
+        border: 0;
+        padding: 10px 13px
+    }
+
+    .box-infocart table tr td p {
+        background: #bb0029;
+        color: #fff;
+        border-radius: 2px;
+        text-align: center;
+        display: flex;
+        padding: 3px 0 3px;
+        margin-right: 10px;
+        font-size: 11px;
+        min-width: 60px;
+        height: 18px;
+        align-items: center;
+        justify-content: center
+    }
+
+    .table-striped > tbody > tr:nth-of-type(odd) {
+        background: #fff
+    }
+
+    .table-striped > tbody > tr:nth-of-type(even) {
+        background: #f1f1f1
+    }
+
+    .coupon-add {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: flex-end
+    }
+
+    .coupon-add .ipt-coupon {
+        width: 250px;
+        border-radius: 0;
+        height: 40px;
+        float: right;
+        border-radius: 4px;
+        margin: 0 10px
+    }
+
+    .coupon-add .btn-coupon {
+        background: #bb0029;
+        height: 40px;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid #bb0029;
+        float: right;
+        border-radius: 4px;
+        width: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .coupon-add .btn-coupon:hover {
+        background: #fff;
+        color: #bb0029;
+        border: 1px solid #bb0029
+    }
+
+    .coupon-add .alert-code {
+        display: inline-block;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        color: red;
+        float: right;
+        font-size: 14px
+    }
+
+    .info-cart2 {
+        float: left;
+        width: 670px;
+        padding-left: 70px
+    }
+
+    .box-allprice p {
+        display: inline-block;
+        width: 100%;
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+        color: #666
+    }
+
+    .box-allprice p span {
+        float: right;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Roboto', sans-serif;
+        color: #333
+    }
+
+    .box-allprice hr {
+        margin-top: 15px;
+        margin-bottom: 0;
+        border-top: 1px dashed #ccc
+    }
+
+    .box-allprice .last-price, .box-allprice .last-price span {
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #333
+    }
+
+    .box-allprice .last-price span {
+        color: #bb0029;
+        text-transform: none
+    }
+
+    .box-allprice .btn-pay2 {
+        margin-bottom: 20px
+    }
+
+    .box-infocart .continue-buy {
+        margin-top: 20px
+    }
+
+    .btn-pay2 {
+        background: #15b02a;
+        border: 1px solid #15b02a;
+        color: #fff;
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        padding: 15px 0;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        margin: 20px 0 30px;
+        margin-left: 2%
+    }
+
+    .box-infocart .continue-buy, .btn-pay2 {
+        width: 49%;
+        height: 45px;
+        border-radius: 4px;
+        float: left
+    }
+
+    .btn-pay2:hover {
+        background: #fff;
+        border: 1px solid #15b02a;
+        color: #15b02a
+    }
+
+    .continue-buy:hover {
+        color: #bb0029;
+        background: transparent
+    }
+
+    .continue-buy {
+        background: #bb0029;
+        border: 1px solid #bb0029;
+        display: inline-block;
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-top: 30px
+    }
+
+    .radio-side {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        color: #666;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none
+    }
+
+    .radio-side input {
+        position: absolute;
+        opacity: 0
+    }
+
+    .radio-side .checkmark {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 15px;
+        width: 15px;
+        background-color: #fff;
+        border: 1px solid;
+        border-radius: 50%
+    }
+
+    .radio-side:hover input ~ .checkmark {
+        background-color: #ccc
+    }
+
+    .radio-side input:checked ~ .checkmark {
+        background-color: #fff;
+        border: 2px solid #bb0029
+    }
+
+    .radio-side .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none
+    }
+
+    .radio-side input:checked ~ .checkmark:after {
+        display: block
+    }
+
+    .radio-side .checkmark:after {
+        top: 2px;
+        left: 2px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #bb0029
+    }
+
+    .promo-intro {
+        border: 1px solid #cbcbcb;
+        border-left: 3px solid #bb0029;
+        width: 100%
+    }
+
+    .promo-intro .title-promo {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 5px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .promo-intro .title-promo2 {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        margin-bottom: 12px;
+        color: #bb0029
+    }
+
+    .promo-intro .title-promo img {
+        margin-right: 5px
+    }
+
+    .promo-intro .box-promo {
+        border-bottom: 1px solid #e3e3e3;
+        padding: 10px 15px
+    }
+
+    .promo-intro .box-promo:last-child {
+        border: 0
+    }
+
+    .promo-intro p {
+        font-size: 13px;
+        color: #333;
+        padding-top: 0;
+        float: inherit;
+        line-height: 1.5
+    }
+
+    .promo-intro p span {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        color: #333
+    }
+
+    .promo-info .btn-submit {
+        border: 1px solid #bb0029;
+        background: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        color: #bb0029;
+        padding: 2px 10px;
+        border-radius: 4px;
+        margin-left: 30px
+    }
+
+    .promo-info .btn-submit:hover {
+        background: #bb0029;
+        color: #fff
+    }
+
+    .promo-info .btn-submit.active {
+        background: #e3e3e3;
+        border: 1px solid #e3e3e3;
+        color: #999
+    }
+
+    .promo-code .item {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: distribute;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        width: 600px
+    }
+
+    .promo-code .col-check {
+        display: inline-block;
+        width: 20px;
+        height: 20px
+    }
+
+    .title-checkout {
+        margin-top: 5px;
+        border-bottom: 2px solid #bb0029;
+        padding-bottom: 5px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 0
+    }
+
+    .title-checkout .icon-checkout {
+        background: url(assets/frontend/assets/images/box-img.png) no-repeat;
+        background-position: -808px -6px;
+        width: 30px;
+        height: 35px;
+        display: inline-block;
+        margin-right: 5px
+    }
+
+    .info-customer {
+        width: 500px;
+        float: left
+    }
+
+    .info-customer .title, .info-cart2 .title {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        color: #333;
+        border-bottom: 1px solid #8c8c8c;
+        display: inline-block;
+        margin-top: 22px
+    }
+
+    .info-cart2 .title span {
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        color: #999
+    }
+
+    .box-customer {
+        margin: 0;
+        padding: 24px;
+        background: #f7f7f7
+    }
+
+    .box-customer .item:first-child {
+        margin-top: 0
+    }
+
+    .box-customer .item {
+        display: inline-block;
+        width: 100%;
+        margin-top: 20px
+    }
+
+    .box-customer .item p {
+        display: inline-block;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        margin-top: 14px;
+        color: #333;
+        text-align: right;
+        float: left;
+        width: 100px
+    }
+
+    .box-customer .item p span {
+        color: #bb0029
+    }
+
+    .box-customer .item .ipt-cus, .box-customer .item .cbo-cus {
+        height: 40px
+    }
+
+    .box-customer .item .ipt-cus, .box-customer .item .cbo-cus, .box-customer .item .txt-cus {
+        width: 340px;
+        float: right;
+        padding: 10px
+    }
+
+    .custom-select {
+        width: 340px;
+        height: 40px;
+        border: 1px solid #ccc;
+        float: right
+    }
+
+    .custom-select a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 340px;
+        height: 40px;
+        padding: 10px;
+        position: relative
+    }
+
+    .custom-select a:after {
+        content: "\f0d7";
+        font-family: FontAwesome;
+        right: 10px;
+        position: absolute;
+        color: #999
+    }
+
+    .custom-select > div {
+        width: 340px;
+        border: 1px solid #ccc
+    }
+
+    .custom-select input {
+        width: 328px
+    }
+
+    .custom-select a span {
+        color: #999
+    }
+
+    .check-phone {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1.5;
+        color: #333;
+        width: 100% !important;
+        padding-left: 112px;
+        text-align: left !important;
+        font-size: 13px !important
+    }
+
+    .check-phone a {
+        color: #bb0029;
+        font-style: normal;
+        font-weight: 500
+    }
+
+    .check-phone a:hover {
+        text-decoration: underline
+    }
+
+    #giamgia {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    #giamgia li {
+        background: #F5F8FC;
+        padding: 7px;
+        width: auto;
+        border-radius: 4px;
+        display: inline-block !important;
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #3B7CFF;
+        float: left
+    }
+</style>
+<style>
+    body.loading .overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.8) center no-repeat;
+    }
+
+    .lds-roller {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+
+    .lds-roller div {
+        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        transform-origin: 40px 40px;
+    }
+
+    .lds-roller div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #fff;
+        margin: -4px 0 0 -4px;
+    }
+
+    .lds-roller div:nth-child(1) {
+        animation-delay: -0.036s;
+    }
+
+    .lds-roller div:nth-child(1):after {
+        top: 63px;
+        left: 63px;
+    }
+
+    .lds-roller div:nth-child(2) {
+        animation-delay: -0.072s;
+    }
+
+    .lds-roller div:nth-child(2):after {
+        top: 68px;
+        left: 56px;
+    }
+
+    .lds-roller div:nth-child(3) {
+        animation-delay: -0.108s;
+    }
+
+    .lds-roller div:nth-child(3):after {
+        top: 71px;
+        left: 48px;
+    }
+
+    .lds-roller div:nth-child(4) {
+        animation-delay: -0.144s;
+    }
+
+    .lds-roller div:nth-child(4):after {
+        top: 72px;
+        left: 40px;
+    }
+
+    .lds-roller div:nth-child(5) {
+        animation-delay: -0.18s;
+    }
+
+    .lds-roller div:nth-child(5):after {
+        top: 71px;
+        left: 32px;
+    }
+
+    .lds-roller div:nth-child(6) {
+        animation-delay: -0.216s;
+    }
+
+    .lds-roller div:nth-child(6):after {
+        top: 68px;
+        left: 24px;
+    }
+
+    .lds-roller div:nth-child(7) {
+        animation-delay: -0.252s;
+    }
+
+    .lds-roller div:nth-child(7):after {
+        top: 63px;
+        left: 17px;
+    }
+
+    .lds-roller div:nth-child(8) {
+        animation-delay: -0.288s;
+    }
+
+    .lds-roller div:nth-child(8):after {
+        top: 56px;
+        left: 12px;
+    }
+
+    @keyframes lds-roller {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .content-box-payment .box-check .checkmark {
+        border-radius: 10px;
+    }
+</style>
+<?php
+$this->headTitle("Japana Việt Nam");
+$this->headMeta()
+    ->appendName('keywords', "Japana Việt Nam")
+    ->appendName('description', "Japana Việt Nam")
+    ->setProperty('og:title', 'Japana Việt Nam')
+    ->setProperty("og:type", "website")
+    ->setProperty("og:site_name", "https://japana.vn");
+?>
+<?php
+$this->header($data);
+?>
+<div class="overlay">
+    <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<div class="checkout">
+    <div class="container">
+
+        <form action="" method="post" name="frmcheckout" id="frmcheckout">
+            <div class="content-checkout">
+                <div class="box-customer">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="title-cart m-0">
+                                Thông tin giao hàng
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-checkout form-group">
+                                <div class="item">
+                                    <label for="fullname" id="representation" class="label-change">Họ và tên</label>
+                                    <input onkeyup="checkout.setCookie('hoten','fullname');"
+                                           value="<?php if (!empty($info_user["name"])) {
+                                               echo $info_user["name"];
+                                           } ?>" id="fullname" type="text" name="info_name" class="form-control ipt-cus"
+                                           placeholder="Nhập họ và tên">
+                                </div>
+
+                                <div class="item">
+                                    <label for="phone" id="phone" class="label-change">Số điện thoại</label>
+                                    <input onkeyup="checkout.setCookie('dienthoai','tel');"
+                                           onblur="checkout.checkmobile('<?php echo URL; ?>');"
+                                           value="<?php if (!empty($info_user["mobile"])) {
+                                               echo $info_user["mobile"];
+                                           } ?>" id="tel" type="tel" name="info_mobile" class="form-control ipt-cus"
+                                           placeholder="Nhập số điện thoại">
+                                    <p id="thongbaodangnhap" class="check-phone" style="display:none">
+                                        Tài khoản đã được đăng ký. Vui lòng <a id="login-btn" href="#" title="title"
+                                                                               data-toggle="modal"
+                                                                               data-target="#Register">ĐĂNG NHẬP</a> để
+                                        nhận ưu đãi.
+                                    </p>
+                                </div>
+
+                                <div class="item custom-arrow">
+                                    <label for="province_code" id="province_code" class="label-change">Tỉnh/ Thành
+                                        phố</label>
+                                    <select class="custom-select custom-color"
+                                            onclick="checkout.setCookieEx('tinhthanh','tinhthanh');" name="info_id_city"
+                                            id="tinhthanh" class="" tabindex="-1" aria-hidden="true">
+                                        <option value="">Chọn tỉnh, thành phố</option>
+                                        <?php
+                                        $city_name = "";
+
+                                        if (!empty($list_city)) {
+                                            foreach ($list_city as $item) {
+                                                $select = $info_user['id_city'] == $item['id'] ? "selected" : "";
+
+                                                if ($info_user['id_city'] == $item['id'] || isset($_COOKIE['tinhthanh']) && $item["id"] == $_COOKIE['tinhthanh'])
+                                                    $city_name = $item["name"];
+
+                                                echo "<option " . $select . "  value='" . $item['id'] . "'>" . $item['name'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+
+                                    <input value="<?php echo $city_name; ?>" type="hidden" name="cbo_city"
+                                           id="cbo_city">
+                                </div>
+
+                                <div class="item custom-arrow">
+                                    <label id="district_code" class="label-change">Quận/ Huyện</label>
+
+                                    <select class="custom-select custom-color"
+                                            onclick="checkout.setCookieEx('quanhuyen','quanhuyen');"
+                                            name="info_id_disctrict" id="quanhuyen" class="" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option value="">Chọn quận, huyện</option>
+                                        <?php
+                                        $district_name = "";
+                                        if (!empty($list_zone) && $city_name) {
+                                            foreach ($list_zone as $item) {
+                                                $select = $info_user['id_cityzone'] == $item['id'] ? "selected" : "";
+
+                                                if ($info_user['id_cityzone'] == $item['id'] || isset($_COOKIE['quanhuyen']) && $item["id"] == $_COOKIE['quanhuyen'])
+                                                    $district_name = $item["name"];
+
+                                                echo "<option " . $select . "  value='" . $item['id'] . "'>" . $item['name'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <input value="<?php echo $district_name; ?>" type="hidden" name="cbo_district"
+                                           id="cbo_district">
+                                </div>
+
+                                <div class="item custom-arrow">
+                                    <label class="label-change">Phường/ Xã</label>
+                                    <select class="custom-select custom-color"
+                                            onclick="checkout.setCookieEx('phuongxa','phuongxa');" name="info_id_war"
+                                            id="phuongxa" class="" tabindex="-1" aria-hidden="true">
+                                        <option value="">Chọn phường, xã</option>
+                                        <?php
+                                        $ward_name = "";
+                                        if (!empty($list_ward) && $district_name) {
+                                            foreach ($list_ward as $item) {
+                                                $select = $info_user['id_cityward'] == $item['id'] ? "selected" : "";
+
+                                                if ($info_user['id_cityward'] == $item['id'] || isset($_COOKIE['phuongxa']) && $item["id"] == $_COOKIE['phuongxa'])
+                                                    $ward_name = $item["name"];
+
+                                                echo "<option " . $select . "  value='" . $item['id'] . "'>" . $item['name'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <input value="<?php echo $ward_name; ?>" type="hidden" name="cbo_ward"
+                                           id="cbo_ward">
+                                </div>
+
+                                <div class="item">
+                                    <label for="addr" id="addr" class="label-change">Địa chỉ</label>
+                                    <input onkeyup="checkout.setCookie('diachi','addr');"
+                                           value="<?php if (!empty($info_user['address'])) {
+                                               echo $info_user["address"];
+                                           } ?>" id="addr" type="text" name="info_address" class="form-control ipt-cus"
+                                           placeholder="Nhập địa chỉ">
+                                </div>
+
+                                <div class="item">
+                                    <label for="email" class="label-change">Email</label>
+                                    <input onkeyup="checkout.setCookie('email','email_checkout');"
+                                           value="<?php if (!empty($info_user["email"])) {
+                                               echo $info_user["email"];
+                                           } ?>" id="email_checkout" type="text" name="info_email"
+                                           class="form-control ipt-cus" placeholder="Nhập địa chỉ email">
+                                </div>
+
+                                <div class="item">
+                                    <label for="note" class="label-change">Ghi chú</label>
+                                    <textarea onkeyup="checkout.setCookie('ghichu','info_notes');" id="info_notes"
+                                              name="info_notes" rows="5" cols="50" class="form-control txt-cus"
+                                              placeholder="Nhập ghi chú đơn hàng"></textarea>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="title-cart m-0">THANH TOÁN </h3>
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="content-box-payment">
+                                <div class="radio-wrapper">
+                                    <div class="radio--input">
+                                        <div class=" box-check ">
+                                            <label class="check-custom">
+                                                    <input checked="checked" type="radio" name="payment" id="paymentMethod__1" value="1" class="checkbox-bought-together paymentMethod__hide" >
+                                                    <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label for="paymentMethod-1" class="radio--label">
+                                        <span class="paymen-label-text">Thanh toán khi giao hàng (COD)</span>
+                                        <span class="payment-icon-label">
+                                                                <i class="fa fa-money"></i>
+														</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="content-box-payment">
+                                <div class="radio-wrapper">
+                                    <div class="radio--input">
+                                        <div class="box-check ">
+                                            <label class="check-custom">
+                                                <input type="radio" name="payment" id="paymentMethod__2" value="2" class="checkbox-bought-together paymentMethod__hide" >
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label for="paymentMethod-2" class="radio--label">
+                                        <span class="paymen-label-text">Thanh toán trực tuyến</span>
+                                        <span class="payment-icon-label">
+											<span class="radio-icon">
+												<i class="payment-icon payment-icon-vnpay"></i>
+											</span>
+										</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="content-box-payment">
+                                <div class="radio-wrapper">
+                                    <div class="radio--input">
+                                        <div class="box-check ">
+                                            <label class="check-custom">
+                                                <input type="radio" name="payment" id="paymentMethod__2" value="3" class="checkbox-bought-together paymentMethod__ck" >
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label for="paymentMethod-2" class="radio--label">
+                                        <span class="paymen-label-text">Chuyển khoản qua ngân hàng</span>
+                                        <span id="paymentMethod__ck" style="text-align: left; display: none" class="payment-icon-label">
+												Doanh nghiệp:	CÔNG TY CỔ PHẦN JAPANA VIỆT NAM
+												<br><br>
+                                        		TK ngân hàng:	0441000776006 - VCB
+                                        		<br><br>
+                                        		Chi nhánh:	Tân Bình
+										</span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+
+                <div class="list-cart">
+                    <div class="card">
+                        <div class="card-header card-header-border-bottom-none">
+                            <h3 class="m-0">Mã khuyến mãi</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <form action="">
+                                <div class="form-group input-promotion">
+                                    <input id="coupon" type="text" name="coupon" class="form-control ipt-coupon"
+                                           placeholder="Nhập mã...">
+                                    <input onclick="ajaxCheckcode()" type="button" class="btn-coupon" value="Áp dụng"/>
+                                </div>
+                            </form>
+                            <ul id="giamgia">
+                                <?php foreach ($promotion["promotion_detail"] as $key => $value) { ?>
+                                    <li><?php echo $value["code"]; ?></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="title-cart m-0">ĐƠN HÀNG
+                                <span>(<?= $promotion["product"] ? count($promotion["product"]) : 0; ?> sản phẩm)</span>
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>SL</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $tong = 0;
+                                $tong_km = 0;
+                                $list_pro_in_cart = "";
+                                if ($promotion["product"]) :
+                                    foreach ($promotion["product"] as $value) :
+                                        $tong = $tong + $value["price_market"] * $value["sl"];
+                                        if (!empty($value["text_vnd"])) {
+                                            $tong_km = $tong_km + $value["text_vnd"] * $value["sl"];
+                                        } else {
+                                            if (empty($value["discount"])) {
+                                                $tong_km = $tong_km + $value["price_market"] * $value["sl"];
+                                            }
+                                        }
+                                        $list_pro_in_cart .= $value['id'] . ",";
+                                        $flag = 0;
+                                        $tong_dh = 0;
+                                        foreach ($array_id_dh as $val) {
+                                            if ($value["id"] == $val) {
+                                                $flag = 1;
+                                            }
+                                        }
+                                        if ($flag == 0) {
+                                            if (!empty($value["text_vnd"])) {
+                                                $tong_dh = $tong_dh + $value["text_vnd"] * $value["sl"];
+
+                                            } else {
+                                                $tong_dh = $tong_dh + $value["price_market"] * $value["sl"];
+                                            }
+                                        }
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $value["name"]; ?></td>
+                                            <td><?php echo $value["sl"]; ?></td>
+                                            <td><?php echo number_format($value["sl"] * $value["price_market"], "0", ",", "."); ?>
+                                                đ
+                                            </td>
+                                        </tr>
+
+                                        <?php if ($value["text_qt"]) : ?>
+                                        <?php
+                                        $km = $product->getItem(array(
+                                            "sku" => $value["text_qt"]
+                                        ));
+                                        ?>
+                                        <tr>
+                                            <td style="border: 0;display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align:center; -ms-flex-align:center; align-items:center; vertical-align: middle;">
+                                                <p>Quà tặng</p>
+                                                <span><?php echo $km["name_vi"]; ?></span></td>
+                                            <td style="text-align: center; vertical-align: middle;"><?php echo $value["sl"]; ?></td>
+                                            <td style="text-align: right; vertical-align: middle;">0 đ</td>
+                                        </tr>
+                                    <?php endif; ?>
+
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+
+                                <?php
+                                if (!empty($donhang["data"]["discount_gift"])) :
+                                    $km = $product->getItem(array(
+                                        "sku" => $donhang["data"]["discount_gift"]
+                                    ));
+                                    ?>
+                                    <tr>
+                                        <td style="border: 0;display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align:center; -ms-flex-align:center; align-items:center; vertical-align: middle;">
+                                            <p>Quà tặng</p>
+                                            <span><?php echo $km["name_vi"]; ?></span></td>
+                                        <td style="text-align: center; vertical-align: middle;">1</td>
+                                        <td style="text-align: right; vertical-align: middle;">0 đ</td>
+                                    </tr>
+                                <?php endif; ?>
+
+                                <?php foreach ($promotion["promotion_detail"] as $key => $value) : ?>
+                                    <?php
+                                    if (!empty($value["gift_sku"])) :
+                                        $km = $product->getItem(array(
+                                            "sku" => $value["gift_sku"]
+                                        ));
+                                        ?>
+                                        <tr>
+                                            <td style="border: 0;display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align:center; -ms-flex-align:center; align-items:center; vertical-align: middle;">
+                                                <p>Quà tặng</p>
+                                                <span><?php echo $km["name_vi"]; ?></span></td>
+                                            <td style="text-align: center; vertical-align: middle;"><?php echo $value["count_discount"] ?></td>
+                                            <td style="text-align: right; vertical-align: middle;">0 đ</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                            <div class="list-price">
+                                <p><span>Tạm tính:</span> <span><?php echo number_format($tong, "0", ",", "."); ?>
+                                        đ</span></p>
+                                <input name="tamtinh" type="hidden"
+                                       value="<?php echo number_format($tong, "0", ",", "."); ?>"/>
+
+                                <?php
+                                $uudai = 0;
+                                if (!empty($donhang["data"]["discount_amount"])) {
+                                    $uudai = $uudai + $donhang["data"]["discount_amount"];
+                                }
+                                $km_sp = $tong - $tong_km;
+                                $uudai = $uudai + ($tong - $tong_km);
+                                $tong = $tong - $uudai;
+                                ?>
+
+                                <?php if ($km_sp > 0) { ?>
+                                    <p>KM nhập mã:<span
+                                                id="tamtinh">- <?php echo number_format($km_sp, "0", ",", "."); ?>
+                                            đ</span></p>
+                                <?php } ?>
+
+                                <?php if (!empty($donhang["data"]["discount_amount"])) { ?>
+                                    <p>KM đơn hàng:<span
+                                                id="tamtinh">-<?php echo number_format($donhang["data"]["discount_amount"], "0", ",", "."); ?>
+                                            đ</span></p>
+                                <?php } ?>
+
+                                <?php if (!empty($discountVip)) {
+                                    $sumvip = $tong * $discountVip / 100;
+                                    ?>
+                                    <p>VIP được giảm(<?php echo $discountVip; ?>%):<span
+                                                id="tamtinh">-<?php echo number_format($sumvip, "0", ",", "."); ?>
+                                            đ</span></p>
+                                <?php } ?>
+
+                                <?php
+                                $phi_van_chuyen = 0;
+                                $style = "";
+                                if (intval($tong) < 1500000) {
+                                    if (isset($info_user['id_city'])) {
+                                        $phi_van_chuyen = $info_user['id_city'] == 79 ? 20000 : 40000;
+                                    } else {
+                                        $style = "display: none";
+                                        $phi_van_chuyen = 0;
+                                    }
+                                    ?>
+                                    <input value="<?php echo $info_user['id_city']; ?>" type="hidden"
+                                           name="phivanchuyen" id="in_phivanchuyen">
+                                    <p id="load-phi-van-chuyen" style="<?php echo $style ?>">
+                                        <span>Phí vận chuyển:</span> <span
+                                                id="phi-van-chuyen"><?php echo number_format($phi_van_chuyen, "0", ",", "."); ?>
+                                            đ</span></p>
+                                <?php } ?>
+
+                                <hr/>
+                                <p class="m-0"><span>Tổng cộng:</span> <span id="tong-donhang"
+                                                                             class="total-order"><?php echo number_format($tong - $sumvip + $phi_van_chuyen, "0", ",", "."); ?>
+                                        đ</span></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <?php if (($tong_dh - $sumvip + $phi_van_chuyen) < $data["desc_donhang"][0]["min_price"] && !empty($data["desc_donhang"][0]["note"])) { ?>
+                        <p style="font-family: 'Roboto',sans-serif; font-weight: 400; font-style: italic; color: #333333; line-height: 1.5; margin-top: 20px;">
+                            <span style="color: #ff0000;">***</span><?php echo $data["desc_donhang"][0]["note"]; ?><br>
+                        </p>
+                    <?php } ?>
+                    <!-- a href="<?php echo URL; ?>gio-hang.jp" title="title" class="continue-buy">
+                                <span>Thay đổi đơn hàng</span>
+                            </a -->
+                    
+                    <button id="btn_submit" class="continue-checkout bt">THANH TOÁN</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function () {
+        initCheckoutValid();
+
+        jQuery(".paymentMethod__hide").click(function(){
+			$("#paymentMethod__ck").hide(500);
+		});
+        
+        jQuery(".paymentMethod__ck").click(function(){
+			$("#paymentMethod__ck").show(500);
+		});
+        
+    });
+    var initCheckoutValid = function () {
+        jQuery("#btn_submit").on("click", function () {
+            $("body").addClass("loading");
+            var a = $("input#fullname").val();
+            var g = $("input#email_checkout").val();
+            var f = $("input#tel").val();
+            var i = $("select[id=tinhthanh]").val();
+            var b = $("select[id=quanhuyen]").val();
+            var e = $("select[id=phuongxa]").val();
+            var h = $("input#addr").val();
+            var d = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            if ($.trim(a) == "") {
+                $("input#fullname").addClass("error-checkout");
+                $("input#fullname").removeClass("not-error-checkout");
+                $("input#fullname").attr("placeholder", "Bạn chưa nhập họ tên");
+                $("body").removeClass("loading");
+            } else {
+                $("input#fullname").addClass("not-error-checkout");
+                $("input#fullname").removeClass("error-checkout");
+                $("body").removeClass("loading");
+            }
+            if ($.trim(f) == "") {
+                $("input#tel").addClass("error-checkout");
+                $("input#tel").removeClass("not-error-checkout");
+                $("input#tel").attr("placeholder", "Bạn chưa nhập số điện thoại");
+                $("body").removeClass("loading");
+            } else {
+                $("input#tel").addClass("not-error-checkout");
+                $("input#tel").removeClass("error-checkout");
+                $("body").removeClass("loading");
+            }
+            if ($.trim(i) == "") {
+                $("select#tinhthanh").addClass("error-checkout");
+                $("select#tinhthanh").removeClass("not-error-checkout");
+                $("body").removeClass("loading");
+            } else {
+                $("select#tinhthanh").addClass("not-error-checkout");
+                $("select#tinhthanh").removeClass("error-checkout");
+                $("body").removeClass("loading");
+            }
+            if ($.trim(b) == "") {
+                $("select#quanhuyen").addClass("error-checkout");
+                $("select#quanhuyen").removeClass("not-error-checkout");
+                $("body").removeClass("loading");
+            } else {
+                $("select#quanhuyen").addClass("not-error-checkout");
+                $("select#quanhuyen").removeClass("error-checkout");
+                $("body").removeClass("loading");
+            }
+
+            if ($.trim(e) == "") {
+                $("select#phuongxa").addClass("error-checkout");
+                $("select#phuongxa").removeClass("not-error-checkout");
+                $("body").removeClass("loading");
+            } else {
+                $("select#phuongxa").addClass("not-error-checkout");
+                $("select#phuongxa").removeClass("error-checkout");
+                $("body").removeClass("loading");
+            }
+
+            if ($.trim(h) == "") {
+                $("input#addr").addClass("error-checkout");
+                $("input#addr").removeClass("not-error-checkout");
+                $("input#addr").attr("placeholder", "Bạn chưa nhập địa chỉ");
+                $("body").removeClass("loading");
+            } else {
+                $("input#addr").addClass("not-error-checkout");
+                $("input#addr").removeClass("error-checkout");
+                $("body").removeClass("loading");
+            }
+
+            if ($.trim(a) == "" || $.trim(f) == ""
+                || $.trim(i) == "" || $.trim(b) == ""
+                || $.trim(h) == "" || $.trim(e) == ""
+            ) return false;
+            $("body").addClass("loading");
+            var c = document.getElementById("frmcheckout");
+            $("#btn_submit").prop("disabled", !0);
+            c.submit();
+        });
+    };
+
+    function ajaxCheckcode() {
+        var cart = new Object();
+        cart.coupon = $("#coupon").val();
+        $.ajax({
+            url: "<?php echo URL;?>frontend/cart/ajaxcheckcode",
+            type: "POST",
+            data: cart,
+            dataType: "html",
+            cache: false,
+            success: function (result) {
+                if (result == "1") {
+                    location.reload();
+                } else {
+                    alert(result);
+                    return
+                }
+            }
+        });
+    }
+
+    $("#tinhthanh").change(function () {
+        var cart = new Object();
+        cart.id = parseInt($("#tinhthanh").val());
+        $('#cbo_city').val($("#tinhthanh option:selected").text());
+        <?php if($tong < 1500000){?>
+        if (cart.id > -1) {
+            document.getElementById('load-phi-van-chuyen').style.display = "";
+        } else {
+            document.getElementById('load-phi-van-chuyen').style.display = "none";
+        }
+        if (cart.id == 79) {
+            $("#phi-van-chuyen").text("20.000 đ");
+            //$("#in_phivanchuyen").val(20000);
+            <!--$("#tong-donhang").val("<?php echo number_format(($tong + 20000), "0", ",", ".");?> đ");-->
+            document.getElementById('tong-donhang').innerHTML = "<?php echo number_format(($tong + 20000), "0", ",", ".");?> đ"
+            $("#tong-tien-don").val(<?php echo($tong + 20000);?>);
+        } else if (cart.id > -1 && cart.id != 79) {
+            $("#phi-van-chuyen").text("40.000 đ");
+            //$("#in_phivanchuyen").val(40000);
+            $("#tong-tien-don").val(<?php echo($tong + 40000);?>);
+            $("#tong-donhang").text("<?php echo number_format(($tong + 40000), "0", ",", ".");?> đ");
+        } else {
+            $("#phi-van-chuyen").text("0 đ");
+            //$("#in_phivanchuyen").val(0);
+            $("#tong-tien-don").val(<?php echo $tong;?>);
+            $("#tong-donhang").text("<?php echo number_format($tong, "0", ",", ".");?> đ");
+        }
+        <?php }?>
+        if (cart.id != "") {
+            $.ajax({
+                url: "<?php echo URL;?>frontend/cart/tinhthanh",
+                type: "POST",
+                data: cart,
+                dataType: "html",
+                success: function (result) {
+                    $("#quanhuyen").html(result);
+                    $("#phuongxa").html('<option value="">Chọn phường, xã</option>');
+                }
+            });
+        } else {
+            $("#quanhuyen").html('<option value="">Chọn quận, huyện</option>');
+            $("#phuongxa").html('<option value="">Chọn phường, xã</option>');
+        }
+    });
+    $("#quanhuyen").change(function () {
+        var cart = new Object();
+        cart.id = parseInt($("#quanhuyen").val());
+        cart.tinhthanh = parseInt($("#tinhthanh").val());
+        $('#cbo_district').val($("#quanhuyen option:selected").text());
+        if (cart.id != "") {
+            $.ajax({
+                url: "<?php echo URL;?>frontend/cart/quanhuyen",
+                type: "POST",
+                data: cart,
+                dataType: "html",
+                success: function (result) {
+                    $("#phuongxa").html(result);
+                }
+            });
+        } else {
+            $("#phuongxa").html('<option value="">Chọn phường, xã</option>');
+        }
+    });
+    $("#phuongxa").change(function () {
+        $('#cbo_ward').val($("#phuongxa option:selected").text());
+    });
+
+    $(document).ready(function () {
+        // $('#tinhthanh').select2();
+        // $('#quanhuyen').select2();
+        // $('#phuongxa').select2();
+    });
+
+</script>
+<script language="JavaScript">
+    var _status = 0;
+    var _giamgia = 0;
+    var _status_check = 0;
+    var _list_promotion = '';
+    var _is_login = <?php echo isset($user_info['id_vip']) ? "1" : "0"; ?>;
+    var _is_shipping = 0;
+    <?php if(!isset($user_info['id_vip'])){ ?>
+    $(document).ready(function () {
+        $('#radio_novip').trigger('click');
+        $('#radio_novip').click(function () {
+            checkout.checkradio();
+        });
+        $('.btn_vip').attr('disabled', 'disabled');
+        $('.btn_vip').addClass('active');
+
+    });
+    <?php }else{ ?>
+    $(document).ready(function () {
+        /*$('.btn_vip').attr('disabled', 'disabled');
+        $('.btn_vip').addClass('active');
+        $('.btn_no_vip').attr('disabled', 'disabled');
+        $('.btn_no_vip').addClass('active');*/
+    });
+    <?php } ?>
+
+    var checkout = {
+        setCookieEx: function (cname, cinput) {
+            if (cname == 'tinhthanh') {
+                document.cookie = "quanhuyen=;10;path=/";
+                document.cookie = "phuongxa=;10;path=/";
+            }
+            cvalue = $('#' + cinput + ' option:selected').val();
+            var d = new Date();
+            d.setTime(d.getTime() + (36 * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        },
+        setCookie: function (cname, cinput) {
+            cvalue = $('#' + cinput).val();
+            var d = new Date();
+            d.setTime(d.getTime() + (36 * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        },
+        getCookie: function (cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            var _value = '';
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    _value = c.substring(name.length, c.length);
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        },
+        checkmobile: function (url) {
+            var _mobile = $('#tel').val();
+            if ($.trim(_mobile) == '') {
+                $('#thongbaodangnhap').css('display', 'none');
+                return false;
+            }
+            jQuery.ajax({
+                type: "POST",
+                url: url + 'kiem-tra-so-dien-thoai.jp',
+                cache: false,
+                data: ({
+                    mobile: _mobile
+                }),
+                beforeSend: function () {
+                    //$("#showview"+id).html('...');
+                },
+                success: function (b) {
+                    if (b == 'true') {
+                        $('#thongbaodangnhap').css('display', 'block');
+                        jQuery(".nav-tabs>li:last-child").addClass("active");
+                        jQuery(".nav-tabs>li:first-child").removeClass("active");
+                        jQuery(".tab-content>#login").addClass(" in active");
+                        jQuery(".tab-content>#register").removeClass(" in active");
+                    } else {
+                        $('#thongbaodangnhap').css('display', 'none');
+                    }
+                }
+            });
+        },
+    }
+</script>
+<?php
+$this->footer($data);
+?>
