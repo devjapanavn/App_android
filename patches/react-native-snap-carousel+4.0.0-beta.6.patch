@@ -1,0 +1,24 @@
+diff --git a/node_modules/react-native-snap-carousel/src/utils/animations.ts b/node_modules/react-native-snap-carousel/src/utils/animations.ts
+index bf1c50f..4c08b3f 100644
+--- a/node_modules/react-native-snap-carousel/src/utils/animations.ts
++++ b/node_modules/react-native-snap-carousel/src/utils/animations.ts
+@@ -151,8 +151,8 @@ export function stackAnimatedStyles<TData> (
+         carouselProps.itemWidth;
+     const translateProp = carouselProps.vertical ? 'translateY' : 'translateX';
+ 
+-    const card1Scale = 0.9;
+-    const card2Scale = 0.8;
++    const card1Scale = 1;
++    const card2Scale = 1;
+ 
+     const newCardOffset = cardOffset ?? 18;
+ 
+@@ -194,7 +194,7 @@ export function stackAnimatedStyles<TData> (
+                             getTranslateFromScale(-2, card2Scale),
+                             getTranslateFromScale(-1, card1Scale),
+                             0,
+-                            sizeRef * 0.5
++                            sizeRef * 0.05
+                         ],
+                         extrapolate: 'clamp'
+                     })
