@@ -20,7 +20,7 @@
     "build:android_w_apk": "cd android && set NODE_ENV=production && gradlew app:assembleRelease --stacktrace"
   },
   "dependencies": {
-    "@eabdullazyanov/react-native-sms-user-consent": "^1.0.10",
+    "@eabdullazyanov/react-native-sms-user-consent": "1.0.11",
     "@react-native-async-storage/async-storage": "^1.16.1",
     "@react-native-clipboard/clipboard": "^1.9.0",
     "@react-native-community/hooks": "^2.8.1",
@@ -61,8 +61,8 @@
     "react-native-fast-image": "^8.5.11",
     "react-native-flash-message": "^0.2.1",
     "react-native-fs": "^2.18.0",
-    "react-native-gesture-handler": "^2.2.0",
-    "react-native-image-picker": "^4.7.3",
+    "react-native-gesture-handler": "2.14.0",
+    "react-native-image-picker": "7.0.3",
     "react-native-image-viewing": "^0.2.1",
     "react-native-image-zoom-viewer": "^3.0.1",
     "react-native-linear-gradient": "^2.5.6",
