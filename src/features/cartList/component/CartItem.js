@@ -142,7 +142,7 @@ const CartItemComponent = ({cart, onRemoveItem}) => {
           </View>
         </View>
       </View>
-      {cart.combo &&
+      {/* {cart.combo &&
         cart.combo.length > 0 &&
         cart.combo.map((item, index) => (
           <View
@@ -163,17 +163,13 @@ const CartItemComponent = ({cart, onRemoveItem}) => {
                   alignItems: 'center',
                   marginTop: 8,
                 }}>
-                {/* <Text
-                  style={[styles.gifText, {backgroundColor: iOSColors.orange}]}>
-                  Combo
-                </Text> */}
                 <Text style={styles.priceQuantity}>
                   Số lượng: {stringHelper.formatMoney(item.quantity)}
                 </Text>
               </View>
             </View>
           </View>
-        ))}
+        ))} */}
       {cart.gift && cart.gift.length > 0 ? (
         <FlatList
           data={cart.gift}

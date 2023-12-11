@@ -22,6 +22,7 @@ import Video from 'react-native-video';
 const Screen = props => {
   const route = useRoute();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoadding, setIsLoadding] = useState(false);
 
   const [onReady, setOnReady] = useState(false);
   const {width} = useWindowDimensions();
@@ -40,14 +41,16 @@ const Screen = props => {
   const renderItems = ({item}) => {
     let checkvideo = item.split('.')[item.split('.').length - 1];
     let objVideo;
-
+    let checkVideo = false;
     if (checkvideo == 'mp4') {
+      checkVideo = true;
       objVideo = (
         <Video
           source={{uri: item}} // Can be a URL or a local file.
           resizeMethod="resize"
           resizeMode="contain"
           onLoad={() => {
+          setIsLoadding(true)
             console.log('loadded!');
           }}
           style={styles.backgroundVideo}
@@ -70,7 +73,7 @@ const Screen = props => {
       <TouchableOpacity style={styles.box} >
         {objVideo}
         {
-            !onReady ? 
+            (!isLoadding && checkVideo) ? 
             <View
                 style={{
                 justifyContent: 'center',

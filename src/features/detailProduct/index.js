@@ -42,6 +42,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {appDimensions, colors} from '@app/assets';
 import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused, useRoute} from '@react-navigation/native';
+import {Text, Image} from 'react-native-elements';
 
 import {BannerSlider} from './component/Banner';
 import FastImage from 'react-native-fast-image';
@@ -382,7 +383,7 @@ console.log(data)
         return <View />;
     }
   };
-
+console.log(onReady)
   const renderSectionItem = ({section, item}) => {
     switch (section.type) {
       case typeSection.BANNER_IMAGE:

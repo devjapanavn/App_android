@@ -302,6 +302,7 @@ export default {
       body: params,
     });
   },
+
   updateViewed(params = {id, member_id}) {
     const path = 'product/update_viewed';
     return FETCH({

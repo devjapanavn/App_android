@@ -12,7 +12,7 @@ import { ScrollView } from 'react-native';
 const windowDimensions = Dimensions.get('window');
 
 const component = ({products, payments, gift,giftOrderAuto}) => {
-  console.log(giftOrderAuto)
+  // console.log(giftOrderAuto)
   const footer = () => {
     if (payments) {
       const arr = Object.values(payments);
@@ -97,9 +97,6 @@ const component = ({products, payments, gift,giftOrderAuto}) => {
     return <View />;
   };
   const giftProduct = () => {
-    // console.log('---------gift-------------')
-    gift = gift.concat(giftOrderAuto)
-    // console.log(gift)
     if (gift) {
       return (
         <ScrollView horizontal={true} style={{width: '100%'}}>
@@ -110,54 +107,28 @@ const component = ({products, payments, gift,giftOrderAuto}) => {
           key={'order_product_gift'}
           keyExtractor={itemGift => 'order_product_gift_' + itemGift.id_product}
           renderItem={itemGift => {
-            if (itemGift.item.check_active == 1) {
-              return (
-                <TouchableOpacity
-                  style={styles.row}
-                  onPress={() =>
-                    navigateRoute(
-                      ROUTES.DETAIL_PRODUCT,
-                      {id: itemGift.item.id_product},
-                      `product_detail_${itemGift.item.id_product}`,
-                    )
-                  }>
-                  <FastImage
-                    source={{uri: itemGift.item.image_url}}
-                    style={styles.productImage}
-                  />
-                  <View style={styles.productInfo}>
-                    <Text style={styles.productInfoTitle}>
-                      {itemGift.item.product_name}
-                    </Text>
-                    <Text style={styles.gifText}>Quà tặng</Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            }
-            if (itemGift.item.check_active == 1) {
-              return (
-                <TouchableOpacity
-                  style={styles.row}
-                  onPress={() =>
-                    navigateRoute(
-                      ROUTES.DETAIL_PRODUCT,
-                      {id: itemGift.item.id_product},
-                      `product_detail_${itemGift.item.id_product}`,
-                    )
-                  }>
-                  <FastImage
-                    source={{uri: itemGift.item.image_url}}
-                    style={styles.productImage}
-                  />
-                  <View style={styles.productInfo}>
-                    <Text style={styles.productInfoTitle}>
-                      {itemGift.item.product_name}
-                    </Text>
-                    <Text style={styles.gifText}>Quà tặng</Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            }
+            return (
+              <TouchableOpacity
+                style={styles.row}
+                onPress={() =>
+                  navigateRoute(
+                    ROUTES.DETAIL_PRODUCT,
+                    {id: itemGift.item.id_product},
+                    `product_detail_${itemGift.item.id_product}`,
+                  )
+                }>
+                <FastImage
+                  source={{uri: itemGift.item.image_url}}
+                  style={styles.productImage}
+                />
+                <View style={styles.productInfo}>
+                  <Text style={styles.productInfoTitle}>
+                    {itemGift.item.product_name}
+                  </Text>
+                  <Text style={styles.gifText}>Quà tặng</Text>
+                </View>
+              </TouchableOpacity>
+            );
           }}
         />
         </ScrollView>

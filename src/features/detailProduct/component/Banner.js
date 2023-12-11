@@ -13,12 +13,13 @@ import ImageView from 'react-native-image-viewing';
 import Carousel from 'react-native-snap-carousel';
 import { navigateRoute } from '@app/route';
 import { ROUTES } from '@app/constants';
-
+import Spinner from 'react-native-spinkit';
+import {colors} from '@app/assets';
 
 const Component = ({banners, frame, icons}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState([]);
-  // const [imageViewer, setImageViewer] = useState({index: 0, visible: false});
+  const [isLoadding, setIsLoadding] = useState(false);
   const {width} = useWindowDimensions();
   const iconPostion = () => {
     let icons2h,
@@ -100,19 +101,21 @@ const Component = ({banners, frame, icons}) => {
       </View>
     );
   };
-  const changeVoucher = () =>{
+  const showGaleryDialog = () =>{
     navigateRoute(ROUTES.IMAGES_LIST, { images,imageIndex:currentIndex });
   }
   const renderItems = ({item, index}) => {
     let checkvideo = item.split('.')[item.split('.').length - 1];
     let objVideo;
-
+    let checkVideo = false;
     if(checkvideo == 'mp4'){
+      checkVideo = true;
       objVideo = <Video 
       source={{uri: item}}   // Can be a URL or a local file.
       resizeMethod="resize"
       resizeMode="contain"
       onLoad={()=>{
+        setIsLoadding(true)
         console.log('loadded!')
       }}
       style={styles.backgroundVideo} 
@@ -130,12 +133,18 @@ const Component = ({banners, frame, icons}) => {
     }
     return (
       <TouchableOpacity
+      style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
         onPress={() => {
-          // setImageViewer({index: index, visible: true});
-          changeVoucher()
+          showGaleryDialog()
         }}>
         {objVideo}
         {iconPostion()}
+        {(!isLoadding && checkVideo) ? (
+          <View style={{position: 'absolute'}}>
+            <Spinner type="Circle" color={colors.primary} size={40} />
+          </View>
+        ): null}
+        
         <View style={styles.frame}>
           <Image
             resizeMethod="resize"
@@ -151,8 +160,8 @@ const Component = ({banners, frame, icons}) => {
     const temp = _.map(banners, dt => dt.images);
     setImages(temp);
   }, [banners]);
-  console.log('icons');
-  console.log(icons);
+  // console.log('icons');
+  // console.log(icons);
 
   return (
     <View style={{backgroundColor: '#fff'}}>

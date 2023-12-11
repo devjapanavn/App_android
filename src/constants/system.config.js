@@ -7,7 +7,7 @@ export const CONFIGS = {
     process.env.NODE_ENV === 'development'
       ? 'http://testapi.japana.vn/api/'
       : 'http://api.japana.vn/api/',
-  // REST_API_ROOT_URL: 'http://testapi.japana.vn/api/',
+  // REST_API_ROOT_URL: 'http://api.japana.vn/api/',
   IMAGE_URL: Config.IMAGE_URL,
   VIDEO_URL: Config.VIDEO_URL,
   TOKEN_USERNAME: Config.TOKEN_USERNAME,
